@@ -1,60 +1,286 @@
-site_name: অটোমেশন
-site_url: https://github.io/aiwithr/automation
+site_name: 'উৎকর্ষের সন্ধানে: বাংলাদেশ'
 theme:
   name: material
+  language: bn
+
+# Project information
+site_url: https://aiwithr.github.io/aibook/
+site_author: রকিবুল হাসান
+site_description: >-
+  কৃত্রিম বুদ্ধিমত্তা, আমাদের ভবিষ্যৎ
+  নীতিনির্ধারণী আলাপ, বাংলাদেশ এবং আমরা
+
+# Repository
+repo_name: raqueeb/mltraining
+repo_url: https://github.com/raqueeb/mltraining/
+edit_uri: ""
+
+# Copyright
+copyright: সৃজনশীল লাইসেন্সিং ২০১৯ - ২০২০ &copy; রকিবুল হাসান
+
+# Configuration
+theme:
+  name: material
+  # custom_dir: overrides
+  features:
+    - navigation.instant
   features:
     - navigation.tabs
     - navigation.sections
-    - toc.integrate
-    - navigation.top
-    - search.suggest
-    - search.highlight
-    - content.tabs.link
-    - content.code.annotation
-    - content.code.copy
+  # 404 page
+  static_templates:
+    - 404.html
+
+  # Don't include MkDocs' JavaScript
+  include_search_page: false
+  search_index_only: true
+
+  # Default values, taken from mkdocs_theme.yml
   language: bn
+  features:
+  #  - tabs
+    - instant
   palette:
-    - scheme: default
-      toggle:
-        icon: material/toggle-switch-off-outline 
-        name: Switch to dark mode
-      primary: teal
-      accent: purple 
-    - scheme: slate 
-      toggle:
-        icon: material/toggle-switch
-        name: Switch to light mode    
-      primary: teal
-      accent: lime
+    scheme: default
+    primary: indigo
+    accent: indigo
+  font:
+    text: SiyamRupali
+    code: SiyamRupali
+  favicon: assets/favicon.png
+  icon:
+    logo: logo
 
-plugins:
-  - social
+extra_css:
+  - stylesheets/extra.css
+# Plugins
+# plugins:
+#    - pdf-export:
+#        verbose: true
+#        media_type: print
+#        enabled_if_env: ENABLE_PDF_EXPORT
+#        combined: true
+#        combined_output_path: pdf/combined.pdf
 
+
+# Customization
 extra:
   social:
-    - icon: fontawesome/brands/github-alt
-      link: https://github.com/james-willett
+    - icon: fontawesome/brands/github
+      link: https://github.com/raqueeb
+    - icon: fontawesome/brands/facebook-messenger
+      link: http://m.me/raqueeb
+    - icon: fontawesome/brands/whatsapp
+      link: tel:+8801713095767
     - icon: fontawesome/brands/twitter
-      link: https://twitter.com/TheJamesWillett
+      link: https://twitter.com/raqueeb
     - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/in/willettjames/
+      link: https://linkedin.com/in/raqueeb/
+    - icon: fontawesome/brands/instagram
+      link: https://instagram.com/raqueeb
+    - icon: fontawesome/brands/facebook
+      link: https://facebook.com/raqueeb
+
+# extra:
+#   disqus: aiwithr
+
+# Extensions
 
 markdown_extensions:
-  - pymdownx.highlight:
-      anchor_linenums: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - admonition
-  - pymdownx.arithmatex:
-      generic: true
-  - footnotes
+  - markdown.extensions.admonition
+  - markdown.extensions.attr_list
+  - markdown.extensions.def_list
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+  - markdown.extensions.toc:
+      permalink: false
+  - toc:
+      permalink: false
+
+markdown_extensions:
+#  - toc:
+#      permalink: ⚓︎
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
   - pymdownx.details
-  - pymdownx.superfences
-  - pymdownx.mark
-  - attr_list
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: aiwithr
+      repo: aibook
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - pymdownx.caret
+ 
+markdown_extensions:
+  - admonition
+  - footnotes
+  - attr_list
+  - pymdownx.critic
+  - pymdownx.smartsymbols
+  - pymdownx.mark
+#  - meta
+  - toc:
+      permalink: false
+  - pymdownx.superfences
+  - pymdownx.tilde
+  - pymdownx.caret
+  - pymdownx.betterem:
+      smart_enable: all
 
-copyright: |
-  &copy; 2023 <a href="https://github.com/james-willett"  target="_blank" rel="noopener">James Willett</a>
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+# hide:
+#- navigation # Hide navigation
+#  - toc 
+      
+# বইয়ের গাছপালা
+nav:
+  - "উৎকর্ষের সন্ধানে: বাংলাদেশ": index.md
+  - বইয়ের খসড়া সুচিপত্র: frontmatter/toc-ed.md
+  - উৎসর্গ: frontmatter/dedication.md
+  - কৃতজ্ঞতা এবং বাড়তি রিডিং: frontmatter/courtesy.md
+  - কেন বইটা লিখতে চাইলাম?: frontmatter/why-writing.md
+
+  - প্রাথমিক 'বিল্ডিং ব্লক':
+
+    - অটোমেশন, বুদ্ধিমান সফটওয়্যার = কৃত্রিম বুদ্ধিমত্তা: bbb/software-is-eating-world.md
+    - ডাটা, 'স্ট্রাটেজিক অ্যাসেট' এবং ওপেন ডাটা ইনিশিয়েটিভ: bbb/data-as-strategic-asset.md
+    - ক্লাউড কম্পিউটিং, ডাটা রেসিডেন্সি, তথ্যের নিরাপত্তা: bbb/cloud-computing.md
+ 
+  - এআই, শুরুর ধারণা:
+
+    - কিভাবে এখানে এলাম?: start/how-did-we-arr.md
+    - কেন প্রয়োজন কৃত্রিম বুদ্ধিমত্তার?: start/why-ai.md
+    - ‘কৃত্রিম বুদ্ধিমত্তা’ জিনিসটা কি?: start/definition.md
+    - পেছনের ড্রাইভিং ফ্যাক্টরগুলো কী কী?: start/driving-factors.md
+    - কৃত্রিম বুদ্ধিমত্তার দুটো 'অ্যাপ্রোচ': start/two-approaches.md
+    - টেক্সটবুকের কিছু ডেফিনিশন: start/textbook-def.md
+    - অ্যালান টুরিং টেস্ট: start/turing-test.md
+    - যন্ত্রের উপলব্ধি বোধ, চাইনিজ-রুম যুক্তি: start/chinese-room.md
+    - মানুষ এবং যন্ত্র কিভাবে শেখে?: start/nlp-learning.md
+    - সিদ্ধান্তের 'লুপ' থেকে মানুষকে বের করে আনা: start/what-we-want.md
+    - ডাটা কিভাবে কথা বলে?: start/data-talks.md
+    - মেশিন লার্নিং কেন?: start/why-ml.md
+    - ডিপ লার্নিং ব্যাপারটা কী?: start/deep-learning.md
+    - শব্দের এমবেডিং প্রজেক্টর, ঘটনার সিগনেচার: start/embedding-connection.md
+#    - মানুষের এবং যন্ত্রের বায়াস, করনীয়: start/human-ai-bias.md
+
+  - আগাম ধারণার প্রশাসন:
+
+    - সরকার এবং কৃত্রিম বুদ্ধিমত্তা - শুরুর প্রস্তাবনা: frontmatter/government-ai.md
+    - ভবিষ্যতের সরকার এবং গ্লোবালাইজেশন ইফেক্ট: frontmatter/future-gov.md
+    - অপরাধ সনাক্তকরণ পদ্ধতি, ক্রাইম ডাটা: frontmatter/crime-prediction.md
+    - বাংলাদেশ এবং আগাম ধারণার প্রশাসন, কিভাবে?: frontmatter/govt-of-the-future.md
+    - কৃষক এবং অন্যান্য আত্মহত্যার যোগসূত্র: frontmatter/suicide-farmers.md
+    
+  - বাংলাদেশে আইডেন্টিফিকেশন:
+
+    - কাগজের ফটোকপির দৌরাত্ম্য, আর কতোদিন?: id/photocopy.md
+    - কর্মকর্তাদের স্বাক্ষর, বর্তমান সনাক্তকরণ পদ্ধতি এবং ফটোকপি: frontmatter/electronic-docs.md
+    - সনাক্তকরণ পদ্ধতি/আইডেন্টিফিকেশন: id/idcard.md
+    - সিভিল রেজিস্ট্রেশন এ্যান্ড ভাইটাল স্ট্যাটিসটিক্স (সিআরভিএস): id/crvs-indicators.md
+    - সিআরভিএস এবং শিক্ষার্থী একীভূত আইডি: id/crvs-student-id.md
+    - জাতীয় পরিচয়পত্র, ড্রাইভিং লাইসেন্স এবং পাসপোর্ট: id/nid-dvr-pp.md
+    - ভর্তুকির বন্টন ব্যবস্থা এবং কতো ভর্তুকির অনুপাতে কতো অর্জন তার ড্যাসবোর্ড: id/subsidy-model.md
+    - এন্টারপ্রাইজ সার্ভিস বাস, জাতীয় ডাটাহাব: id/esb.md
+
+  - দেশের নীতিনির্ধারণী ড্যাশবোর্ড ২:
+    
+    - নীতিনির্ধারণী ড্যাশবোর্ড নিয়ে কাজ: dashboard/dashboard.md
+    - ড্যাশবোর্ড কী এবং কেন এটা দরকার?: dashboard/why-dashboard.md
+    - দেশের কাজগুলোর অগ্রগতি জানবো কিভাবে?: dashboard/progress.md
+
+  - সরকারি সার্ভিসগুলোকে সহজীকরন:
+
+    - সরকারিখাতে উদ্ভাবনা স্পর্শ করবে মানুষের জীবন: sps/public-innovation.md
+    - ডিজিটাল প্রসেস-ফ্লো এবং এনালগ কর্মপন্থা: sps/process-flow.md
+    - সেবাপদ্ধতি সহজীকরণ এবং প্রসেস ম্যাপ তৈরি: sps/bpr-sps.md
+    - সেবা পদ্ধতি সহজীকরনের দৃষ্টান্ত এবং সিঙ্গাপুর: sps/sps-example.md
+    - একটা উদাহরণ, আমদানি নিবন্ধন সনদপত্র: sps/irc.md
+
+  - সামাজিক নিরাপত্তা বেষ্টনীর সুবিধা বন্টন ব্যবস্থাপনা:
+
+    - মানবিক রাষ্ট্র থেকে কতো দুরে বাংলাদেশ?: safetynet/nsss-strategy.md
+    - সুবিধাবঞ্চিতদের সনাক্ত করবো কিভাবে?: safetynet/selection-method.md
+    - ফ্রেমওয়ার্কের আধুনিকায়ন ও ডিজিটাল পদ্ধতিতে সুবিধা প্রদান: safetynet/framework.md
+    - সার্বজনীন ন্যূনতম আয়, ব্লকচেইন এবং কৃত্রিম বুদ্ধিমত্তা: safetynet/nsss-ai.md
+
+  - বুদ্ধিমান ভর্তুকি বন্টন ব্যবস্থা:
+
+    - উদীয়মান অর্থনীতিতে শিল্প, বিদ্যুৎ, জ্বালানি এবং কৃষি ভর্তুকি: subsidy/emerging-economy.md
+    - ভর্তুকি বন্টন নীতিমালা এবং তার ব্যবস্থাপনার ড্যাসবোর্ড: subsidy/subsidy-distribution.md
+    - ভোক্তাকে সরাসরি ভর্তুকি প্রদানের ধারণা, সনাক্তকরণ পদ্ধতি: subsidy/dbt.md
+
+  - বুদ্ধিমান আয়কর পদ্ধতির ভবিষ্যত এবং অর্থ মন্ত্রনালয়ের 'পাবলিক ফিনান্সিয়াল ম্যানেজমেন্ট':
+
+    - বুদ্ধিমান আয়কর সংস্থা এবং তার কাজ: tax/future-tax-regime.md
+    - এক সংস্থা, তবে গ্রুপ ভিত্তিক আলাদা মাথা: tax/communicates_differently.md
+    - অর্থ মন্ত্রণালয়ের ‘পাবলিক ফান্ড ম্যানেজমেন্ট’ ব্যবস্থাপনা: tax/pfms.md
+
+  - নীতিমালা তৈরিতে এআই:
+
+    - নীতিমালা তৈরিতে কেন কৃত্রিম বুদ্ধিমত্তা?: ai-pol-framework/policy-framework.md
+    - সিদ্ধান্তে অ্যালগরিদমের ব্যবহার: ai-pol-framework/decision-algo.md
+    - নীতিমালা তৈরির ফ্রেমওয়ার্ক, পলিসি সাইকেল: ai-pol-framework/decion-policy.md
+
+  - অভিযোজিত শিক্ষা ব্যবস্থা:
+
+    - ‘পার্সোনালাইজড’ শিক্ষা: edu/personalized-ed.md
+    - শিক্ষার বর্তমান অবস্থা (পৃথিবীব্যাপী): edu/education-now.md
+    - ফাউন্ডেশন শিক্ষা, বাড়ি বানানো: edu/foundation.md
+    - কেন দরকার অ্যাডাপ্টিভ লার্নিং সিস্টেম?: edu/als-why.md
+    - অ্যাডাপ্টিভ লার্নিং সিস্টেম - কী বলছেন সবাই?: edu/als-saying.md
+    - অ্যাডাপ্টিভ লার্নিং সিস্টেম - কাদের জন্য?: edu/als.md
+    - অ্যাডাপ্টিভ লার্নিং সিস্টেম - সিস্টেম ডিজাইন: edu/als-design.md
+    - অ্যাডাপ্টিভ লার্নিং সিস্টেম - অ্যাডাপটিভিটির ফ্যাক্টর: edu/als-factor.md
+    - কেন দরকার অ্যাবিলিটি গ্রুপিং?: edu/ability.md 
+    - লুকিং ইস্ট, কোথায় যাচ্ছি আমরা?: edu/education-east.md
+    - বাংলাদেশের শিক্ষার্থীর প্রোফাইলিং: edu/uid.md
+    - সবার জন্য মানসম্মত কারিগরি শিক্ষা, কাজে লাগবে এমন প্রয়োজনীয় শিক্ষা: edu/vocational-edu.md 
+    # - হেলথকেয়ার/স্বাস্থ্য ব্যবস্থা: bangladesh/healthcare-evolution.md
+    # - ইউনিভার্সাল হেলথকেয়ার: bangladesh/universal-hcare.md
+    # - রেমিটেন্স ক্যাশফ্লো: bangladesh/remittance.md
+    # - টাকা খরচের ড্যাসবোর্ড: bangladesh/dashboard-spending.md
+  # - বিচার বিভাগ:
+    # - বিচার ব্যবস্থার দক্ষতা: judiciary/judiciary.md
+    # - ঢাকা ল রিপোর্ট, প্রসিডিং: judiciary/dlr.md
+    #- পরে যোগ করবো: bangladesh/adding-an-announcement-bar.md
+    #- ল্যান্ডিং পেজ: bangladesh/adding-a-landing-page.md
+    # - পাবলিক প্রাইভেট পার্টনারশীপ:
+  #  - ডাটা কোথায়?: ppp/data-repo.md
+  #  - ইন্ডাস্ট্রির ধারণা: ppp/what-industry-think.md
+  #  - যোগসূত্র - বিশ্বাস: ppp/api-trust.md
+  #  - ডাটা স্ট্রাটেজিক অ্যাসেট: ppp/strategic-asset.md
+  #  - ডাটা কোথায় থাকতে পারে?: ppp/hosting.md
+  #  - কে কোথায় এক্সেস পাবে?: ppp/access.md
+  #  - একসাথে কাজ করা: ppp/working-together.md
+  # - বাংলাদেশ প্রস্তাবনা:
+    
+  - সামগ্রিক প্রস্তাবনা: proposal/proposal-e2e.md
+   # - পাবলিক প্রাইভেট পার্টনারশীপ: proposal/ppp.md
+   # - ইন্ডাস্ট্রি ধরে সূচক: proposal/indicator.md
+   # - আরো আসবে: proposal/more.md
+  - আমি কে?:
+    - কেন লিখছি এতো বই?: rhassan/rh.md
+
+# Google Analytics
+google_analytics:
+  - !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
+  - auto
