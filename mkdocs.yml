@@ -12,7 +12,7 @@ theme:
     - content.tabs.link
     - content.code.annotation
     - content.code.copy
-  language: en
+  language: bn
   palette:
     - scheme: default
       toggle:
