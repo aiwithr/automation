@@ -1,4 +1,4 @@
-site_name: 'উৎকর্ষের সন্ধানে: বাংলাদেশ'
+site_name: 'রোড টু হাইটেক ইন্ডাস্ট্রি: নেটওয়ার্ক/আইএসপি অটোমেশন'
 theme:
   name: material
   language: bn
@@ -7,8 +7,8 @@ theme:
 site_url: https://aiwithr.github.io/automation/
 site_author: রকিবুল হাসান
 site_description: >-
-  কৃত্রিম বুদ্ধিমত্তা, আমাদের ভবিষ্যৎ
-  নীতিনির্ধারণী আলাপ, বাংলাদেশ এবং আমরা
+  রোড টু হাইটেক ইন্ডাস্ট্রি:
+  নেটওয়ার্ক/আইএসপি অটোমেশন
 
 # Repository
 repo_name: raqueeb/mltraining
@@ -152,17 +152,17 @@ markdown_extensions:
       
 # বইয়ের গাছপালা
 nav:
-  - "উৎকর্ষের সন্ধানে: বাংলাদেশ": index.md
-  - বইয়ের খসড়া সুচিপত্র: frontmatter/toc-ed.md
+  - "নেটওয়ার্ক/আইএসপি অটোমেশন": index.md
+  - অটোমেশন কেন লাগছে?: frontmatter/toc-ed.md
   - উৎসর্গ: frontmatter/dedication.md
   - কৃতজ্ঞতা এবং বাড়তি রিডিং: frontmatter/courtesy.md
   - কেন বইটা লিখতে চাইলাম?: frontmatter/why-writing.md
 
   - প্রাথমিক 'বিল্ডিং ব্লক':
 
-    - অটোমেশন, বুদ্ধিমান সফটওয়্যার = কৃত্রিম বুদ্ধিমত্তা: bbb/software-is-eating-world.md
-    - ডাটা, 'স্ট্রাটেজিক অ্যাসেট' এবং ওপেন ডাটা ইনিশিয়েটিভ: bbb/data-as-strategic-asset.md
-    - ক্লাউড কম্পিউটিং, ডাটা রেসিডেন্সি, তথ্যের নিরাপত্তা: bbb/cloud-computing.md
+  - অটোমেশন, বুদ্ধিমান সফটওয়্যার = কৃত্রিম বুদ্ধিমত্তা: software-is-eating-world.md
+  - নেটওয়ার্ক কনফিগারেশন ম্যানেজমেন্ট অটোমেশন: docs/network_config.md
+  - ক্লাউড কম্পিউটিং, ডাটা রেসিডেন্সি, তথ্যের নিরাপত্তা: bbb/cloud-computing.md
  
   - এআই, শুরুর ধারণা:
 
@@ -189,96 +189,6 @@ nav:
     - অপরাধ সনাক্তকরণ পদ্ধতি, ক্রাইম ডাটা: frontmatter/crime-prediction.md
     - বাংলাদেশ এবং আগাম ধারণার প্রশাসন, কিভাবে?: frontmatter/govt-of-the-future.md
     - কৃষক এবং অন্যান্য আত্মহত্যার যোগসূত্র: frontmatter/suicide-farmers.md
-    
-  - বাংলাদেশে আইডেন্টিফিকেশন:
-
-    - কাগজের ফটোকপির দৌরাত্ম্য, আর কতোদিন?: id/photocopy.md
-    - কর্মকর্তাদের স্বাক্ষর, বর্তমান সনাক্তকরণ পদ্ধতি এবং ফটোকপি: frontmatter/electronic-docs.md
-    - সনাক্তকরণ পদ্ধতি/আইডেন্টিফিকেশন: id/idcard.md
-    - সিভিল রেজিস্ট্রেশন এ্যান্ড ভাইটাল স্ট্যাটিসটিক্স (সিআরভিএস): id/crvs-indicators.md
-    - সিআরভিএস এবং শিক্ষার্থী একীভূত আইডি: id/crvs-student-id.md
-    - জাতীয় পরিচয়পত্র, ড্রাইভিং লাইসেন্স এবং পাসপোর্ট: id/nid-dvr-pp.md
-    - ভর্তুকির বন্টন ব্যবস্থা এবং কতো ভর্তুকির অনুপাতে কতো অর্জন তার ড্যাসবোর্ড: id/subsidy-model.md
-    - এন্টারপ্রাইজ সার্ভিস বাস, জাতীয় ডাটাহাব: id/esb.md
-
-  - দেশের নীতিনির্ধারণী ড্যাশবোর্ড ২:
-    
-    - নীতিনির্ধারণী ড্যাশবোর্ড নিয়ে কাজ: dashboard/dashboard.md
-    - ড্যাশবোর্ড কী এবং কেন এটা দরকার?: dashboard/why-dashboard.md
-    - দেশের কাজগুলোর অগ্রগতি জানবো কিভাবে?: dashboard/progress.md
-
-  - সরকারি সার্ভিসগুলোকে সহজীকরন:
-
-    - সরকারিখাতে উদ্ভাবনা স্পর্শ করবে মানুষের জীবন: sps/public-innovation.md
-    - ডিজিটাল প্রসেস-ফ্লো এবং এনালগ কর্মপন্থা: sps/process-flow.md
-    - সেবাপদ্ধতি সহজীকরণ এবং প্রসেস ম্যাপ তৈরি: sps/bpr-sps.md
-    - সেবা পদ্ধতি সহজীকরনের দৃষ্টান্ত এবং সিঙ্গাপুর: sps/sps-example.md
-    - একটা উদাহরণ, আমদানি নিবন্ধন সনদপত্র: sps/irc.md
-
-  - সামাজিক নিরাপত্তা বেষ্টনীর সুবিধা বন্টন ব্যবস্থাপনা:
-
-    - মানবিক রাষ্ট্র থেকে কতো দুরে বাংলাদেশ?: safetynet/nsss-strategy.md
-    - সুবিধাবঞ্চিতদের সনাক্ত করবো কিভাবে?: safetynet/selection-method.md
-    - ফ্রেমওয়ার্কের আধুনিকায়ন ও ডিজিটাল পদ্ধতিতে সুবিধা প্রদান: safetynet/framework.md
-    - সার্বজনীন ন্যূনতম আয়, ব্লকচেইন এবং কৃত্রিম বুদ্ধিমত্তা: safetynet/nsss-ai.md
-
-  - বুদ্ধিমান ভর্তুকি বন্টন ব্যবস্থা:
-
-    - উদীয়মান অর্থনীতিতে শিল্প, বিদ্যুৎ, জ্বালানি এবং কৃষি ভর্তুকি: subsidy/emerging-economy.md
-    - ভর্তুকি বন্টন নীতিমালা এবং তার ব্যবস্থাপনার ড্যাসবোর্ড: subsidy/subsidy-distribution.md
-    - ভোক্তাকে সরাসরি ভর্তুকি প্রদানের ধারণা, সনাক্তকরণ পদ্ধতি: subsidy/dbt.md
-
-  - বুদ্ধিমান আয়কর পদ্ধতির ভবিষ্যত এবং অর্থ মন্ত্রনালয়ের 'পাবলিক ফিনান্সিয়াল ম্যানেজমেন্ট':
-
-    - বুদ্ধিমান আয়কর সংস্থা এবং তার কাজ: tax/future-tax-regime.md
-    - এক সংস্থা, তবে গ্রুপ ভিত্তিক আলাদা মাথা: tax/communicates_differently.md
-    - অর্থ মন্ত্রণালয়ের ‘পাবলিক ফান্ড ম্যানেজমেন্ট’ ব্যবস্থাপনা: tax/pfms.md
-
-  - নীতিমালা তৈরিতে এআই:
-
-    - নীতিমালা তৈরিতে কেন কৃত্রিম বুদ্ধিমত্তা?: ai-pol-framework/policy-framework.md
-    - সিদ্ধান্তে অ্যালগরিদমের ব্যবহার: ai-pol-framework/decision-algo.md
-    - নীতিমালা তৈরির ফ্রেমওয়ার্ক, পলিসি সাইকেল: ai-pol-framework/decion-policy.md
-
-  - অভিযোজিত শিক্ষা ব্যবস্থা:
-
-    - ‘পার্সোনালাইজড’ শিক্ষা: edu/personalized-ed.md
-    - শিক্ষার বর্তমান অবস্থা (পৃথিবীব্যাপী): edu/education-now.md
-    - ফাউন্ডেশন শিক্ষা, বাড়ি বানানো: edu/foundation.md
-    - কেন দরকার অ্যাডাপ্টিভ লার্নিং সিস্টেম?: edu/als-why.md
-    - অ্যাডাপ্টিভ লার্নিং সিস্টেম - কী বলছেন সবাই?: edu/als-saying.md
-    - অ্যাডাপ্টিভ লার্নিং সিস্টেম - কাদের জন্য?: edu/als.md
-    - অ্যাডাপ্টিভ লার্নিং সিস্টেম - সিস্টেম ডিজাইন: edu/als-design.md
-    - অ্যাডাপ্টিভ লার্নিং সিস্টেম - অ্যাডাপটিভিটির ফ্যাক্টর: edu/als-factor.md
-    - কেন দরকার অ্যাবিলিটি গ্রুপিং?: edu/ability.md 
-    - লুকিং ইস্ট, কোথায় যাচ্ছি আমরা?: edu/education-east.md
-    - বাংলাদেশের শিক্ষার্থীর প্রোফাইলিং: edu/uid.md
-    - সবার জন্য মানসম্মত কারিগরি শিক্ষা, কাজে লাগবে এমন প্রয়োজনীয় শিক্ষা: edu/vocational-edu.md 
-    # - হেলথকেয়ার/স্বাস্থ্য ব্যবস্থা: bangladesh/healthcare-evolution.md
-    # - ইউনিভার্সাল হেলথকেয়ার: bangladesh/universal-hcare.md
-    # - রেমিটেন্স ক্যাশফ্লো: bangladesh/remittance.md
-    # - টাকা খরচের ড্যাসবোর্ড: bangladesh/dashboard-spending.md
-  # - বিচার বিভাগ:
-    # - বিচার ব্যবস্থার দক্ষতা: judiciary/judiciary.md
-    # - ঢাকা ল রিপোর্ট, প্রসিডিং: judiciary/dlr.md
-    #- পরে যোগ করবো: bangladesh/adding-an-announcement-bar.md
-    #- ল্যান্ডিং পেজ: bangladesh/adding-a-landing-page.md
-    # - পাবলিক প্রাইভেট পার্টনারশীপ:
-  #  - ডাটা কোথায়?: ppp/data-repo.md
-  #  - ইন্ডাস্ট্রির ধারণা: ppp/what-industry-think.md
-  #  - যোগসূত্র - বিশ্বাস: ppp/api-trust.md
-  #  - ডাটা স্ট্রাটেজিক অ্যাসেট: ppp/strategic-asset.md
-  #  - ডাটা কোথায় থাকতে পারে?: ppp/hosting.md
-  #  - কে কোথায় এক্সেস পাবে?: ppp/access.md
-  #  - একসাথে কাজ করা: ppp/working-together.md
-  # - বাংলাদেশ প্রস্তাবনা:
-    
-  - সামগ্রিক প্রস্তাবনা: proposal/proposal-e2e.md
-   # - পাবলিক প্রাইভেট পার্টনারশীপ: proposal/ppp.md
-   # - ইন্ডাস্ট্রি ধরে সূচক: proposal/indicator.md
-   # - আরো আসবে: proposal/more.md
-  - আমি কে?:
-    - কেন লিখছি এতো বই?: rhassan/rh.md
 
 # Google Analytics
 google_analytics:
