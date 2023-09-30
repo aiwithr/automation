@@ -3,7 +3,7 @@
 !!! tldr "সংজ্ঞা: কোথায় আমরা?"
     “You’re either the one that creates the automation or you’re getting automated.” 
     
-    —Tom Preston-Werner
+    — Tom Preston-Werner
 
 ## কেন নেটওয়ার্ক কনফিগারেশন ম্যানেজমেন্ট দরকার?
 
