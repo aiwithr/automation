@@ -158,10 +158,10 @@ nav:
   - কৃতজ্ঞতা এবং বাড়তি রিডিং: frontmatter/courtesy.md
   - কেন বইটা লিখতে চাইলাম?: frontmatter/why-writing.md
 
-  - প্রাথমিক 'বিল্ডিং ব্লক': docs/building-block.md
+  - প্রাথমিক 'বিল্ডিং ব্লক': building-block.md
 
   - অটোমেশন, বুদ্ধিমান সফটওয়্যার = কৃত্রিম বুদ্ধিমত্তা: software-is-eating-world.md
-  - নেটওয়ার্ক কনফিগারেশন ম্যানেজমেন্ট অটোমেশন: docs/network_config.md
+  - নেটওয়ার্ক কনফিগারেশন ম্যানেজমেন্ট অটোমেশন: network_config.md
   - ক্লাউড কম্পিউটিং, ডাটা রেসিডেন্সি, তথ্যের নিরাপত্তা: bbb/cloud-computing.md
  
   - এআই, শুরুর ধারণা:
