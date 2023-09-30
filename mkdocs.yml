@@ -158,7 +158,7 @@ nav:
   - কৃতজ্ঞতা এবং বাড়তি রিডিং: frontmatter/courtesy.md
   - কেন বইটা লিখতে চাইলাম?: frontmatter/why-writing.md
 
-  - প্রাথমিক 'বিল্ডিং ব্লক':
+  - প্রাথমিক 'বিল্ডিং ব্লক': docs/building-block.md
 
   - অটোমেশন, বুদ্ধিমান সফটওয়্যার = কৃত্রিম বুদ্ধিমত্তা: software-is-eating-world.md
   - নেটওয়ার্ক কনফিগারেশন ম্যানেজমেন্ট অটোমেশন: docs/network_config.md
