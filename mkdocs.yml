@@ -110,6 +110,9 @@ markdown_extensions:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.highlight
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.magiclink:
@@ -160,10 +163,11 @@ nav:
   - কেন আমি আইএসপিতে এলাম?: whyisp.md
 
   - প্রাথমিক 'বিল্ডিং ব্লক': building-block.md
+  - পাইথনের বেসিক ধারণা: python.md
 
   - অটোমেশন, বুদ্ধিমান সফটওয়্যার = কৃত্রিম বুদ্ধিমত্তা: software-is-eating-world.md
   - নেটওয়ার্ক কনফিগারেশন ম্যানেজমেন্ট অটোমেশন: network_config.md
-  - ক্লাউড কম্পিউটিং, ডাটা রেসিডেন্সি, তথ্যের নিরাপত্তা: bbb/cloud-computing.md
+  - পাইথন দিয়ে নেটওয়ার্কের কনফিগারেশন ব্যাকআপ: python_config_backup.md
  
 #   - এআই, শুরুর ধারণা:
 
