@@ -153,10 +153,11 @@ markdown_extensions:
 # বইয়ের গাছপালা
 nav:
   - "নেটওয়ার্ক/আইএসপি অটোমেশন": index.md
-  - অটোমেশন কেন লাগছে?: frontmatter/toc-ed.md
+  - অটোমেশন কেন লাগছে?: whyautomation.md
   - উৎসর্গ: frontmatter/dedication.md
   - কৃতজ্ঞতা এবং বাড়তি রিডিং: frontmatter/courtesy.md
-  - কেন বইটা লিখতে চাইলাম?: frontmatter/why-writing.md
+  - কেন বইটা লিখতে চাইলাম?: why-writing.md
+  - কেন আমি আইএসপিতে এলাম?: whyisp.md
 
   - প্রাথমিক 'বিল্ডিং ব্লক': building-block.md
 
@@ -164,31 +165,31 @@ nav:
   - নেটওয়ার্ক কনফিগারেশন ম্যানেজমেন্ট অটোমেশন: network_config.md
   - ক্লাউড কম্পিউটিং, ডাটা রেসিডেন্সি, তথ্যের নিরাপত্তা: bbb/cloud-computing.md
  
-  - এআই, শুরুর ধারণা:
+#   - এআই, শুরুর ধারণা:
 
-    - কিভাবে এখানে এলাম?: start/how-did-we-arr.md
-    - কেন প্রয়োজন কৃত্রিম বুদ্ধিমত্তার?: start/why-ai.md
-    - ‘কৃত্রিম বুদ্ধিমত্তা’ জিনিসটা কি?: start/definition.md
-    - পেছনের ড্রাইভিং ফ্যাক্টরগুলো কী কী?: start/driving-factors.md
-    - কৃত্রিম বুদ্ধিমত্তার দুটো 'অ্যাপ্রোচ': start/two-approaches.md
-    - টেক্সটবুকের কিছু ডেফিনিশন: start/textbook-def.md
-    - অ্যালান টুরিং টেস্ট: start/turing-test.md
-    - যন্ত্রের উপলব্ধি বোধ, চাইনিজ-রুম যুক্তি: start/chinese-room.md
-    - মানুষ এবং যন্ত্র কিভাবে শেখে?: start/nlp-learning.md
-    - সিদ্ধান্তের 'লুপ' থেকে মানুষকে বের করে আনা: start/what-we-want.md
-    - ডাটা কিভাবে কথা বলে?: start/data-talks.md
-    - মেশিন লার্নিং কেন?: start/why-ml.md
-    - ডিপ লার্নিং ব্যাপারটা কী?: start/deep-learning.md
-    - শব্দের এমবেডিং প্রজেক্টর, ঘটনার সিগনেচার: start/embedding-connection.md
-#    - মানুষের এবং যন্ত্রের বায়াস, করনীয়: start/human-ai-bias.md
+#     - কিভাবে এখানে এলাম?: start/how-did-we-arr.md
+#     - কেন প্রয়োজন কৃত্রিম বুদ্ধিমত্তার?: start/why-ai.md
+#     - ‘কৃত্রিম বুদ্ধিমত্তা’ জিনিসটা কি?: start/definition.md
+#     - পেছনের ড্রাইভিং ফ্যাক্টরগুলো কী কী?: start/driving-factors.md
+#     - কৃত্রিম বুদ্ধিমত্তার দুটো 'অ্যাপ্রোচ': start/two-approaches.md
+#     - টেক্সটবুকের কিছু ডেফিনিশন: start/textbook-def.md
+#     - অ্যালান টুরিং টেস্ট: start/turing-test.md
+#     - যন্ত্রের উপলব্ধি বোধ, চাইনিজ-রুম যুক্তি: start/chinese-room.md
+#     - মানুষ এবং যন্ত্র কিভাবে শেখে?: start/nlp-learning.md
+#     - সিদ্ধান্তের 'লুপ' থেকে মানুষকে বের করে আনা: start/what-we-want.md
+#     - ডাটা কিভাবে কথা বলে?: start/data-talks.md
+#     - মেশিন লার্নিং কেন?: start/why-ml.md
+#     - ডিপ লার্নিং ব্যাপারটা কী?: start/deep-learning.md
+#     - শব্দের এমবেডিং প্রজেক্টর, ঘটনার সিগনেচার: start/embedding-connection.md
+# #    - মানুষের এবং যন্ত্রের বায়াস, করনীয়: start/human-ai-bias.md
 
-  - আগাম ধারণার প্রশাসন:
+#   - আগাম ধারণার প্রশাসন:
 
-    - সরকার এবং কৃত্রিম বুদ্ধিমত্তা - শুরুর প্রস্তাবনা: frontmatter/government-ai.md
-    - ভবিষ্যতের সরকার এবং গ্লোবালাইজেশন ইফেক্ট: frontmatter/future-gov.md
-    - অপরাধ সনাক্তকরণ পদ্ধতি, ক্রাইম ডাটা: frontmatter/crime-prediction.md
-    - বাংলাদেশ এবং আগাম ধারণার প্রশাসন, কিভাবে?: frontmatter/govt-of-the-future.md
-    - কৃষক এবং অন্যান্য আত্মহত্যার যোগসূত্র: frontmatter/suicide-farmers.md
+#     - সরকার এবং কৃত্রিম বুদ্ধিমত্তা - শুরুর প্রস্তাবনা: frontmatter/government-ai.md
+#     - ভবিষ্যতের সরকার এবং গ্লোবালাইজেশন ইফেক্ট: frontmatter/future-gov.md
+#     - অপরাধ সনাক্তকরণ পদ্ধতি, ক্রাইম ডাটা: frontmatter/crime-prediction.md
+#     - বাংলাদেশ এবং আগাম ধারণার প্রশাসন, কিভাবে?: frontmatter/govt-of-the-future.md
+#     - কৃষক এবং অন্যান্য আত্মহত্যার যোগসূত্র: frontmatter/suicide-farmers.md
 
 # Google Analytics
 google_analytics:
