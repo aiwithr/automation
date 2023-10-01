@@ -30,8 +30,8 @@ copyright: সৃজনশীল লাইসেন্সিং ২০১৯ - �
 #  name: material
   # custom_dir: overrides
   # 404 page
-static_templates:
-    - 404.html
+  static_templates:
+  - 404.html
 
   # Don't include MkDocs' JavaScript
   include_search_page: false
