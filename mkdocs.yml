@@ -16,7 +16,7 @@ repo_url: https://github.com/raqueeb/mltraining/
 edit_uri: ""
 
 # Copyright
-copyright: সৃজনশীল লাইসেন্সিং ২০১৯ - ২০২০ &copy; রকিবুল হাসান
+copyright: সৃজনশীল লাইসেন্সিং ২০১৯ - ২০২৩ &copy; রকিবুল হাসান
 
 # Configuration
 theme:
@@ -33,7 +33,7 @@ theme:
   static_templates:
     - 404.html
   # Don't include MkDocs' JavaScript
-  include_search_page: false
+  include_search_page: true
   search_index_only: true
 
   # Default values, taken from mkdocs_theme.yml
@@ -166,7 +166,7 @@ nav:
   - প্রাথমিক 'বিল্ডিং ব্লক':
     - পাইথনের বেসিক ধারণা: python.md
     - পাইথন দিয়ে ডাটা এক্সেস: python_data.md
-  - অটোমেশন, বুদ্ধিমান সফটওয়্যার = কৃত্রিম বুদ্ধিমত্তা: software-is-eating-world.md
+  - কৃত্রিম বুদ্ধিমত্তা এবং নেটওয়ার্ক ম্যানেজমেন্ট: software-is-eating-world.md
   - নেটওয়ার্ক কনফিগারেশন ম্যানেজমেন্ট অটোমেশন: network_config.md
   - পাইথন দিয়ে নেটওয়ার্কের কনফিগারেশন ব্যাকআপ: python_config_backup.md
  
