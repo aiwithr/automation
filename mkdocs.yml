@@ -150,9 +150,9 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
 
-# hide:
+hide:
 #- navigation # Hide navigation
-#  - toc 
+  - toc 
       
 # বইয়ের গাছপালা
 nav:
