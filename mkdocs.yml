@@ -27,6 +27,8 @@ theme:
   features:
 #    - navigation.tabs
     - navigation.sections
+    - navigation.expand
+    - toc.integrate
   # 404 page
   static_templates:
     - 404.html
