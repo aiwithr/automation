@@ -1,5 +1,10 @@
-# mkdocs-material-youtube-tutorial
+# রোড টু হাইটেক ইন্ডাস্ট্রি: নেটওয়ার্ক/আইএসপি অটোমেশন'
 
-Supporting code for my YouTube tutorial video:
+## কৃত্রিম বুদ্ধিমত্তা নিয়ে বাংলায় সব বই
 
-[![Image.png](https://raw.githubusercontent.com/james-willett/mkdocs-material-youtube-tutorial/main/MkDocsMaterial_GH_Thumbnail.png)](https://www.youtube.com/watch?v=Q-YA_dA8C20)
+<figure>
+  <img src="https://aiwithr.github.io/images/test3.jpg" width="720" />
+  <figcaption>কৃত্রিম বুদ্ধিমত্তা নিয়ে বই</figcaption>
+</figure>
+
+copyright: সৃজনশীল লাইসেন্সিং ২০১৯ - ২০২৩ &copy; রকিবুল হাসান
