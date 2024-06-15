@@ -25,7 +25,7 @@ theme:
   features:
 #    - navigation.tabs
     - navigation.sections
- #   - navigation.expand
+    - navigation.expand
 #    - navigation.instant
 # - toc.integrate
   # 404 page
@@ -155,7 +155,7 @@ hide:
       
 # বইয়ের গাছপালা
 nav:
-  - নেটওয়ার্ক/আইএসপি অটোমেশন: index.md
+  - কেন নেটওয়ার্ক অটোমেশন?: index.md
   - অটোমেশন কেন লাগছে?: whyautomation.md
   - উৎসর্গ: frontmatter/dedication.md
   - কৃতজ্ঞতা এবং বাড়তি রিডিং: frontmatter/courtesy.md
