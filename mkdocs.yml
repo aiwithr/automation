@@ -25,8 +25,8 @@ theme:
   features:
 #    - navigation.tabs
     - navigation.sections
-    - navigation.expand
-    - navigation.instant
+ #   - navigation.expand
+#    - navigation.instant
 # - toc.integrate
   # 404 page
   static_templates:
