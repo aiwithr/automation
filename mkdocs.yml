@@ -156,10 +156,10 @@ hide:
 # বইয়ের গাছপালা
 nav:
   - কেন নেটওয়ার্ক অটোমেশন?: index.md
-  - অটোমেশন কেন লাগছে?: whyautomation.md
-  - উৎসর্গ: frontmatter/dedication.md
-  - কৃতজ্ঞতা এবং বাড়তি রিডিং: frontmatter/courtesy.md
-  - কেন বইটা লিখতে চাইলাম?: why-writing.md
+    - অটোমেশন কেন লাগছে?: whyautomation.md
+    - উৎসর্গ: frontmatter/dedication.md
+    - কৃতজ্ঞতা এবং বাড়তি রিডিং: frontmatter/courtesy.md
+    - কেন বইটা লিখতে চাইলাম?: why-writing.md
   - আমি কেন আইএসপিতে এলাম?: whyisp.md
   - প্রাথমিক 'বিল্ডিং ব্লক':
     - নেটওয়ার্কের ইন্টারফেস কী মানুষ?: interface.md
