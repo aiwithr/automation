@@ -26,7 +26,7 @@ theme:
     - navigation.instant
   features:
 #    - navigation.tabs
-#    - navigation.sections
+    - navigation.sections
     - navigation.expand
 #    - toc.integrate
   # 404 page
