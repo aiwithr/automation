@@ -20,11 +20,11 @@ copyright: সৃজনশীল লাইসেন্সিং ২০১৯ - �
 
 # Configuration
   # custom_dir: overrides
-features:
+  features:
 #    - navigation.tabs
     - navigation.sections
     - navigation.expand
-#    - navigation.instant
+    - navigation.instant
 # - toc.integrate
   # 404 page
   static_templates:
