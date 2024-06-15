@@ -155,7 +155,7 @@ hide:
       
 # বইয়ের গাছপালা
 nav:
-  - "নেটওয়ার্ক/আইএসপি অটোমেশন": index.md
+  - নেটওয়ার্ক/আইএসপি অটোমেশন: index.md
   - অটোমেশন কেন লাগছে?: whyautomation.md
   - উৎসর্গ: frontmatter/dedication.md
   - কৃতজ্ঞতা এবং বাড়তি রিডিং: frontmatter/courtesy.md
