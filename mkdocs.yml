@@ -19,6 +19,8 @@ edit_uri: ""
 copyright: সৃজনশীল লাইসেন্সিং ২০১৯ - ২০২৩ &copy; রকিবুল হাসান
 
 # Configuration
+theme:
+  name: material
   # custom_dir: overrides
   features:
 #    - navigation.tabs
