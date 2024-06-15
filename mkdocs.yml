@@ -21,8 +21,7 @@ copyright: সৃজনশীল লাইসেন্সিং ২০১৯ - �
 # Configuration
 theme:
   name: material
-  custom_dir: material/overrides
-  # custom_dir: overrides
+#  custom_dir: material/overrides
   features:
 #    - navigation.tabs
     - navigation.sections
