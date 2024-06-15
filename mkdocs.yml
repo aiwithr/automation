@@ -24,7 +24,7 @@ theme:
   # custom_dir: overrides
     features:
 #    - navigation.tabs
-    - navigation.sections
+#    - navigation.sections
     - navigation.expand
 #    - navigation.instant
 # - toc.integrate
