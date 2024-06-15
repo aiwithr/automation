@@ -21,6 +21,7 @@ copyright: সৃজনশীল লাইসেন্সিং ২০১৯ - �
 # Configuration
 theme:
   name: material
+  custom_dir: material/overrides
   # custom_dir: overrides
   features:
 #    - navigation.tabs
@@ -43,10 +44,7 @@ theme:
   search_index_only: true
 
   # Default values, taken from mkdocs_theme.yml
-  language: bn
-  features:
-  #  - tabs
-    - instant
+  
   palette:
     scheme: default
     primary: indigo
@@ -61,17 +59,27 @@ theme:
 extra_css:
   - stylesheets/extra.css
 # Plugins
-# plugins:
-#    - pdf-export:
-#        verbose: true
-#        media_type: print
-#        enabled_if_env: ENABLE_PDF_EXPORT
-#        combined: true
-#        combined_output_path: pdf/combined.pdf
+plugins:
+  - blog
+  - search:
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - minify:
+      minify_html: true
 
+# Hooks
+hooks:
+  - material/overrides/hooks/shortcodes.py
+  - material/overrides/hooks/translations.py
 
-# Customization
+# Additional configuration
 extra:
+  status:
+    new: Recently added
+    deprecated: Deprecated
+  analytics:
+    provider: google
+    property: !ENV GOOGLE_ANALYTICS_KEY
+# Customization
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/raqueeb
@@ -141,11 +149,7 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
-
-hide:
-#- navigation # Hide navigation
-  - toc 
-      
+   
 # বইয়ের গাছপালা
 nav:
   - কেন নেটওয়ার্ক অটোমেশন?: index.md
