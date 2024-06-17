@@ -159,8 +159,8 @@ nav:
   - পেছনের দর্শন:
     - অটোমেশন কেন লাগছে?: whyautomation.md
     - প্রজেক্ট অটোমেশন: p_automation.md
-    - উৎসর্গ: frontmatter/dedication.md
-    - কৃতজ্ঞতা এবং বাড়তি রিডিং: frontmatter/courtesy.md
+    - উৎসর্গ: dedication.md
+    - কৃতজ্ঞতা এবং বাড়তি রিডিং: courtesy.md
   - কেন?:
     - আমি কেন আইএসপিতে এলাম?: whyisp.md
     - কেন বইটা লিখতে চাইলাম?: why-writing.md
