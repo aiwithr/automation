@@ -113,7 +113,11 @@ markdown_extensions:
       generic: true
   - pymdownx.betterem:
       smart_enable: all
+  - pymdownx.critic
   - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
   - pymdownx.details
   - pymdownx.emoji:
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
@@ -154,6 +158,7 @@ nav:
   - কেন নেটওয়ার্ক অটোমেশন?: index.md
   - পেছনের দর্শন:
     - অটোমেশন কেন লাগছে?: whyautomation.md
+    - প্রজেক্ট অটোমেশন: p_automation.md
     - উৎসর্গ: frontmatter/dedication.md
     - কৃতজ্ঞতা এবং বাড়তি রিডিং: frontmatter/courtesy.md
   - কেন?:
