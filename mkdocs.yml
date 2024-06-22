@@ -33,6 +33,7 @@ theme:
     - search.share
     - search.suggest
     - toc.follow
+    - navigation.footer
 #    - navigation.instant
 # - toc.integrate
   # 404 page
@@ -170,6 +171,7 @@ nav:
     - এনভায়রনমেন্ট: environment.md
     - ভার্চুয়ালাইজড এনভায়রনমেন্ট: virtual.md
   - এপিআই এর খেলা:
+    - এপিআই দিয়ে কোড: api_code.md
     - পাইথনের বেসিক ধারণা: python.md
     - পাইথন দিয়ে ডাটা এক্সেস: python_data.md
   - আমরা কি করতে চাই?:
