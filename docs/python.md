@@ -164,287 +164,6 @@ print(hostName)
 R-01
 ```
 
-এখানে ইথারনেট ইন্টারফেস সম্পর্কিত আরও কিছু উদাহরণ যোগ করছি, যেখানে আমরা Python-এর ডিকশনারি, টাপল এবং লিস্ট ব্যবহার করব। এই উদাহরণগুলি নেটওয়ার্ক অটোমেশনে খুবই উপযোগী:
-
-১. ইথারনেট ইন্টারফেস তথ্য ডিকশনারিতে:
-
-```python
->>> ethernet_interface = {
-...     'name': 'GigabitEthernet0/0',
-...     'ip_address': '192.168.1.1',
-...     'subnet_mask': '255.255.255.0',
-...     'status': 'up',
-...     'speed': '1000Mbps',
-...     'duplex': 'full'
-... }
-
->>> print(ethernet_interface['name'])
-GigabitEthernet0/0
-
->>> print(ethernet_interface['ip_address'])
-192.168.1.1
-```
-
-ব্যাখ্যা: এখানে আমরা একটি ইথারনেট ইন্টারফেসের বিভিন্ন বৈশিষ্ট্য একটি ডিকশনারিতে সংরক্ষণ করেছি। এভাবে আমরা সহজে যেকোনো বৈশিষ্ট্যের মান পেতে পারি।
-
-২. একাধিক ইন্টারফেস তথ্য লিস্টে:
-
-```python
->>> interfaces = [
-...     {'name': 'Gi0/0', 'ip': '192.168.1.1', 'status': 'up'},
-...     {'name': 'Gi0/1', 'ip': '10.0.0.1', 'status': 'down'},
-...     {'name': 'Fa0/0', 'ip': '172.16.0.1', 'status': 'up'}
-... ]
-
->>> for interface in interfaces:
-...     print(f"ইন্টারফেস: {interface['name']}, আইপি: {interface['ip']}, স্ট্যাটাস: {interface['status']}")
-
-ইন্টারফেস: Gi0/0, আইপি: 192.168.1.1, স্ট্যাটাস: up
-ইন্টারফেস: Gi0/1, আইপি: 10.0.0.1, স্ট্যাটাস: down
-ইন্টারফেস: Fa0/0, আইপি: 172.16.0.1, স্ট্যাটাস: up
-```
-(বাংলাতেও কাজ করবে, তবে ভুলেও সেই কাজ করবেন না)
-
-ব্যাখ্যা: এখানে আমরা একাধিক ইন্টারফেসের তথ্য একটি লিস্টে রেখেছি, যেখানে প্রতিটি ইন্টারফেস একটি ডিকশনারি। এরপর আমরা একটি লুপ ব্যবহার করে সব ইন্টারফেসের তথ্য প্রিন্ট করেছি।
-
-৩. ইন্টারফেস কনফিগারেশন টাপল ব্যবহার করে:
-
-```python
->>> interface_config = ('GigabitEthernet0/0', '192.168.1.1', '255.255.255.0', 'up')
-
->>> name, ip, mask, status = interface_config
->>> print(f"ইন্টারফেস নাম: {name}")
->>> print(f"আইপি ঠিকানা: {ip}")
->>> print(f"সাবনেট মাস্ক: {mask}")
->>> print(f"স্ট্যাটাস: {status}")
-
-ইন্টারফেস নাম: GigabitEthernet0/0
-আইপি ঠিকানা: 192.168.1.1
-সাবনেট মাস্ক: 255.255.255.0
-স্ট্যাটাস: up
-```
-(বাংলাতেও দেখাবে, তবে ভুলেও সেই কাজ করবেন না)
-
-ব্যাখ্যা: এখানে আমরা একটি টাপল ব্যবহার করে ইন্টারফেস কনফিগারেশন সংরক্ষণ করেছি। টাপল ব্যবহার করে আমরা একাধিক ভেরিয়েবলে মান অ্যাসাইন করতে পারি, যা কোড পঠনযোগ্যতা বাড়ায়।
-
-৪. ইন্টারফেস এবং VLAN তথ্য মিশ্রিত ডেটা স্ট্রাকচারে:
-
-```python
->>> switch_config = {
-...     'hostname': 'SW-Core-01',
-...     'interfaces': [
-...         {'name': 'Gi0/0', 'vlan': 10, 'ip': '192.168.10.1'},
-...         {'name': 'Gi0/1', 'vlan': 20, 'ip': '192.168.20.1'}
-...     ],
-...     'vlans': {
-...         10: 'Management',
-...         20: 'Data',
-...         30: 'Voice'
-...     }
-... }
-
->>> print(f"Switch Name: {switch_config['hostname']}")
->>> print("\nInterface Data:")
->>> for interface in switch_config['interfaces']:
-...     print(f"  {interface['name']} - VLAN: {interface['vlan']}, IP: {interface['ip']}")
->>> print("\nVLAN Data:")
->>> for vlan_id, vlan_name in switch_config['vlans'].items():
-...     print(f"  VLAN {vlan_id}: {vlan_name}")
-
-Switch Name: SW-Core-01
-
-Interface Data:
-  Gi0/0 - VLAN: 10, IP: 192.168.10.1
-  Gi0/1 - VLAN: 20, IP: 192.168.20.1
-
-VLAN Data:
-  VLAN 10: Management
-  VLAN 20: Data
-  VLAN 30: Voice
-```
-
-ব্যাখ্যা: এই উদাহরণে আমরা একটি জটিল ডেটা স্ট্রাকচার ব্যবহার করেছি যেখানে ডিকশনারি, লিস্ট এবং নেস্টেড ডিকশনারি একসাথে ব্যবহৃত হয়েছে। এটি দেখায় কীভাবে আমরা একটি সুইচের সম্পূর্ণ কনফিগারেশন (হোস্টনেম, ইন্টারফেস এবং VLAN তথ্য) একটি স্ট্রাকচারে সংরক্ষণ ও প্রদর্শন করতে পারি।
-
-আমি বুঝতে পেরেছি। আপনার নির্দেশনা অনুযায়ী, আমি সমস্ত সরবরাহকৃত তথ্য একত্রিত করে একটি পূর্ণাঙ্গ বই তৈরি করছি। এটি হবে "নেটওয়ার্ক অটোমেশনের জন্য পাইথন প্রোগ্রামিং: একটি বিস্তারিত গাইড"। নিচে সেই বইয়ের সম্পূর্ণ বিষয়বস্তু বাংলায় উপস্থাপন করছি:
-
-```python
-# একটি স্ট্রিং মান ভেরিয়েবলে নির্ধারণ
-device_name = "Router1"
-
-# একটি পূর্ণসংখ্যা মান ভেরিয়েবলে নির্ধারণ
-device_port = 22
-
-# একটি বুলিয়ান মান ভেরিয়েবলে নির্ধারণ
-is_connected = True
-```
-
-আপনি `type()` ফাংশন ব্যবহার করে একটি ভেরিয়েবলের ডেটা টাইপ পেতে পারেন।
-
-```python
-ip_addr = "192.168.10.1"
-print(type(ip_addr))  # <class 'str'>
-```
-
-একটি স্টেটমেন্টে একাধিক ভেরিয়েবলে মান নির্ধারণ করা:
-
-```python
-vlan_01, vlan_10 = "default", "mgmt"
-print(vlan_01, vlan_10)  # default mgmt
-```
-
-একই মান একাধিক ভেরিয়েবলে একসাথে নির্ধারণ করা:
-
-```python
-host = ip_addr = "192.168.10.1"
-print(host, ip_addr)  # 192.168.10.1 192.168.10.1
-```
-
-লিস্ট থেকে ভেরিয়েবলে মান নিষ্কাশন:
-
-```python
-ip_addr_list = ["10.10.10.10", "172.16.10.10", "192.168.10.10"]
-ip_addr1, ip_addr2, ip_addr3 = ip_addr_list
-print(ip_addr1)  # 10.10.10.10
-print(ip_addr2)  # 172.16.10.10
-print(ip_addr3)  # 192.168.10.10
-```
-
-অ্যাসাইনমেন্ট স্টেটমেন্ট:
-একটি অপারেটর হল একটি চিহ্ন যা এক বা একাধিক মানের উপর কাজ করে। একটি বিশেষ চিহ্ন যাকে অ্যাসাইনমেন্ট অপারেটর `=` বলা হয় তা ব্যবহার করে ভেরিয়েবলে মান নির্ধারণ করা হয়।
-
-```python
-hostName = "R-01"
-print(hostName)  # R-01
-```
-
-স্ট্রিং ভেরিয়েবল একক উদ্ধৃতি চিহ্ন `'R-01'` অথবা দ্বি-উদ্ধৃতি চিহ্ন `"R-01"` ব্যবহার করে ঘোষণা করা যায়।
-
-**২. পাইথনে লিস্ট**
-
-পাইথনে লিস্ট হল সবচেয়ে বহুমুখী ডেটা টাইপ যা বর্গাকার ব্র্যাকেটের মধ্যে কমা দিয়ে আলাদা করা মানগুলি (আইটেম) হিসেবে লেখা যায়। লিস্ট পরিবর্তনযোগ্য এবং ক্রমানুসারে সাজানো থাকে।
-
-লিস্টের বৈশিষ্ট্য:
-- যেকোনো ধরনের অবজেক্ট ধারণ করতে পারে (সংখ্যা, স্ট্রিং, এমনকি অন্য লিস্ট)
-- পরিবর্তনযোগ্য (মিউটেবল)
-- ক্রমানুসারে সাজানো থাকে
-
-লিস্ট তৈরি:
-```python
-vlans = ["vlan10", "vlan20", "vlan30"]
-print(vlans)  # ["vlan10", "vlan20", "vlan30"]
-```
-
-লিস্টের আইটেম পরিবর্তন:
-```python
-vlans = ["vlan10", "vlan20", "vlan30"]
-vlans[2] = "vlan5"
-print(vlans)  # ['vlan10', 'vlan20', 'vlan5']
-```
-
-নেস্টেড লিস্ট:
-```python
-my_list = [100, "bottles", ["on", "the", "earth"]]
-print(my_list[2])  # ['on', 'the', 'earth']
-```
-
-লিস্ট মেথড:
-
-1. `append()` মেথড:
-```python
-vlan_name = ["mgmt", "prod", "tech", "acct"]
-vlan_name.append("guest")
-print(vlan_name)  # ["mgmt", "prod", "tech", "acct", "guest"]
-```
-
-2. `insert()` মেথড:
-```python
-vlan_name = ["mgmt", "prod", "tech", "acct"]
-vlan_name.insert(2, "guest")
-print(vlan_name)  # ["mgmt", "prod", "guest", "tech", "acct"]
-```
-
-3. `remove()` এবং `pop()` মেথড:
-```python
-vlan_name = ["mgmt", "prod", "guest", "tech", "acct"]
-vlan_name.remove("guest")
-print(vlan_name)  # ["mgmt", "prod", "tech", "acct"]
-
-vlan_name = ["mgmt", "prod", "guest", "tech", "acct"]
-vlan_name.pop()  # 'acct'
-vlan_name.pop(2)  # 'guest'
-```
-
-4. `extend()` মেথড:
-```python
-list1 = [1, 2, 3]
-list1.extend([4, 5])
-print(list1)  # [1, 2, 3, 4, 5]
-```
-
-5. `sort()` মেথড:
-```python
-vlan_name = ["mgmt", "prod", "guest", "tech", "acct"]
-vlan_name.sort()
-print(vlan_name)  # ['acct', 'guest', 'mgmt', 'prod', 'tech']
-```
-
-লিস্ট স্লাইসিং:
-```python
-vlan_name = ["mgmt", "prod", "guest", "tech", "acct"]
-print(vlan_name[:4])  # ['mgmt', 'prod', 'guest', 'tech']
-print(vlan_name[1:3])  # ['prod', 'guest']
-print(vlan_name[0:])  # ['mgmt', 'prod', 'guest', 'tech', 'acct']
-```
-
-**৩. স্ট্রিং ফরম্যাটিং**
-
-পাইথনে তিনটি স্ট্রিং ফরম্যাটিং পদ্ধতি রয়েছে:
-
-1. `%` পদ্ধতি:
-```python
-ip_addr = "172.16.10.1"
-print("IP Address: %s" % ip_addr)  # IP Address: 172.16.10.1
-
-ios_version = 15
-print("iOS Version: %i" % ios_version)  # iOS Version: 15
-
-ip_addr = "172.16.10.1"
-mask = "255.255.255.0"
-print("IP Address: %s. Mask: %s" % (ip_addr, mask))  # IP Address: 172.16.10.1. Mask: 255.255.255.0
-```
-
-2. `format()` পদ্ধতি:
-```python
-ip_addr = "172.16.10.1"
-mask = "255.255.255.0"
-print("IP Address: {} Mask: {}".format(ip_addr, mask))  # IP Address: 172.16.10.1 Mask: 255.255.255.0
-
-ip_addr = "172.16.10.1"
-subnet = "255.255.255.0"
-print("IP Address: {ip} Mask: {mask}".format(ip=ip_addr, mask=subnet))  # IP Address: 172.16.10.1 Mask: 255.255.255.0
-
-credentials = {"user": "admin", "pass": "P@ssW0rd"}
-print("Username: {user} \nPassword: {pass}".format(**credentials))
-# Username: admin 
-# Password: P@ssW0rd
-
-description = """
-Device: {}
-IP: {}
-"""
-output = description.format('SW-01', '10.10.10.10')
-print(output)
-# Device: SW-01
-# IP: 10.10.10.10
-```
-
-3. f-strings:
-```python
-ip_addr = '172.16.10.1'
-mask = "255.255.255.0"
-print(f'IP Address {ip_addr} Mask: {mask}')  # IP Address 172.16.10.1 Mask: 255.255.255.0
-```
-
 ### ১. আইপি ঠিকানা (IP Address)
 আইপি ঠিকানা হল নেটওয়ার্কে একটি ডিভাইসের সনাক্তকরণ নম্বর। এটি সাধারণত দুটি ধরণের হয়: IPv4 এবং IPv6।
 
@@ -495,6 +214,278 @@ as_number = 65000
 
 print(f"AS Number: {as_number}")
 # আউটপুট: AS Number: 65000
+```
+
+### লিস্ট মেলানো (List Concatenation)
+
+লিস্টের সংযোজনের জন্য আমরা + অপারেটর ব্যবহার করতে পারি। এটি একটি নতুন লিস্ট তৈরি করে দেয় যা দুটি লিস্টকে যুক্ত করে।
+
+```python
+list1 = [10, 11, 12, 13, 14]
+list2 = [20, 30, 42]
+
+result = list1 + list2
+print(result)
+# [10, 11, 12, 13, 14, 20, 30, 42]
+```
+
+### লিস্ট মেথড
+
+লিস্টের কিছু মেথড রয়েছে যা লিস্টে তথ্য যোগ করতে এবং ম্যানেজ করতে ব্যবহৃত হয়।
+
+#### `append()` মেথড
+
+এই মেথডটি দিয়ে নতুন আইটেম/উপাদান যোগ করা যায় একটি বর্তমান লিস্টে।
+
+```python
+vlan_name = ["mgmt", "prod", "tech", "acct"]
+print(vlan_name)  # ["mgmt", "prod", "tech", "acct"]
+
+vlan_name.append("guest")
+print(vlan_name)  # ["mgmt", "prod", "tech", "acct", "guest"]
+```
+
+#### `insert()` মেথড
+
+এই ফাংশনটি `append()` ফাংশনের মতোই কাজ করে কিন্তু এটি নতুন আইটেমটি বর্তমান লিস্টের কোন নির্দিষ্ট অবস্থানে প্রদর্শন করে।
+
+```python
+vlan_name = ["mgmt", "prod", "tech", "acct"]
+print(vlan_name)  # ["mgmt", "prod", "tech", "acct"]
+
+vlan_name.insert(2, "guest")
+print(vlan_name)  # ["mgmt", "prod", "guest", "tech", "acct"]
+```
+
+#### `remove()` এবং `pop()` মেথড
+
+এটি লিস্ট থেকে একটি আইটেম মুছে ফেলতে ব্যবহৃত হয়। যখন একটি আইটেম লিস্টে একাধিকবার উপস্থিত থাকে, `remove()` কমান্ড শুধুমাত্র প্রথম আইটেমটি মুছে ফেলবে।
+
+```python
+vlan_name = ["mgmt", "prod", "guest", "tech", "acct"]
+print(vlan_name)  # ["mgmt", "prod", "guest", "tech", "acct"]
+
+vlan_name.remove("guest")
+print(vlan_name)  # ["mgmt", "prod", "tech", "acct"]
+```
+
+যদি কমান্ডটি লিস্টে থাকা না থাকে তবে ফাংশনগুলি একটি ত্রুটি ফেরত দেবে যা বুঝায় যে আইটেমটি লিস্টে নেই।
+
+```python
+vlan_name = ["mgmt", "prod", "guest", "tech", "acct"]
+vlan_name.remove("tomato")
+# ValueError: list.remove(x): x not in list
+```
+
+আইটেমটির অবস্থান দিয়ে আইটেম মুছে ফেলতে `pop()` ফাংশনটি ব্যবহৃত হয়। যখন এই মেথডটি অবস্থান উল্লেখ ছাড়াই কল করা হয়, তখন শেষের আইটেম মুছে ফেলে।
+
+```python
+vlan_name = ["mgmt", "prod", "guest", "tech", "acct"]
+vlan_name.pop()  # শেষের আইটেম মুছে ফেলবে
+# 'acct'
+
+vlan_name = ["mgmt", "prod", "guest", "tech", "acct"]
+vlan_name.pop(2)  # সূচক 2 এ নম্বর 3 মুছে ফেলবে
+# 'guest'
+```
+
+#### `extend()` মেথড
+
+এই মেথডটি একটি লিস্টকে অন্য লিস্টের সাথে যুক্ত করতে ব্যবহৃত হয়। এটি `append()` থেকে আলাদা যে, এটি দুটি লিস্টের যোগাযোগ সম্পর্কিত। এই মেথডটি প্রথম লিস্টের শেষে দ্বিতীয় লিস্টটি যুক্ত করে এবং প্রথম লিস্টটি পরিবর্তন করে।
+
+```python
+list1 = [1, 2, 3]
+list1.extend([4, 5])
+print(list1)
+# [1, 2, 3, 4, 5]
+```
+
+### লিস্টে আইটেম সাজানো
+
+লিস্টের আইটেমগুলি সাজানোর জন্য আমরা একটি মেথড ব্যবহার করতে পারি।
+
+```python
+vlan_name = ["mgmt", "prod", "guest", "tech", "acct"]
+vlan_name.sort()
+print(vlan_name)
+# ['acct', 'guest', 'mgmt', 'prod', 'tech']
+```
+
+### `del` স্টেটমেন্ট
+
+একটি লিস্ট থেকে একটি আইটেম মুছে ফেলতে হলে তার ইনডেক্স ব্যবহার করা যাবে, তার বিপরীতে তার মান: ডেল স্টেটমেন্ট। এটা একটা জনপ্রিয় ফাংশন।
+
+```python
+# remove an item from the list
+del vlan_name[0]
+print(vlan_name)
+# ['guest', 'mgmt', 'prod', 'tech']
+```
+
+### লিস্ট স্লাইসিং
+
+লিস্ট স্লাইসিং হ'ল পাইথনের একটি নীতি, যা সাহায্য করে একটি লিস্ট পড়া এবং একটি নির্দিষ্ট সেগমেন্ট ফিরে একটি নতুন লিস্টের সীমা যোগ করে। লিস্ট স্লাইসিং-এর সবচেয়ে গুরুত্বপূর্ণ বিষয় হ'ল colon : এবং তার নাম যা স্লাইসিং বিবৃতি সৃষ্টি করার ক্ষেত্রে ব্যবহৃত হয়। একক শব্দে কোন লিস্ট স্লাইসিং হচ্ছে তা নিম্নে প্রদর্শিত হয়।
+
+```python
+vlan_name = ["mgmt", "prod", "guest", "tech", "acct"]
+print(vlan_name[:4])
+print(vlan_name[1:3])  # সূচক 3 ব্যতীত উপস্থিত নয়
+print(vlan_name[0:])
+# ['mgmt', 'prod', 'guest', 'tech']
+# ['prod', 'guest']
+# ['mgmt', 'prod', 'guest', 'tech', 'acct']
+```
+
+একটি শর্টকাট হিসাবে, প্রথম সূচক বিন্যাস একই হিসাবে 0 এর চেয়ে, বা লিস্টের শেষে পূর্ণাঙ্গ লিস্ট স্লাইসিং হচ্ছে।
+
+এখানে ইথারনেট ইন্টারফেস সম্পর্কিত আরও কিছু উদাহরণ যোগ করছি, যেখানে আমরা Python-এর ডিকশনারি, টাপল এবং লিস্ট ব্যবহার করব। এই উদাহরণগুলি নেটওয়ার্ক অটোমেশনে খুবই উপযোগী:
+
+১. ইথারনেট ইন্টারফেস তথ্য ডিকশনারিতে:
+
+```python
+>>> ethernet_interface = {
+...     'name': 'GigabitEthernet0/0',
+...     'ip_address': '192.168.1.1',
+...     'subnet_mask': '255.255.255.0',
+...     'status': 'up',
+...     'speed': '1000Mbps',
+...     'duplex': 'full'
+... }
+
+>>> print(ethernet_interface['name'])
+GigabitEthernet0/0
+
+>>> print(ethernet_interface['ip_address'])
+192.168.1.1
+```
+
+ব্যাখ্যা: এখানে আমরা একটি ইথারনেট ইন্টারফেসের বিভিন্ন বৈশিষ্ট্য একটি ডিকশনারিতে সংরক্ষণ করেছি। এভাবে আমরা সহজে যেকোনো বৈশিষ্ট্যের মান পেতে পারি।
+
+২. একাধিক ইন্টারফেস তথ্য লিস্টে:
+
+```python
+>>> interfaces = [
+...     {'name': 'Gi0/0', 'ip': '192.168.1.1', 'status': 'up'},
+...     {'name': 'Gi0/1', 'ip': '10.0.0.1', 'status': 'down'},
+...     {'name': 'Fa0/0', 'ip': '172.16.0.1', 'status': 'up'}
+... ]
+
+>>> for interface in interfaces:
+...     print(f"ইন্টারফেস: {interface['name']}, আইপি: {interface['ip']}, স্ট্যাটাস: {interface['status']}")
+
+ইন্টারফেস: Gi0/0, আইপি: 192.168.1.1, স্ট্যাটাস: up
+ইন্টারফেস: Gi0/1, আইপি: 10.0.0.1, স্ট্যাটাস: down
+ইন্টারফেস: Fa0/0, আইপি: 172.16.0.1, স্ট্যাটাস: up
+```
+(বাংলাতেও কাজ করবে, তবে স্ক্রিপ্টে ভুলেও সেই কাজ করবেন না - যদি না ওয়েবসার্ভিসে কাজ করেন)
+
+ব্যাখ্যা: এখানে আমরা একাধিক ইন্টারফেসের তথ্য একটি লিস্টে রেখেছি, যেখানে প্রতিটি ইন্টারফেস একটি ডিকশনারি। এরপর আমরা একটি লুপ ব্যবহার করে সব ইন্টারফেসের তথ্য প্রিন্ট করেছি।
+
+৩. ইন্টারফেস কনফিগারেশন টাপল ব্যবহার করে:
+
+```python
+>>> interface_config = ('GigabitEthernet0/0', '192.168.1.1', '255.255.255.0', 'up')
+
+>>> name, ip, mask, status = interface_config
+>>> print(f"ইন্টারফেস নাম: {name}")
+>>> print(f"আইপি ঠিকানা: {ip}")
+>>> print(f"সাবনেট মাস্ক: {mask}")
+>>> print(f"স্ট্যাটাস: {status}")
+
+ইন্টারফেস নাম: GigabitEthernet0/0
+আইপি ঠিকানা: 192.168.1.1
+সাবনেট মাস্ক: 255.255.255.0
+স্ট্যাটাস: up
+```
+(বাংলাতেও দেখাবে, তবে ভুলেও সেই কাজ করবেন না - যদি না ওয়েবসার্ভিসে কাজ করেন)
+
+ব্যাখ্যা: এখানে আমরা একটি টাপল ব্যবহার করে ইন্টারফেস কনফিগারেশন সংরক্ষণ করেছি। টাপল ব্যবহার করে আমরা একাধিক ভেরিয়েবলে মান অ্যাসাইন করতে পারি, যা কোড পঠনযোগ্যতা বাড়ায়।
+
+৪. ইন্টারফেস এবং VLAN তথ্য মিশ্রিত ডেটা স্ট্রাকচারে:
+
+```python
+>>> switch_config = {
+...     'hostname': 'SW-Core-01',
+...     'interfaces': [
+...         {'name': 'Gi0/0', 'vlan': 10, 'ip': '192.168.10.1'},
+...         {'name': 'Gi0/1', 'vlan': 20, 'ip': '192.168.20.1'}
+...     ],
+...     'vlans': {
+...         10: 'Management',
+...         20: 'Data',
+...         30: 'Voice'
+...     }
+... }
+
+>>> print(f"Switch Name: {switch_config['hostname']}")
+>>> print("\nInterface Data:")
+>>> for interface in switch_config['interfaces']:
+...     print(f"  {interface['name']} - VLAN: {interface['vlan']}, IP: {interface['ip']}")
+>>> print("\nVLAN Data:")
+>>> for vlan_id, vlan_name in switch_config['vlans'].items():
+...     print(f"  VLAN {vlan_id}: {vlan_name}")
+
+Switch Name: SW-Core-01
+
+Interface Data:
+  Gi0/0 - VLAN: 10, IP: 192.168.10.1
+  Gi0/1 - VLAN: 20, IP: 192.168.20.1
+
+VLAN Data:
+  VLAN 10: Management
+  VLAN 20: Data
+  VLAN 30: Voice
+```
+
+ব্যাখ্যা: এই উদাহরণে আমরা একটি জটিল ডেটা স্ট্রাকচার ব্যবহার করেছি যেখানে ডিকশনারি, লিস্ট এবং নেস্টেড ডিকশনারি একসাথে ব্যবহৃত হয়েছে। এটি দেখায় কীভাবে আমরা একটি সুইচের সম্পূর্ণ কনফিগারেশন (হোস্টনেম, ইন্টারফেস এবং VLAN তথ্য) একটি স্ট্রাকচারে সংরক্ষণ ও প্রদর্শন করতে পারি।
+
+**৩. স্ট্রিং ফরম্যাটিং**
+
+পাইথনে তিনটি স্ট্রিং ফরম্যাটিং পদ্ধতি রয়েছে:
+
+1. `%` পদ্ধতি:
+```python
+ip_addr = "172.16.10.1"
+print("IP Address: %s" % ip_addr)  # IP Address: 172.16.10.1
+
+ios_version = 15
+print("iOS Version: %i" % ios_version)  # iOS Version: 15
+
+ip_addr = "172.16.10.1"
+mask = "255.255.255.0"
+print("IP Address: %s. Mask: %s" % (ip_addr, mask))  # IP Address: 172.16.10.1. Mask: 255.255.255.0
+```
+
+2. `format()` পদ্ধতি:
+```python
+ip_addr = "172.16.10.1"
+mask = "255.255.255.0"
+print("IP Address: {} Mask: {}".format(ip_addr, mask))  # IP Address: 172.16.10.1 Mask: 255.255.255.0
+
+ip_addr = "172.16.10.1"
+subnet = "255.255.255.0"
+print("IP Address: {ip} Mask: {mask}".format(ip=ip_addr, mask=subnet))  # IP Address: 172.16.10.1 Mask: 255.255.255.0
+
+credentials = {"user": "admin", "pass": "P@ssW0rd"}
+print("Username: {user} \nPassword: {pass}".format(**credentials))
+# Username: admin 
+# Password: P@ssW0rd
+
+description = """
+Device: {}
+IP: {}
+"""
+output = description.format('SW-01', '10.10.10.10')
+print(output)
+# Device: SW-01
+# IP: 10.10.10.10
+```
+
+3. f-strings:
+```python
+ip_addr = '172.16.10.1'
+mask = "255.255.255.0"
+print(f'IP Address {ip_addr} Mask: {mask}')  # IP Address 172.16.10.1 Mask: 255.255.255.0
 ```
 
 ### ৫. স্ট্রিং ফরম্যাটিং
