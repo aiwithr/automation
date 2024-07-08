@@ -1,5 +1,3 @@
-নেটওয়ার্কের কনফিগারেশন ব্যাকআপের প্রক্রিয়া বুঝতে আমরা একটি উদাহরণ দিয়ে শুরু করব। এখানে আমরা পাইথন এবং নেটমিকো লাইব্রেরি ব্যবহার করে কিভাবে নেটওয়ার্ক ডিভাইসের কনফিগারেশন ব্যাকআপ করা যায় তা দেখাব।
-
 ### পাইথন দিয়ে নেটওয়ার্কের কনফিগারেশন ব্যাকআপ
 
 আগের চ্যাপ্টারে আমরা পাইথন নিয়ে কিছুটা আলাপ করেছি। আমি চেষ্টা করেছি এখানে যতটুকু পাইথন লাগবে সেটাই কাভার করা, এর থেকে বেশী নয়। পাইথন স্ক্রিপ্ট দিয়ে আমাদের নেটওয়ার্ক ডিভাইসে এসএসএইচ (SSH) দিয়ে ঢুকে সেখান থেকে কনফিগারেশন ফাইলগুলোকে কপি করে ব্যাকআপ করব আমাদের নির্দিষ্ট কম্পিউটারে।
@@ -28,12 +26,12 @@ import getpass
 # পাসওয়ার্ড ইনপুট নিন
 passwd = getpass.getpass('Please enter the password: ')
 
-# কনফিগারেশন ব্যাকআপ স্টোর করার স্থান
+# কনফিগারেশন ব্যাকআপ স্টোর করার জায়গা
 file_dir = '/Users/nabeel/Documents/config-backup/backups'
 switch_list = ['192.168.10.10', 'core-switch-01', 'test_switch']
 device_list = []
 
-# ডিভাইসের তথ্য সংরক্ষণ
+# ডিভাইসের ডাটা স্টোর
 for ip in switch_list:
     device = {
         "device_type": "cisco_ios",
@@ -51,7 +49,7 @@ for device in device_list:
         connection = ConnectHandler(**device)
         show_run = connection.send_command('show run')
         
-        # কনফিগারেশন ফাইল সংরক্ষণ
+        # কনফিগারেশন ফাইল সেভ
         with open(f"{file_dir}/show_run_{host_name}.txt", 'w') as f:
             f.write(show_run)
         
@@ -61,15 +59,15 @@ for device in device_list:
         print(f"{host_name} তে সমস্যা ঘটেছে: {str(e)}")
 ```
 
-### কোড ব্যাখ্যা:
+### কোডের গল্প:
 
 1. **পাসওয়ার্ড ইনপুট**: প্রথমে, আমরা `getpass.getpass` ফাংশনের মাধ্যমে নিরাপদভাবে পাসওয়ার্ড ইনপুট নিচ্ছি যাতে পাসওয়ার্ডটি ইনপুট করার সময় স্ক্রিনে প্রদর্শিত না হয়।
 2. **কনফিগারেশন স্টোর করার স্থান নির্ধারণ**: যেখানে কনফিগারেশন ব্যাকআপ ফাইলগুলো সংরক্ষণ করা হবে সেই স্থানটি নির্ধারণ করছি।
 3. **ডিভাইসের তথ্য সংরক্ষণ**: প্রতিটি ডিভাইসের তথ্য একটি লুপের মাধ্যমে ডিকশনারিতে সংরক্ষণ করা হচ্ছে এবং তা `device_list` এ যোগ করা হচ্ছে।
 4. **ডিভাইসে সংযোগ এবং কনফিগারেশন ব্যাকআপ**: প্রতিটি ডিভাইসের জন্য, আমরা নেটমিকো `ConnectHandler` ক্লাস ব্যবহার করে সংযোগ স্থাপন করছি এবং `send_command` মেথড ব্যবহার করে `show run` কমান্ডটি পাঠাচ্ছি। এরপর সেই কনফিগারেশন ফাইলটি নির্দিষ্ট স্থানে সংরক্ষণ করছি।
-5. **সংযোগ বিচ্ছিন্ন এবং সমস্যা হ্যান্ডলিং**: কাজ শেষ হলে সংযোগ বিচ্ছিন্ন করা হচ্ছে এবং কোন সমস্যা হলে তা প্রদর্শিত হচ্ছে।
+5. **সংযোগ ডিসকানেক্ট এবং সমস্যা হ্যান্ডলিং**: কাজ শেষ হলে সংযোগ ডিসকানেক্ট করা হচ্ছে এবং কোন সমস্যা হলে তা প্রদর্শিত হচ্ছে।
 
-### কোড কিভাবে ডেভেলপ করবো?
+### কোড কিভাবে আরো ডেভেলপ করবো?
 
 1. **কনকারেন্সি**: বর্তমান স্ক্রিপ্টটি প্রতিটি ডিভাইসে সিরিয়ালি সংযোগ স্থাপন করে কাজ সম্পন্ন করে। এতে গতি বাড়ানোর জন্য কনকারেন্সি ফিচার যোগ করা যেতে পারে।
 2. **এরর হ্যান্ডলিং**: আরও উন্নত এরর হ্যান্ডলিং যোগ করা যেতে পারে যাতে স্ক্রিপ্টটি কোন ডিভাইসে ত্রুটি ঘটলে পরবর্তী ডিভাইসে কাজ চালিয়ে যেতে পারে।
@@ -89,12 +87,12 @@ import concurrent.futures
 # পাসওয়ার্ড ইনপুট নিন
 passwd = getpass.getpass('Please enter the password: ')
 
-# কনফিগারেশন ব্যাকআপ স্টোর করার স্থান
+# কনফিগারেশন ব্যাকআপ স্টোর করার জায়গা
 file_dir = '/Users/nabeel/Documents/config-backup/backups'
 switch_list = ['192.168.10.10', 'core-switch-01', 'test_switch']
 device_list = []
 
-# ডিভাইসের তথ্য সংরক্ষণ
+# ডিভাইসের ডাটা স্টোর করা
 for ip in switch_list:
     device = {
         "device_type": "cisco_ios",
@@ -105,14 +103,14 @@ for ip in switch_list:
     }
     device_list.append(device)
 
-# ফাংশন যা একটি ডিভাইসে সংযোগ স্থাপন করে কনফিগারেশন ব্যাকআপ করে
+# একটা ফাংশন তৈরি করি যা একটি ডিভাইসে সংযোগ স্থাপন করে কনফিগারেশন ব্যাকআপ করে
 def backup_config(device):
     host_name = device['host']
     try:
         connection = ConnectHandler(**device)
         show_run = connection.send_command('show run')
         
-        # কনফিগারেশন ফাইল সংরক্ষণ
+        # কনফিগারেশন ফাইল সেভ
         with open(f"{file_dir}/show_run_{host_name}.txt", 'w') as f:
             f.write(show_run)
         
@@ -123,12 +121,12 @@ def backup_config(device):
 
 # কনকারেন্টলি ব্যাকআপ করার জন্য থ্রেড পুল ব্যবহার
 with concurrent.futures.ThreadPoolExecutor() as executor:
-    # প্রতিটি ডিভাইসের জন্য ফাংশনটি সাবমিট করুন
+    # প্রতিটি ডিভাইসের জন্য ফাংশনটা সাবমিট
     futures = [executor.submit(backup_config, device) for device in device_list]
     
-    # প্রতিটি ফিউচারের জন্য ফলাফল অপেক্ষা করুন
+    # প্রতিটি কাজের জন্য ফলাফল দেখি
     for future in concurrent.futures.as_completed(futures):
-        future.result()  # কোন ত্রুটি থাকলে তা এখানে উঠবে
+        future.result()  # কোন সমস্যা থাকলে তা এখানে উঠবে
 ```
 
 ### কোড ব্যাখ্যা:
@@ -255,7 +253,7 @@ with concurrent.futures.ThreadPoolExecutor() as executor:
         future.result()  # কোন ত্রুটি থাকলে তা এখানে উঠবে
 ```
 
-### সম্পূর্ণ কোড
+### সম্পূর্ণ কোড এক জায়গায়
 
 ```python
 from netmiko import ConnectHandler
@@ -291,14 +289,14 @@ for ip in switch_list:
     }
     device_list.append(device)
 
-# ফাংশন যা একটি ডিভাইসে সংযোগ স্থাপন করে কনফিগারেশন ব্যাকআপ করে এবং গিটে আপলোড করে
+# ফাংশনটা একটি ডিভাইসে সংযোগ স্থাপন করে কনফিগারেশন ব্যাকআপ করে + গিটে আপলোড
 def backup_and_commit(device):
     host_name = device['host']
     try:
         connection = ConnectHandler(**device)
         show_run = connection.send_command('show run')
         
-        # কনফিগারেশন ফাইল সংরক্ষণ
+        # কনফিগারেশন ফাইল সেভ
         file_path = f"{file_dir}/show_run_{host_name}.txt"
         with open(file_path, 'w') as f:
             f.write(show_run)
@@ -306,7 +304,7 @@ def backup_and_commit(device):
         connection.disconnect()
         print(f"{host_name} থেকে কনফিগারেশন ব্যাকআপ সফল হয়েছে")
 
-        # গিটে ফাইলটি কমিট এবং পুশ করুন
+        # গিটে ফাইলটাকে কমিট এবং পুশ
         repo.index.add([file_path])
         repo.index.commit(f"Backup configuration for {host_name}")
         origin = repo.remote(name='origin')
@@ -321,9 +319,9 @@ with concurrent.futures.ThreadPoolExecutor() as executor:
     # প্রতিটি ডিভাইসের জন্য ফাংশনটি সাবমিট করুন
     futures = [executor.submit(backup_and_commit, device) for device in device_list]
     
-    # প্রতিটি ফিউচারের জন্য ফলাফল অপেক্ষা করুন
+    # প্রতিটি কাজের জন্য ফলাফল দেখতে চাই
     for future in concurrent.futures.as_completed(futures):
-        future.result()  # কোন ত্রুটি থাকলে তা এখানে উঠবে
+        future.result()  # কোন সমস্যা থাকলে তা এখানে উঠবে
 ```
 
 এই স্ক্রিপ্টটি আপনার নেটওয়ার্ক ডিভাইসগুলির কনফিগারেশন ব্যাকআপ করবে এবং গিট রিপোজিটরিতে আপলোড করবে, যা আপনার কনফিগারেশনগুলির একটি সুরক্ষিত ব্যাকআপ রাখবে।
