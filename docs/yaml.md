@@ -39,8 +39,8 @@ with open("yaml_example.yaml", 'r') as stream:
 import yaml
 
 # 1. `open("yaml_example.yaml", 'r') as stream`: এই লাইনে `yaml_example.yaml` নামের ফাইলটি # খোলা হয়েছে রিড মোডে (`'r'`) এবং এটি `stream` নামক ভেরিয়েবলে সেভ হয়েছে।
-# 2. yaml_dict = yaml.safe_load(stream)`: ফাইলটি থেকে YAML ফরম্যাটের ডেটা লোড করা হয়েছে #`yaml.safe_load()` ফাংশনের মাধ্যমে এবং এই ডেটা অবজেক্ট হিসেবে `yaml_dict` ভেরিয়েবলে সেভ # হয়েছে।
- """
+# 2. yaml_dict = yaml.safe_load(stream)`: ফাইলটি থেকে YAML ফরম্যাটের ডেটা লোড করা হয়েছে #`yaml.safe_load()` ফাংশনের মাধ্যমে এবং এই ডেটা অবজেক্ট হিসেবে `yaml_dict` ভেরিয়েবলে সেভ হয়েছে।
+
 with open("yaml_example.yaml", 'r') as stream:
         yaml_dict = yaml.safe_load(stream)
 
