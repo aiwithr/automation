@@ -6,7 +6,7 @@
 
 ```python
 ---
-# example.yml file
+# yaml_example.yaml ফাইল
 interface:
   name: GigabitEthernet2
   description: Wide Area Network
@@ -28,9 +28,9 @@ interface:
 ```python
 import yaml
 
-# Open the sample yaml file and read it into variable
-with open("yaml_example.yaml") as f:
-    yaml_example = f.read()
+# নিচের উদাহরণে বলা আছে কি করেছি এখানে
+with open("yaml_example.yaml", 'r') as stream:
+      yaml_dict = yaml.safe_load(stream)
 ```
 
 পাইথন খুব সহজে ওয়াইএএমএল ফাইলকে পাইথন অবজেক্টে কনভার্ট করতে পারে। তখন ওয়াইমেল অবজেক্টগুলো ডিকশনারি হয়ে যায়। ওয়াইম েল লিস্টগুলো তখন পাইথনের লিস্ট হয়ে যায়। যেমন, yaml.load(yaml_data), yaml.dump(object)। সবচেয়ে নিচের লাইনটা দেখুন।
@@ -38,26 +38,25 @@ with open("yaml_example.yaml") as f:
 ```python
 import yaml
 
-নমুনা yaml ফাইল খুলুন এবং এটি একটি ভেরিয়েবলে পড়ুন
-with open("yaml_example.yaml") as f:
-    yaml_example = f.read()
+""" 1. `open("yaml_example.yaml", 'r') as stream`: এই লাইনে `yaml_example.yaml` নামের ফাইলটি খোলা হয়েছে রিড মোডে (`'r'`) এবং এটি `stream` নামক ভেরিয়েবলে সেভ হয়েছে।
+2. `yaml_dict = yaml.safe_load(stream)`: ফাইলটি থেকে YAML ফরম্যাটের ডেটা লোড করা হয়েছে `yaml.safe_load()` ফাংশনের মাধ্যমে এবং এই ডেটা অবজেক্ট হিসেবে `yaml_dict` ভেরিয়েবলে সেভ হয়েছে।
+ """
+with open("yaml_example.yaml", 'r') as stream:
+        yaml_dict = yaml.safe_load(stream)
 
-yaml কে একটি পাইথন ডিকশনারিতে পার্স করুন
-yaml_dict = yaml.load(yaml_example)
-
-ইন্টারফেসের নাম একটি ভেরিয়েবলে সংরক্ষণ করুন
+# ইন্টারফেসের নাম একটি ভেরিয়েবলে সংরক্ষণ করুন
 int_name = yaml_dict["interface"]["name"]
 
-ইন্টারফেসের IP ঠিকানা পরিবর্তন করুন
+# ইন্টারফেসের IP ঠিকানা পরিবর্তন করুন
 yaml_dict["interface"]["ipv4"]["address"][0]["ip"] = "192.168.0.2"
 
-ডিকশনারির yaml স্ট্রিং সংস্করণে ফিরে যান
+# ডিকশনারির yaml স্ট্রিং সংস্করণে ফিরে যান
 print(yaml.dump(yaml_dict, default_flow_style=False))
 ```
 
-প্রথম লাইনে, আমরা yaml লাইব্রেরি আমদানি করছি। এই লাইব্রেরি YAML ফাইল পড়তে এবং লিখতে ব্যবহৃত হয়।
-পরের অংশে, আমরা yaml_example.yaml নামক একটি YAML ফাইল খুলছি এবং এর বিষয়বস্তু yaml_example নামক একটি ভেরিয়েবলে পড়ছি। with স্টেটমেন্ট ব্যবহার করা হয়েছে যাতে ফাইলটি স্বয়ংক্রিয়ভাবে বন্ধ হয়ে যায়।
+প্রথম লাইনে, আমরা yaml লাইব্রেরি ইমপোর্ট করছি। এই লাইব্রেরি YAML ফাইল পড়তে এবং লিখতে ব্যবহার হয়।
+এই অংশটা কমেন্টে দেখুন।
 এরপর, yaml.load() ফাংশন ব্যবহার করে YAML ডেটাকে একটি পাইথন ডিকশনারিতে রূপান্তর করা হচ্ছে। এই ডিকশনারিটি yaml_dict ভেরিয়েবলে সংরক্ষণ করা হচ্ছে।
 পরবর্তী লাইনে, আমরা ডিকশনারি থেকে ইন্টারফেসের নাম বের করে int_name ভেরিয়েবলে রাখছি। এটি করা হচ্ছে ডিকশনারির কী ব্যবহার করে।
 তারপর, আমরা ইন্টারফেসের IP ঠিকানা পরিবর্তন করছি। এখানে ডিকশনারির নেস্টেড স্ট্রাকচার ব্যবহার করে IP ঠিকানা "192.168.0.2" দিয়ে প্রতিস্থাপন করা হচ্ছে।
-সবশেষে, yaml.dump() ফাংশন ব্যবহার করে পরিবর্তিত ডিকশনারিকে আবার YAML ফরম্যাটে রূপান্তর করা হচ্ছে এবং প্রিন্ট করা হচ্ছে। default_flow_style=False প্যারামিটার ব্যবহার করা হয়েছে যাতে আউটপুট YAML সহজপাঠ্য হয়।
+সবশেষে, yaml.dump() ফাংশন ব্যবহার করে পরিবর্তিত ডিকশনারিকে আবার YAML ফরম্যাটে রূপান্তর করা হচ্ছে এবং প্রিন্ট করা হচ্ছে। default_flow_style=False প্যারামিটার ব্যবহার করা হয়েছে যাতে আউটপুট YAML ঠিকমতো পড়া যায়।
