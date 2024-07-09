@@ -607,8 +607,10 @@ print(vlan_name)
 # আউটপুট:
 # ["mgmt", "prod", "guest", "tech", "acct"]
 # ["mgmt", "prod", "tech", "acct"]
-
-# যদি লিস্টে থাকা না থাকে এমন আইটেম উল্লেখ করা হয়, তাহলে একটি ValueError ফেরত দেয়।
+```
+```
+যদি লিস্টে থাকা আইটেম যদি না থাকে - সেরকম আইটেম উল্লেখ করা হয়, তাহলে একটি ValueError ফেরত দেয়।
+```
 vlan_name = ["mgmt", "prod", "guest", "tech", "acct"]
 vlan_name.remove("tomato")
 print(vlan_name)
@@ -622,9 +624,11 @@ print(vlan_name)
 vlan_name = ["mgmt", "prod", "guest", "tech", "acct"]
 print(vlan_name.pop())  # সর্বশেষ আইটেম মুছে যাবে
 # আউটপুট: 'acct'
-
+```
+২ নম্বর পজিশনের আইটেম মুছে যাবে
+```
 vlan_name = ["mgmt", "prod", "guest", "tech", "acct"]
-print(vlan_name.pop(2))  # ২ নম্বর পজিশনের আইটেম মুছে যাবে
+print(vlan_name.pop(2))  
 # আউটপুট: 'guest'
 ```
 
