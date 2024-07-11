@@ -88,7 +88,9 @@ interfaces = yaml.load(open('interfaces.yml'), Loader=yaml.SafeLoader)
 ```
 
 এই অংশে দুটি YAML ফাইল থেকে ডাটা পড়া হচ্ছে:
+
 - `hosts.yml`: যেখানে রাউটারের তথ্য (যেমন: আইপি, পাসওয়ার্ড) রাখা আছে।
+
 - `interfaces.yml`: যেখানে ইন্টারফেস কনফিগারেশনের তথ্য রাখা আছে।
 
 ```python
@@ -97,11 +99,17 @@ env = Environment(loader=FileSystemLoader('.'), trim_blocks=True, autoescape=Tru
 template = env.get_template('interfaces_config_template.j2')
 interface_config = template.render(data=interfaces)
 ```
+পরের ব্লক;
 
 এই অংশে Jinja2 টেমপ্লেট থেকে কনফিগারেশন তৈরি করা হচ্ছে:
-- `env = Environment(loader=FileSystemLoader('.'), trim_blocks=True, autoescape=True)`: Jinja2 এনভায়রনমেন্ট সেট আপ করা হচ্ছে, যেখানে বর্তমান ডিরেক্টরি থেকে টেমপ্লেট লোড করা হচ্ছে।
+- `env = Environment(loader=FileSystemLoader('.'), trim_blocks=True, autoescape=True)`: 
+Jinja2 এনভায়রনমেন্ট সেট-আপ করা হচ্ছে, যেখানে বর্তমান ডিরেক্টরি থেকে টেমপ্লেট লোড করা হচ্ছে।
+
 - `template = env.get_template('interfaces_config_template.j2')`: `interfaces_config_template.j2` নামে একটি টেমপ্লেট লোড করা হচ্ছে।
+
 - `interface_config = template.render(data=interfaces)`: `interfaces.yml` থেকে পড়া ডাটা ব্যবহার করে টেমপ্লেট রেন্ডার করা হচ্ছে, যা থেকে কনফিগারেশন তৈরি হচ্ছে।
+
+পরের ব্লক,
 
 ```python
 # প্রতিটি রাউটারে লগ ইন করে কনফিগারেশন পাঠানো
