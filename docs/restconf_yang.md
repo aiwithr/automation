@@ -9,8 +9,8 @@ REST API সাধারণত CRUD (তৈরি, পুনরুদ্ধা�
 
 | রেস্টকনফ | NETCONF |
 |----------|---------|
-| GET | <get>, <get-config> |
-| POST | <edit-config> (অপারেশন="create") |
+| GET | \<get\>, \<get-config\> |
+| POST | \<edit-config\> (অপারেশন="create") |
 | PUT | <edit-config> (অপারেশন="create/replace") |
 | PATCH | <edit-config> (অপারেশন="merge") |
 | DELETE | <edit-config> (অপারেশন="delete") |
