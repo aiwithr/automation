@@ -610,7 +610,8 @@ print(vlan_name)
 ```
 ```
 যদি লিস্টে থাকা আইটেম যদি না থাকে - সেরকম আইটেম উল্লেখ করা হয়, তাহলে একটা ValueError ফেরত দেয়।
-```
+
+```python
 vlan_name = ["mgmt", "prod", "guest", "tech", "acct"]
 vlan_name.remove("tomato")
 print(vlan_name)
