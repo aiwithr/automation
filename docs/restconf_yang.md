@@ -7,13 +7,13 @@
 অপারেশন - HTTP CRUD:
 REST API সাধারণত CRUD (তৈরি, পুনরুদ্ধার, আপডেট, এবং মুছে ফেলা) অপারেশন বাস্তবায়ন করে HTTP পদ্ধতি ব্যবহার করে। রেস্টকনফ এই NETCONF অপারেশনগুলিকে HTTP পদ্ধতিতে রূপান্তর করে, যা নিম্নলিখিত টেবিলে দেখানো হয়েছে:
 
-| রেস্টকনফ | NETCONF |
+| RESTCONF | NETCONF |
 |----------|---------|
-| GET | \<get\>, \<get-config\> |
-| POST | \<edit-config\> (অপারেশন="create") |
-| PUT | <edit-config> (অপারেশন="create/replace") |
-| PATCH | <edit-config> (অপারেশন="merge") |
-| DELETE | <edit-config> (অপারেশন="delete") |
+| GET | <get\>, <get-config\> |
+| POST | <edit-config\> (অপারেশন="create") |
+| PUT | <edit-config\> (অপারেশন="create/replace") |
+| PATCH | <edit-config\> (অপারেশন="merge") |
+| DELETE | <edit-config\> (অপারেশন="delete") |
 
 বিষয়বস্তু - XML বা JSON:
 রেস্টকনফ-এর একটি বড় সুবিধা হল এটি JSON ডেটা ফরম্যাট ব্যবহার করতে পারে। অনেক ডেভেলপার XML-এর তুলনায় JSON পছন্দ করে কারণ এটি সহজে পড়া যায় এবং কম ওভারহেড রয়েছে।
