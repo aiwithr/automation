@@ -124,7 +124,7 @@ with concurrent.futures.ThreadPoolExecutor() as executor:
     # প্রতিটি ডিভাইসের জন্য ফাংশনটা সাবমিট
     futures = [executor.submit(backup_config, device) for device in device_list]
     
-    # প্রতিটি কাজের জন্য ফলাফল দেখি
+    # প্রতিটি কাজের জন্য রেজাল্ট দেখি
     for future in concurrent.futures.as_completed(futures):
         future.result()  # কোন সমস্যা থাকলে তা এখানে উঠবে
 ```
@@ -135,7 +135,7 @@ with concurrent.futures.ThreadPoolExecutor() as executor:
 2. **`backup_config` ফাংশন তৈরি**: এই ফাংশনটি প্রতিটি ডিভাইসে সংযোগ স্থাপন করে কনফিগারেশন ব্যাকআপ করবে।
 3. **থ্রেড পুল তৈরি করা**: `ThreadPoolExecutor` ব্যবহার করে একটা থ্রেড পুল তৈরি করা হয়েছে।
 4. **ফাংশন সাবমিট করা**: প্রতিটি ডিভাইসের জন্য `backup_config` ফাংশনটি সাবমিট করা হয়েছে।
-5. **ফলাফল অপেক্ষা করা**: `concurrent.futures.as_completed` ব্যবহার করে প্রতিটি থ্রেডের ফলাফল অপেক্ষা করা হয়েছে এবং কোন ত্রুটি থাকলে তা প্রদর্শন করা হয়েছে।
+5. **রেজাল্ট অপেক্ষা করা**: `concurrent.futures.as_completed` ব্যবহার করে প্রতিটি থ্রেডের রেজাল্ট অপেক্ষা করা হয়েছে এবং কোন ত্রুটি থাকলে তা প্রদর্শন করা হয়েছে।
 
 এই ভাবে আমরা আমাদের স্ক্রিপ্টকে কনকারেন্টলি চালাতে পারি, যা আমাদের কাজের গতি বাড়াতে সাহায্য করবে।
 
@@ -248,7 +248,7 @@ with concurrent.futures.ThreadPoolExecutor() as executor:
     # প্রতিটি ডিভাইসের জন্য ফাংশনটি সাবমিট করুন
     futures = [executor.submit(backup_and_commit, device) for device in device_list]
     
-    # প্রতিটি ফিউচারের জন্য ফলাফল অপেক্ষা করুন
+    # প্রতিটি ফিউচারের জন্য রেজাল্ট অপেক্ষা করুন
     for future in concurrent.futures.as_completed(futures):
         future.result()  # কোন ত্রুটি থাকলে তা এখানে উঠবে
 ```
@@ -319,7 +319,7 @@ with concurrent.futures.ThreadPoolExecutor() as executor:
     # প্রতিটি ডিভাইসের জন্য ফাংশনটি সাবমিট করুন
     futures = [executor.submit(backup_and_commit, device) for device in device_list]
     
-    # প্রতিটি কাজের জন্য ফলাফল দেখতে চাই
+    # প্রতিটি কাজের জন্য রেজাল্ট দেখতে চাই
     for future in concurrent.futures.as_completed(futures):
         future.result()  # কোন সমস্যা থাকলে তা এখানে উঠবে
 ```

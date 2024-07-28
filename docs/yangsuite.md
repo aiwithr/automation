@@ -111,7 +111,7 @@ payload = {
 # API কল পাঠানো
 response = requests.put(url, json=payload, headers=headers, auth=auth)
 
-# ফলাফল প্রিন্ট করা
+# রেজাল্ট প্রিন্ট করা
 print(response.status_code)
 print(response.json())
 ```
