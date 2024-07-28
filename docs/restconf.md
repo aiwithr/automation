@@ -144,7 +144,7 @@ headers = {
 ```python
 url = "https://devnetsandboxiosxe.cisco.com:443/restconf/data/ietf-interfaces:interfaces"
 ```
-এটি RESTCONF API এর URL। এই ঠিকানায় আমরা অনুরোধ পাঠাব। `ietf-interfaces:interfaces` অংশটি নির্দেশ করে যে আমরা যন্ত্রের ইন্টারফেস সম্পর্কিত তথ্য চাইছি।
+এটি RESTCONF API এর URL। এই অ্যাড্রেসয় আমরা অনুরোধ পাঠাব। `ietf-interfaces:interfaces` অংশটি নির্দেশ করে যে আমরা যন্ত্রের ইন্টারফেস সম্পর্কিত তথ্য চাইছি।
 
 ```python
 response = requests.request("GET", url, auth=(USER, PASS), headers=headers, verify=False)

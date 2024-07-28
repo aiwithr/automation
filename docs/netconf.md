@@ -16,7 +16,7 @@ model = manager.connect(host='devnetsandboxiosxe.cisco.com',
                     device_params={'name':'iosxe'})
 ```
 এখানে আমরা NETCONF ব্যবহার করে যন্ত্রের সাথে সংযোগ স্থাপন করছি। এটি অনেকটা দূরবর্তী কম্পিউটারে লগ ইন করার মতো।
-- `host`: যন্ত্রের IP ঠিকানা বা হোস্টনাম।
+- `host`: যন্ত্রের IP অ্যাড্রেস বা হোস্টনাম।
 - `port`: NETCONF এর জন্য ব্যবহৃত পোর্ট (সাধারণত 830)।
 - `username` এবং `password`: যন্ত্রে প্রবেশের জন্য পরিচয়পত্র।
 - `hostkey_verify=False`: নিরাপত্তা যাচাই বন্ধ করে (শুধুমাত্র পরীক্ষামূলক পরিবেশে ব্যবহার করুন)।
@@ -96,7 +96,7 @@ model = manager.connect(host='devnetsandboxiosxe.cisco.com',
                     device_params={'name':'iosxe'})
 ```
 এই লাইনগুলো NETCONF ব্যবহার করে একটা Cisco IOS XE ডিভাইসের সাথে সংযোগ স্থাপন করছে। এখানে:
-- `host` হল ডিভাইসের ঠিকানা
+- `host` হল ডিভাইসের অ্যাড্রেস
 - `port` 830 হল NETCONF এর জন্য স্ট্যান্ডার্ড পোর্ট
 - `username` এবং `password` হল ডিভাইসে লগ ইন করার জন্য ক্রেডেনশিয়াল
 - `hostkey_verify=False` SSH হোস্ট কী যাচাই বন্ধ করে দেয়, যা নিরাপত্তার দিক থেকে ঝুঁকিপূর্ণ
