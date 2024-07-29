@@ -61,7 +61,9 @@ response = requests.post(https://203.11.91.21/rest/ip/address',
 আপনাকে MikroTik RouterOS-এর কিছু বিশেষ বৈশিষ্ট্য এবং REST API-এর আরও কয়েকটি গুরুত্বপূর্ণ API কল সম্পর্কে কিছু ধারণা দিচ্ছি:
 
 ১. ফায়ারওয়াল ম্যানেজমেন্ট:
+
    API কল: `/ip/firewall/filter`
+
    উদাহরণ:
    ```python
    # নতুন ফায়ারওয়াল নিয়ম যোগ করা
@@ -77,18 +79,21 @@ response = requests.post(https://203.11.91.21/rest/ip/address',
    এই API কল ব্যবহার করে আপনি ফায়ারওয়াল নিয়ম যোগ, পরিবর্তন বা মুছে ফেলতে পারেন।
 
 ২. ব্যান্ডউইথ ম্যানেজমেন্ট:
+
    API কল: `/queue/simple`
+
    উদাহরণ:
+
    ```python
-   # নতুন ব্যান্ডউইথ সীমা সেট করা
-   new_queue = {
-    "name": "Home_Client_Banani",
-    "target": "192.168.1.100/32",
-    "max-limit": "5M/5M"
-}
-response = requests.post(url + '/queue/simple/add', json=new_queue, auth=HTTPBasicAuth(username, password), verify=False)
+      # নতুন ব্যান্ডউইথ সীমা সেট করা
+      new_queue = {
+      "name": "Home_Client_Banani",
+      "target": "192.168.1.100/32",
+      "max-limit": "5M/5M"
+   }
+   response = requests.post(url + '/queue/simple/add', json=new_queue, auth=HTTPBasicAuth(username, password), verify=False)
    ```
-   এই API ব্যবহার করে আপনি ক্লায়েন্টদের জন্য ব্যান্ডউইথ সীমা নির্ধারণ করতে পারেন।
+   এই API ব্যবহার করে আপনি ক্লায়েন্টদের জন্য ব্যান্ডউইথ সীমা নির্ধারণ করতে পারেন। এই কলগুলো নিচ্ছে আপনাদের বিলিং/প্যাকেজিং সফটওয়্যার। এখন আমরাও করতে পারবো।
 
 ৩. ডাইনামিক DNS আপডেট:
    API কল: `/ip/cloud`
