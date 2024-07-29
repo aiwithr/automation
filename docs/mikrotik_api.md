@@ -65,14 +65,14 @@ response = requests.post(https://203.11.91.21/rest/ip/address',
    উদাহরণ:
    ```python
    # নতুন ফায়ারওয়াল নিয়ম যোগ করা
-   new_rule = {
+   web_rule = {
        "chain": "input",
        "protocol": "tcp",
        "dst-port": "80",
        "action": "accept",
        "comment": "Allow HTTP"
    }
-   response = requests.post(url+'/ip/firewall/filter', json=new_rule, auth=HTTPBasicAuth(username, password), verify=False)
+   response = requests.post(url+'/ip/firewall/filter/add', json=web_rule, auth=HTTPBasicAuth(username, password), verify=False)
    ```
    এই API কল ব্যবহার করে আপনি ফায়ারওয়াল নিয়ম যোগ, পরিবর্তন বা মুছে ফেলতে পারেন।
 
@@ -82,11 +82,11 @@ response = requests.post(https://203.11.91.21/rest/ip/address',
    ```python
    # নতুন ব্যান্ডউইথ সীমা সেট করা
    new_queue = {
-       "name": "Client1",
-       "target": "192.168.1.100/32",
-       "max-limit": "5M/5M"
-   }
-   response = requests.post(url+'/queue/simple', json=new_queue, auth=HTTPBasicAuth(username, password), verify=False)
+    "name": "Home_Client_Banani",
+    "target": "192.168.1.100/32",
+    "max-limit": "5M/5M"
+}
+response = requests.post(url + '/queue/simple/add', json=new_queue, auth=HTTPBasicAuth(username, password), verify=False)
    ```
    এই API ব্যবহার করে আপনি ক্লায়েন্টদের জন্য ব্যান্ডউইথ সীমা নির্ধারণ করতে পারেন।
 
@@ -164,7 +164,7 @@ response = requests.post(https://203.11.91.21/rest/ip/address',
 
 আপনার জন্য কোড এবং আউটপুটের আরও একটি প্রযুক্তিগত ধারণা দেব, আউটপুটের বিস্তারিত বোঝার উপর জোর দিয়ে:
 
-কোডের ধারণা:
+কোডের ধারণা: সব ইন্টারফেস দেখবো ডিটেল লেভেলে
 
 1. লাইব্রেরি ইমপোর্ট:
    ```python
@@ -197,7 +197,7 @@ response = requests.post(https://203.11.91.21/rest/ip/address',
    ```python
    print(json.dumps(response.json(), indent=4))
    ```
-   এটি API থেকে প্রাপ্ত JSON ডেটা সুন্দরভাবে ফরম্যাট করে প্রিন্ট করে।
+   এটি API থেকে প্রাপ্ত JSON ডেটা সুন্দরভাবে (ইনডেন্ট করে) ফরম্যাট করে প্রিন্ট করে।
 
    ```python
         ".id": "*2",
@@ -216,7 +216,7 @@ response = requests.post(https://203.11.91.21/rest/ip/address',
 
 আউটপুট মানে কী:
 
-আউটপুটে দেখা যাচ্ছে যে রাউটারে পাঁচটি ইন্টারফেস রয়েছে: ether1, ether2, ether3, ether4, এবং lo। প্রতিটি ইন্টারফেসের জন্য বিস্তারিত ডাটা দেওয়া আছে। আসুন প্রতিটি ইন্টারফেস সম্পর্কে গুরুত্বপূর্ণ ডাটা বিশ্লেষণ করি:
+আউটপুটে দেখা যাচ্ছে যে রাউটারে পাঁচটি ইন্টারফেস রয়েছে: ether1, ether2, ether3, ether4, এবং lo। প্রতিটি ইন্টারফেসের জন্য বিস্তারিত ডাটা দেওয়া আছে। আসুন একটা ইন্টারফেস সম্পর্কে গুরুত্বপূর্ণ ডাটা বিশ্লেষণ করি:
 
 1. ether1:
    - টাইপ: ইথারনেট
@@ -228,7 +228,7 @@ response = requests.post(https://203.11.91.21/rest/ip/address',
 
    অর্থ কী: এই ইন্টারফেসটি সক্রিয় আছে এবং শুধুমাত্র ডেটা পাঠাচ্ছে, কিন্তু কোনো ডেটা নিচ্ছে না।
 
-### ফায়ারওয়াল রুল
+### ওয়েব ফায়ারওয়াল রুল
 
 উপরের মতো ১ম-৩য় ব্লক একই রকম। সেকারণে, ৪র্থ এবং ৫ম ব্লকগুলো আরও বিস্তারিতভাবে ব্যাখ্যা করছি:
 
@@ -265,5 +265,7 @@ print(response.text)
   6. `print(response.text)` রাউটার থেকে পাওয়া উত্তর প্রিন্ট করে দেখায়।
 
 এই দুটি ব্লক মিলে, একটি নতুন ফায়ারওয়াল নিয়ম তৈরি করে সেটি রাউটারে পাঠানো হচ্ছে, যা ওয়েবসাইট ট্রাফিক পাস করতে দেবে।
+
+গিটহাব লিঙ্কে অনেক উদাহরন দিয়েছি আমি। প্র্যাকটিস করবেন কিন্তু।
 
 
