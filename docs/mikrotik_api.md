@@ -111,11 +111,12 @@ response = requests.post(https://203.11.91.21/rest/ip/address',
    ```python
    # নতুন ব্যবহারকারী তৈরি
    new_user = {
-       "name": "newadmin",
-       "password": "securepass123",
-       "group": "full"
+      "name": "rhassan",
+      "password": "securepass123",
+      "group": "full"
    }
-   response = requests.post(url+'/user', json=new_user, auth=HTTPBasicAuth(username, password), verify=False)
+   response = requests.post(base_url+'/user/add', json=new_user, auth=HTTPBasicAuth(username, password), verify=False)
+   print(response.text)
    ```
    এই API ব্যবহার করে আপনি নতুন ব্যবহারকারী তৈরি, এক্জিস্টিং ব্যবহারকারী পরিবর্তন বা মুছে ফেলতে পারেন।
 
@@ -233,7 +234,7 @@ response = requests.post(https://203.11.91.21/rest/ip/address',
 
    অর্থ কী: এই ইন্টারফেসটি সক্রিয় আছে এবং শুধুমাত্র ডেটা পাঠাচ্ছে, কিন্তু কোনো ডেটা নিচ্ছে না।
 
-### ওয়েব ফায়ারওয়াল রুল
+### ওয়েব ফায়ারওয়াল রুল (এন্ড টু এন্ড)
 
 উপরের মতো ১ম-৩য় ব্লক একই রকম। সেকারণে, ৪র্থ এবং ৫ম ব্লকগুলো আরও বিস্তারিতভাবে ব্যাখ্যা করছি:
 
