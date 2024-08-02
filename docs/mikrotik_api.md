@@ -99,7 +99,7 @@ response = requests.post(https://203.11.91.21/rest/ip/address',
    API কল: `/ip/cloud`
    উদাহরণ:
    ```python
-   # MikroTik Cloud DDNS স্ট্যাটাস পরীক্ষা
+   # MikroTik Cloud DDNS স্ট্যাটাস টেস্ট
    response = requests.get(url+'/ip/cloud', auth=HTTPBasicAuth(username, password), verify=False)
    print(json.dumps(response.json(), indent=4))
    ```

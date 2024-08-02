@@ -14,6 +14,9 @@ router2 ansible_host=192.168.1.2
 [switches]
 switch1 ansible_host=192.168.2.1
 switch2 ansible_host=192.168.2.2
+
+[mikrokiks]
+mikrokik ansible_host=192.168.3.1
 ```
 
 এখানে `routers` গ্রুপে দুটি রাউটার রয়েছে এবং `switches` গ্রুপে দুটি সুইচ রয়েছে। প্রতিটি ডিভাইসের আইপি এড্রেস (যেটা তাদের নেটওয়ার্কের মাধ্যমে অ্যাক্সেস করা যায়) উল্লেখ করা হয়েছে।
