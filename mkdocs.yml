@@ -63,6 +63,25 @@ plugins:
   - blog
   - search:
       separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - exporter:
+      formats:
+        pdf:
+          enabled: !ENV [MKDOCS_EXPORTER_PDF, true]
+          concurrency: 8
+          stylesheets:
+            - stylesheets/pdf.scss
+          covers:
+            front: covers/front.html.j2
+            back: covers/back.html.j2
+          aggregator:
+            enabled: true
+            output: .well-known/site.pdf
+            covers: all
+      buttons:
+        - title: Download as PDF
+          icon: material-file-download-outline
+          enabled: !!python/name:mkdocs_exporter.formats.pdf.buttons.download.enabled
+          attributes: !!python/name:mkdocs_exporter.formats.pdf.buttons.download.attributes
 #  - minify:
 #      minify_html: true
 
