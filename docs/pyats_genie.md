@@ -225,7 +225,245 @@ print('Bandwidth Usage:', bandwidth)
 
 ### কি শিখলাম?
 
-আমরা শিখলাম কীভাবে pyATS এবং Genie ব্যবহার করে SLA মনিটরিং করা যায়। এর মাধ্যমে ISP তাদের গ্রাহকদের প্রতিশ্রুত মানের সার্ভিস প্রদান করতে পারে এবং সমস্যা আগে থেকেই চিহ্নিত করতে পারে। SLA মনিটরিং করার মাধ্যমে, ISP তাদের সার্ভিস মান উন্নত করতে এবং গ্রাহকের সন্তুষ্টি বৃদ্ধি করতে সক্ষম হয়।
+আমরা শিখলাম কীভাবে pyATS এবং Genie ব্যবহার করে SLA মনিটরিং করা যায়। এই জিনিস দিয়ে ISP তাদের গ্রাহকদের প্রতিশ্রুত মানের সার্ভিস দিতে পারে এবং সমস্যা আগে থেকেই চিহ্নিত করতে পারে। SLA মনিটরিং করে, ISP তাদের সার্ভিসের মান উন্নত এবং গ্রাহকের সন্তুষ্টি দিতে পারে। আর সেটাই তো টেকনোলজির মানুষ হিসেবে আমরা করতে পারি, তাই না?
+
+### BGP ম্যানেজমেন্ট নিয়ে একটা উদাহরন
+
+BGP প্রোটোকল ব্যবহার করে নেটওয়ার্ক পরিচালনা করতে হলে কিছু সর্বোত্তম পদ্ধতি অনুসরণ করা গুরুত্বপূর্ণ, বিশেষ করে যখন pyATS এবং Genie ব্যবহার করে অটোমেশন এবং মনিটরিং করা হয়। এখানে কিছু সেরা চর্চা (best practices) উল্লেখ করা হলো যা BGP পরিচালনায় pyATS এবং Genie ব্যবহারে সহায়ক হতে পারে:
+
+#### 1. BGP হেলথ চেক (bgp_health_check)
+
+```python
+def bgp_health_check(device):
+    bgp_summary = device.parse('show ip bgp summary')
+    for neighbor in bgp_summary['vrf']['default']['neighbor']:
+        state = bgp_summary['vrf']['default']['neighbor'][neighbor]['session_state']
+        if state != 'Established':
+            print(f"BGP neighbor {neighbor} on {device.name} is not in Established state.")
+    return bgp_summary
+```
+
+**ব্লক-ব্লক ব্যাখ্যা:**
+
+1. **ফাংশন ঘোষণা:**
+    ```python
+    def bgp_health_check(device):
+    ```
+    - `bgp_health_check` নামের ফাংশনটি `device` নামের একটি প্যারামিটার নেয় যা Genie ডিভাইস অবজেক্ট।
+
+2. **BGP সারাংশ পার্স করা:**
+    ```python
+    bgp_summary = device.parse('show ip bgp summary')
+    ```
+    - `device.parse` মেথডটি ব্যবহার করে 'show ip bgp summary' কমান্ড চালানো হয় এবং ফলাফলটি `bgp_summary` ভেরিয়েবলে সংরক্ষণ করা হয়।
+
+3. **প্রতিটি নেইবার পার্স করা:**
+    ```python
+    for neighbor in bgp_summary['vrf']['default']['neighbor']:
+        state = bgp_summary['vrf']['default']['neighbor'][neighbor]['session_state']
+        if state != 'Established':
+            print(f"BGP neighbor {neighbor} on {device.name} is not in Established state.")
+    ```
+    - `bgp_summary` এর মধ্যে প্রতিটি নেইবার (পিয়ার) লুপ করে পার্স করা হয়।
+    - প্রতিটি নেইবারের `session_state` চেক করা হয়।
+    - যদি `session_state` 'Established' না হয়, তাহলে একটি বার্তা প্রিন্ট করা হয় যা নেইবার এবং ডিভাইসের নাম দেখায়।
+
+4. **আউটপুট রিটার্ন করা:**
+    ```python
+    return bgp_summary
+    ```
+    - পুরো `bgp_summary` আউটপুটটা রিটার্ন করা হয়।
+
+#### 2. BGP কনফিগারেশন যাচাই (verify_bgp_config)
+
+```python
+def verify_bgp_config(device):
+    bgp_config = device.parse('show run | section bgp')
+    expected_config = """
+    router bgp 65000
+      bgp log-neighbor-changes
+      neighbor 192.168.1.2 remote-as 65001
+      !
+      address-family ipv4
+      neighbor 192.168.1.2 activate
+      exit-address-family
+    """
+    if bgp_config != expected_config:
+        print(f"BGP configuration on {device.name} does not match the expected configuration.")
+```
+
+**ব্লক-ব্লক ব্যাখ্যা:**
+
+1. **ফাংশন ঘোষণা:**
+    ```python
+    def verify_bgp_config(device):
+    ```
+    - `verify_bgp_config` ফাংশনটি একটি ডিভাইস অবজেক্ট নেয় যা Genie দ্বারা উপস্থাপিত।
+
+2. **BGP কনফিগারেশন পার্স করা:**
+    ```python
+    bgp_config = device.parse('show run | section bgp')
+    ```
+    - `device.parse` মেথডটি ব্যবহার করে 'show run | section bgp' কমান্ড চালানো হয় এবং ফলাফলটি `bgp_config` ভেরিয়েবলে সংরক্ষণ করা হয়।
+
+3. **প্রত্যাশিত কনফিগারেশন সংজ্ঞায়িত করা:**
+    ```python
+    expected_config = """
+    router bgp 65000
+      bgp log-neighbor-changes
+      neighbor 192.168.1.2 remote-as 65001
+      !
+      address-family ipv4
+      neighbor 192.168.1.2 activate
+      exit-address-family
+    """
+    ```
+    - `expected_config` ভেরিয়েবলে একটি স্ট্রিং হিসেবে প্রত্যাশিত BGP কনফিগারেশন সংরক্ষণ করা হয়।
+
+4. **কনফিগারেশন মিলিয়ে দেখা:**
+    ```python
+    if bgp_config != expected_config:
+        print(f"BGP configuration on {device.name} does not match the expected configuration.")
+    ```
+    - যদি `bgp_config` এবং `expected_config` এর মধ্যে মিল না থাকে, তাহলে একটি বার্তা প্রিন্ট করা হয় যা কনফিগারেশন মিসম্যাচ দেখায়।
+
+#### 3. BGP পিয়ার মনিটরিং (monitor_bgp_peers)
+
+```python
+def monitor_bgp_peers(device):
+    bgp_neighbors = device.parse('show ip bgp neighbors')
+    for neighbor, details in bgp_neighbors['vrf']['default']['neighbor'].items():
+        if details['session_state'] != 'Established':
+            print(f"BGP peer {neighbor} on {device.name} is not Established.")
+            print(f"State: {details['session_state']}")
+            print(f"Received Prefixes: {details['bgp_negotiated_capabilities']['bgp_received_prefixes']}")
+```
+
+**ব্লক-ব্লক ব্যাখ্যা:**
+
+1. **ফাংশন ঘোষণা:**
+    ```python
+    def monitor_bgp_peers(device):
+    ```
+    - `monitor_bgp_peers` ফাংশনটি একটি ডিভাইস অবজেক্ট নেয়।
+
+2. **BGP নেবার তথ্য পার্স করা:**
+    ```python
+    bgp_neighbors = device.parse('show ip bgp neighbors')
+    ```
+    - `device.parse` মেথডটি ব্যবহার করে 'show ip bgp neighbors' কমান্ড চালানো হয় এবং ফলাফলটি `bgp_neighbors` ভেরিয়েবলে সংরক্ষণ করা হয়।
+
+3. **প্রতিটি নেবার চেক করা:**
+    ```python
+    for neighbor, details in bgp_neighbors['vrf']['default']['neighbor'].items():
+        if details['session_state'] != 'Established':
+            print(f"BGP peer {neighbor} on {device.name} is not Established.")
+            print(f"State: {details['session_state']}")
+            print(f"Received Prefixes: {details['bgp_negotiated_capabilities']['bgp_received_prefixes']}")
+    ```
+    - `bgp_neighbors` এর প্রতিটি নেবার লুপ করে পার্স করা হয়।
+    - যদি `session_state` 'Established' না হয়, তাহলে একটি বার্তা প্রিন্ট করা হয় যা নেবার, তার স্থিতি এবং প্রাপ্ত প্রিফিক্স দেখায়।
+
+#### 4. অ্যালার্ম এবং রিপোর্টিং (bgp_alert_check)
+
+```python
+import smtplib
+from email.mime.text import MIMEText
+
+def send_email_alert(subject, message):
+    msg = MIMEText(message)
+    msg['Subject'] = subject
+    msg['From'] = 'alert@link3.net'
+    msg['To'] = 'admin@link3.net'
+    
+    with smtplib.SMTP('smtp.link3.net') as server:
+        server.sendmail(msg['From'], [msg['To']], msg.as_string())
+
+def bgp_alert_check(device):
+    bgp_summary = device.parse('show ip bgp summary')
+    for neighbor in bgp_summary['vrf']['default']['neighbor']:
+        state = bgp_summary['vrf']['default']['neighbor'][neighbor]['session_state']
+        if state != 'Established':
+            send_email_alert(f"BGP Alert on {device.name}", f"BGP neighbor {neighbor} is in state {state}")
+```
+
+**ব্লক-ব্লক ব্যাখ্যা:**
+
+1. **ইমেল পাঠানোর ফাংশন:**
+    ```python
+    import smtplib
+    from email.mime.text import MIMEText
+
+    def send_email_alert(subject, message):
+        msg = MIMEText(message)
+        msg['Subject'] = subject
+        msg['From'] = 'alert@link3.net'
+        msg['To'] = 'admin@link3.net'
+        
+        with smtplib.SMTP('smtp.link3.net') as server:
+            server.sendmail(msg['From'], [msg['To']], msg.as_string())
+    ```
+    - `smtplib` এবং `MIMEText` মডিউলগুলো ইমেল পাঠানোর জন্য আমদানি করা হয়।
+    - `send_email_alert` ফাংশনটি ইমেলের সাবজেক্ট এবং মেসেজ নেয় এবং ইমেল পাঠায়।
+    - `MIMEText` ব্যবহার করে মেসেজ তৈরি করা হয় এবং SMTP সার্ভার ব্যবহার করে ইমেল পাঠানো হয়।
+
+2. **BGP অ্যালার্ম চেক:**
+    ```python
+    def bgp_alert_check(device):
+        bgp_summary = device.parse('show ip bgp summary')
+        for neighbor in bgp_summary['vrf']['default']['neighbor']:
+            state = bgp_summary['vrf']['default']['neighbor'][neighbor]['session_state']
+            if state != 'Established':
+                send_email_alert(f"BGP Alert on {device.name}", f"BGP neighbor {neighbor} is in state {state}")
+    ```
+    - `bgp_alert_check` ফাংশনটি একটি ডিভাইস অবজেক্ট নেয়।
+    - `device.parse` মেথডটি ব্যবহার করে 'show ip bgp summary' কমান্ড চালানো হয় এবং ফলাফলটি `bgp_summary` ভেরিয়েবলে সংরক্ষণ করা হয়।
+    - প্রতিটি নেবারের `session_state` চেক করা হয়।
+    - যদি `session_state` 'Established' না হয়, তাহলে `send_email_alert
+
+` ফাংশনটি ব্যবহার করে ইমেইলে\সিগন্যালে (আপনারা করবেন) অ্যালার্ম পাঠানো হয়।
+
+#### 5. নিয়মিত ব্যাকআপ এবং রোলব্যাক (backup_bgp_config এবং restore_bgp_config)
+
+```python
+def backup_bgp_config(device):
+    bgp_config = device.execute('show run | section bgp')
+    with open(f"{device.name}_bgp_backup.cfg", 'w') as f:
+        f.write(bgp_config)
+
+def restore_bgp_config(device):
+    with open(f"{device.name}_bgp_backup.cfg", 'r') as f:
+        bgp_config = f.read()
+    device.configure(bgp_config)
+```
+
+**ব্লক-ব্লক ব্যাখ্যা:**
+
+1. **ব্যাকআপ ফাংশন:**
+    ```python
+    def backup_bgp_config(device):
+        bgp_config = device.execute('show run | section bgp')
+        with open(f"{device.name}_bgp_backup.cfg", 'w') as f:
+            f.write(bgp_config)
+    ```
+    - `backup_bgp_config` ফাংশনটি একটি ডিভাইস অবজেক্ট নেয়।
+    - `device.execute` মেথডটি ব্যবহার করে 'show run | section bgp' কমান্ড চালানো হয় এবং ফলাফলটি `bgp_config` ভেরিয়েবলে সংরক্ষণ করা হয়।
+    - ব্যাকআপ ফাইল `device.name_bgp_backup.cfg` নামে তৈরি করা হয় এবং এতে কনফিগারেশন লেখা হয়।
+
+2. **রোলব্যাক ফাংশন:**
+    ```python
+    def restore_bgp_config(device):
+        with open(f"{device.name}_bgp_backup.cfg", 'r') as f:
+            bgp_config = f.read()
+        device.configure(bgp_config)
+    ```
+    - `restore_bgp_config` ফাংশনটি একটি ডিভাইস অবজেক্ট নেয়।
+    - ব্যাকআপ ফাইল `device.name_bgp_backup.cfg` থেকে পড়া হয়।
+    - `device.configure` মেথডটি ব্যবহার করে ব্যাকআপ কনফিগারেশন ডিভাইসে প্রয়োগ করা হয়।
+
+### উপসংহার
+
+pyATS এবং Genie ব্যবহার করে BGP পরিচালনার এই সেরা চর্চাগুলি নেটওয়ার্কের স্থিতিশীলতা এবং কার্যকারিতা বজায় রাখতে সাহায্য করে। নিয়মিত স্বাস্থ্য পরীক্ষা, কনফিগারেশন যাচাই, পিয়ার মনিটরিং, অ্যালার্ম এবং রিপোর্টিং এবং নিয়মিত ব্যাকআপ ও রোলব্যাকের মাধ্যমে একটি সুস্থ ও কার্যকরী BGP নেটওয়ার্ক পরিচালনা করা সম্ভব।
 
 
 
