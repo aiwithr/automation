@@ -178,7 +178,8 @@ nav:
   - কেন নেটওয়ার্ক অটোমেশন?: index.md
   - পেছনের দর্শন:
     - অটোমেশন কেন লাগছে?: whyautomation.md
-    - প্রজেক্ট অটোমেশন: p_automation.md
+#    - প্রজেক্ট অটোমেশন: p_automation.md
+    - বইটাকে কিভাবে সাজানো হয়েছে?: organization.md
     - উৎসর্গ: dedication.md
     - কৃতজ্ঞতা এবং বাড়তি রিডিং: courtesy.md
   - কেন?:
