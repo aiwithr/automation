@@ -17,13 +17,14 @@ switch2 ansible_host=192.168.2.2
 
 [mikrokiks]
 mikrokik ansible_host=192.168.3.1
+mikrokik2 ansible_host=192.168.4.1
 ```
 
 এখানে `routers` গ্রুপে দুটি রাউটার রয়েছে এবং `switches` গ্রুপে দুটি সুইচ রয়েছে। প্রতিটি ডিভাইসের আইপি এড্রেস (যেটা তাদের নেটওয়ার্কের মাধ্যমে অ্যাক্সেস করা যায়) উল্লেখ করা হয়েছে।
 
 ### স্টেপ ২: প্লেবুক তৈরি
 
-এরপর আমরা একটি প্লেবুক তৈরি করব। প্লেবুক হলো অ্যান্সিবলের জন্য একটি নির্দেশিকা যেখানে আমরা বলি কোন ডিভাইসে কী কাজ করতে হবে। এই প্লেবুকটি দেখুন:
+এরপর আমরা একটি প্লেবুক তৈরি করব। প্লেবুক হলো অ্যান্সিবলের জন্য একটি নির্দেশিকা যেখানে আমরা বলি কোন ডিভাইসে কী কাজ করতে হবে। এটা একটা yaml ফাইল। প্লেবুকটি দেখুন:
 
 ```yaml
 ---
@@ -192,3 +193,53 @@ ansible-playbook -i hosts site.yml
 - **স্বয়ংক্রিয়তা**: আপনি একবার নির্দেশিকা তৈরি করলে, এটি সব ডিভাইসে একইভাবে কাজ করবে।
 - **দ্রুততা**: একসাথে অনেক ডিভাইসে পরিবর্তন করতে পারবেন, এক এক করে করার দরকার নেই।
 - **ভুল কমানো**: একই কাজ বারবার করতে গেলে ভুল হওয়ার সম্ভাবনা থাকে, অ্যান্সিবল তা কমিয়ে আনে।
+
+### বোনাস: মাইক্রোটিক রাউটারের বেজলাইন কনফিগারেশন + অটোমেশন
+
+আমাদের নেটওয়ার্কে অনেকগুলো মাইক্রোটিক রাউটারে একটা বেজলাইন কনফিগারেশন কিভাবে পুশ করা যায় সেটার একটা উদাহরণ দিচ্ছি এখানে। (স্টেপ ১ [mikrotiks] দেখুন)
+
+```yaml
+- hosts: mikrotiks
+  connection: network_cli
+  gather_facts: no
+  vars:
+    ansible_network_os: routeros
+    ansible_user: rhassan
+    ansible_password: password
+    ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+    force_basic_auth: yes
+    validate_certs: false
+
+  tasks:
+    - name: Adding Vlans to Ether3
+      routeros_command:
+        commands:
+          - >
+            :local x;
+            :for x from=10 to=20 do={
+              /interface vlan add name="VLAN_$x" vlan-id=$x interface=ether3
+            }
+
+    - name: Adding IP addresses to LAN
+      routeros_command:
+        commands:
+          - /ip address add address=192.168.100.1/24 interface=VLAN_10
+
+    - name: Add DNS Servers
+      routeros_command:
+        commands:
+          - /ip dns set servers=8.8.8.8,1.1.1.1
+
+    - name: Adding DHCP configuration
+      routeros_command:
+        commands:
+          - /ip pool add name="DHCP LAN" ranges=192.168.100.2-192.168.100.254
+          - /ip dhcp-server add address-pool="DHCP LAN" disabled=no interface=VLAN_10 lease-time=8h name="DHCP LAN"
+          - /ip dhcp-server network add address=192.168.100.0/24 gateway=192.168.100.1 dns-server=8.8.8.8
+
+
+    - name: Add Basic FW Rules
+      routeros_command:
+        commands:
+          - /ip firewall nat add chain=srcnat out-interface=ether2 action=masquerade
+```
