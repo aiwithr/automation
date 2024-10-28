@@ -10,7 +10,7 @@
 4. **ক্লাউড সিঙ্ক:** আপনার তৈরি করা API রিকোয়েস্ট এবং টেস্টগুলো Postman ক্লাউডে সংরক্ষণ করতে পারেন এবং সেগুলো অন্যদের সাথে শেয়ার করতে পারেন।
 
 <figure>
-  <img src="https://aiwithr.github.io/images/test4.jpg" width="720" />
+  <img src="https://aiwithr.github.io/automation/covers/postman.png" width="720" />
   <figcaption>আমার ভিএস কোডের একটা স্ক্রিনশট</figcaption>
 </figure>
 
