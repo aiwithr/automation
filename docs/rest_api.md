@@ -2,40 +2,34 @@
 
 চলুন একটা সিম্পল টেস্ট করি। আমরা সিস্কোর একটা ডেমো রাউটারের হোস্টনেম চেঞ্জ করব:
 
-১. নতুন রিকোয়েস্ট তৈরি:
+প্রথমে পোস্টম্যান ওপেন করে নতুন একটা রিকোয়েস্ট বানাতে হবে। 
+
+### নতুন রিকোয়েস্ট তৈরি:
 ```
 Collection নামঃ Network-Automation
 Request নামঃ Change-Hostname
 ```
 
-২. রিকোয়েস্ট ডিটেইলস:
-```
-Method: POST
-URL: https://devnetsandboxiosxe.cisco.com:443/restconf/data/
-```
+এখানে মেথড হিসেবে PUT সিলেক্ট করব, কারণ আমরা কিছু চেঞ্জ করতে চাইছি। তারপর URL দিতে হবে - এটা হবে আমাদের রাউটারের ঠিকানা। URL-এ আমরা লিখব: https://devnetsandboxiosxe.cisco.com:443/restconf/data/Cisco-IOS-XE-native:native/hostname
 
-৩. Authentication:
-    - টাইপ: Basic Auth
-    - ইউজারনেম: admin
-    - পাসওয়ার্ড: C1sco12345
+এরপর আমাদের অথেনটিকেশন সেট করতে হবে। এটা অনেকটা রাউটারে লগইন করার মতো। Basic Auth সিলেক্ট করে ইউজারনেম 'admin' এবং পাসওয়ার্ড 'C1sco12345' দিতে হবে।
 
-৪. Headers:
-```
-Accept: application/yang-data+json
-Content-Type: application/yang-data+json
+এবার আসি হেডার সেটআপে। হেডার হল এক্সট্রা ইনফরমেশন যা রাউটারকে বলে আমরা কী ধরনের ডাটা পাঠাচ্ছি এবং কী ধরনের উত্তর চাই। এখানে Content-Type এবং Accept দুটোই application/yang-data+json হবে।
+
+সবশেষে বডিতে JSON ফরম্যাটে আমাদের কমান্ড লিখতে হবে। এটা অনেকটা CLI কমান্ডের মতো, তবে JSON ফরম্যাটে:
+```json
+{
+    "hostname": "Link3_Test"
+}
 ```
 
-৫. Body:
-```xml
-<config>
-    <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
-        <hostname>Link3_NewRouter</hostname>
-    </native>
-</config>
-```
+এবার Send বাটনে ক্লিক করলেই আমাদের রিকোয়েস্ট রাউটারে চলে যাবে। যদি সব ঠিক থাকে তাহলে 200 OK রেসপন্স আসবে, মানে কাজ সফল হয়েছে।
 
-৬. Send বাটন চাপুন
-
+!!! tip "মনে রাখুন"
+    - SSL সার্টিফিকেট ভেরিফিকেশন বন্ধ রাখতে হবে
+    - JSON ফরম্যাট ঠিক রাখতে হবে
+    - হেডার ঠিকমতো দিতে হবে
+  
 ### রেজাল্ট বোঝা
 
 যদি সব ঠিক থাকে:
@@ -47,54 +41,137 @@ Content-Type: application/yang-data+json
 - 404: URL ভুল
 - 500: রাউটারে কোন সমস্যা
 
-## পর্ব ২: বাস্তব উদাহরণ
+### সিসকো স্যান্ডবক্সে VLAN এবং রাউটিং কনফিগারেশন
 
-চলুন কয়েকটা বাস্তব কাজ করি:
+আজকে আমরা সিসকো স্যান্ডবক্স দিয়ে VLAN এবং রাউটিং কনফিগারেশন শিখব। একই ক্রেডেনশিয়াল ব্যবহার করব:
 
-### ১. ইন্টারফেস স্ট্যাটাস চেক
+### ১. VLAN কনফিগারেশন
 
+VLAN দেখা:
 ```
-Method: GET
-URL: https://devnetsandboxiosxe.cisco.com:443/restconf/data/ietf-interfaces:interfaces-state
-```
+মেথড: GET
+URL: https://devnetsandboxiosxe.cisco.com:443/restconf/data/Cisco-IOS-XE-native:native/vlan
 
-বডি লাগবে না, শুধু Send চাপুন। সব ইন্টারফেসের স্ট্যাটাস দেখাবে।
-
-### ২. VLAN তৈরি করা
-
-```
-Method: POST
-URL: https://devnetsandboxiosxe.cisco.com:443/restconf/data/native/vlan
-
-Body:
-<config>
-    <vlan>
-        <id>100</id>
-        <name>IT_Department</name>
-    </vlan>
-</config>
+হেডার:
+Accept: application/yang-data+json
+Content-Type: application/yang-data+json
 ```
 
-### ৩. এক্সেস লিস্ট যোগ করা
+নতুন VLAN যোগ করা:
+```
+মেথড: PUT
+URL: https://devnetsandboxiosxe.cisco.com:443/restconf/data/Cisco-IOS-XE-native:native/vlan
+
+বডি:
+{
+    "Cisco-IOS-XE-native:vlan": {
+        "vlan-list": [
+            {
+                "id": 100,
+                "name": "IT_DEPT"
+            },
+            {
+                "id": 200,
+                "name": "SALES_DEPT"
+            }
+        ]
+    }
+}
+```
+
+## ২. রাউটিং কনফিগারেশন
+
+OSPF স্ট্যাটাস চেক:
+```
+মেথড: GET
+URL: https://devnetsandboxiosxe.cisco.com:443/restconf/data/Cisco-IOS-XE-native:native/router/ospf
+
+হেডার:
+Accept: application/yang-data+json
+Content-Type: application/yang-data+json
+```
+
+OSPF কনফিগার করা:
+```
+মেথড: PUT
+URL: https://devnetsandboxiosxe.cisco.com:443/restconf/data/Cisco-IOS-XE-native:native/router/ospf
+
+বডি:
+{
+    "Cisco-IOS-XE-native:ospf": {
+        "id": 1,
+        "router-id": "1.1.1.1",
+        "network": [
+            {
+                "ip": "192.168.1.0",
+                "wildcard": "0.0.0.255",
+                "area": 0
+            }
+        ]
+    }
+}
+```
+
+৩. ইন্টারফেস VLAN কনফিগারেশন
 
 ```
-Method: POST
-URL: https://devnetsandboxiosxe.cisco.com:443/restconf/data/native/ip/access-list
+মেথড: PUT
+URL: https://devnetsandboxiosxe.cisco.com:443/restconf/data/Cisco-IOS-XE-native:native/interface/Vlan
 
-Body:
-<config>
-    <access-list>
-        <id>100</id>
-        <rule>
-            <action>permit</action>
-            <source>192.168.1.0/24</source>
-        </rule>
-    </access-list>
-</config>
+বডি:
+{
+    "Cisco-IOS-XE-native:Vlan": {
+        "name": 100,
+        "ip": {
+            "address": {
+                "primary": {
+                    "address": "192.168.100.1",
+                    "mask": "255.255.255.0"
+                }
+            }
+        }
+    }
+}
 ```
 
-!!! tip "পোস্টম্যান টিপস"
-    - প্রতিটা রিকোয়েস্ট সেভ করে রাখুন
-    - Environment সেটআপ করে ভেরিয়েবল ব্যবহার করুন
-    - টেস্ট রান Auto করতে পারেন
-    - রেজাল্ট এক্সপোর্ট করে রাখুন
+!!! tip "মনে রাখবেন"
+    - প্রতিটা রিকোয়েস্টে Basic Auth ব্যবহার করতে হবে
+    - SSL verification off রাখতে হবে
+    - প্রথমে GET দিয়ে চেক করুন
+    - তারপর PUT/POST দিয়ে চেঞ্জ করুন
+
+## ৪. রাউট চেক করা
+
+স্ট্যাটিক রাউট দেখা:
+```
+মেথড: GET
+URL: https://devnetsandboxiosxe.cisco.com:443/restconf/data/Cisco-IOS-XE-native:native/ip/route
+
+হেডার:
+Accept: application/yang-data+json
+Content-Type: application/yang-data+json
+```
+
+স্ট্যাটিক রাউট যোগ করা:
+```
+মেথড: PUT
+URL: https://devnetsandboxiosxe.cisco.com:443/restconf/data/Cisco-IOS-XE-native:native/ip/route
+
+বডি:
+{
+    "Cisco-IOS-XE-native:route": {
+        "ip-route-interface-forwarding-list": [
+            {
+                "prefix": "192.168.50.0",
+                "mask": "255.255.255.0",
+                "fwd-list": [
+                    {
+                        "fwd": "192.168.1.1"
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
+কি পারা গেছে?
