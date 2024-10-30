@@ -18,6 +18,38 @@
 Accept: application/yang-data+json
 Content-Type: application/yang-data+json
 ```
+<figure>
+  <img src="https://aiwithr.github.io/automation/covers/post3.png" width="720" />
+  <figcaption>আমার ভিএস কোডের একটা স্ক্রিনশট</figcaption>
+</figure>
+
+Accept এবং Content-Type হেডারের ব্যবহার খুবই গুরুত্বপূর্ণ। চলুন বিস্তারিত বুঝি:
+
+### Accept হেডার
+- এটি সার্ভারকে জানায় আমরা কি ফরম্যাটে ডেটা পেতে চাই
+- `application/yang-data+json` মানে আমরা JSON ফরম্যাটে YANG মডেল ডেটা চাইছি
+- যদি Accept হেডার না দেই, সার্ভার ডিফল্ট ফরম্যাটে (যেমন XML) ডেটা পাঠাতে পারে
+- এতে আমাদের পারসিং করা কঠিন হয়ে যেতে পারে
+
+উদাহরণ Accept হেডার ছাড়া রেসপন্স:
+```xml
+<native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+  <hostname>Router1</hostname>
+</native>
+```
+
+Accept হেডার সহ রেসপন্স:
+```json
+{
+    "Cisco-IOS-XE-native:hostname": "Router1"
+}
+```
+
+### Content-Type হেডার
+- এটি সার্ভারকে জানায় আমরা কি ফরম্যাটে ডেটা পাঠাচ্ছি
+- `application/yang-data+json` মানে আমরা JSON ফরম্যাটে YANG মডেল ডেটা পাঠাচ্ছি
+- যদি Content-Type ভুল হয়, সার্ভার আমাদের রিকোয়েস্ট বুঝতে পারবে না
+- এতে "415 Unsupported Media Type" এরর আসতে পারে
 
 ### হোস্টনেম চেক
 প্রথমে হোস্টনেম চেক করি:
@@ -51,8 +83,14 @@ PUT https://devnetsandboxiosxe.cisco.com:443/restconf/data/Cisco-IOS-XE-native:n
 }
 ```
 
-### লুপব্যাক ইন্টারফেস যোগ
-লুপব্যাক ইন্টারফেস যোগ করার জন্য:
+### লুপব্যাক ইন্টারফেস যোগ/ডিলিট
+লুপব্যাক ইন্টারফেস যোগ/ডিলিট করার জন্য:
+
+<figure>
+  <img src="https://aiwithr.github.io/automation/covers/post4.png" width="720" />
+  <figcaption>আমার ভিএস কোডের একটা স্ক্রিনশট</figcaption>
+</figure>
+
 ```
 PUT https://devnetsandboxiosxe.cisco.com:443/restconf/data/ietf-interfaces:interfaces
 
@@ -73,6 +111,8 @@ PUT https://devnetsandboxiosxe.cisco.com:443/restconf/data/ietf-interfaces:inter
     }
   }
 }
+
+অথবা: DELETE https://devnetsandboxiosxe.cisco.com:443/restconf/data/ietf-interfaces:interface=Loopback152
 ```
 
 ### রাউটিং কনফিগারেশন
@@ -88,6 +128,11 @@ GET https://devnetsandboxiosxe.cisco.com:443/restconf/data/Cisco-IOS-XE-native:n
 
 ### স্ট্যাটিক রাউট যোগ করা
 এখন আমরা একটা ডিফল্ট রাউট যোগ করব। এটা হবে 0.0.0.0/0 যা সব ট্র্যাফিক নেক্সট-হপ আইপি এর দিকে পাঠাবে:
+
+<figure>
+  <img src="https://aiwithr.github.io/automation/covers/post2.1.png" width="720" />
+  <figcaption>আমার ভিএস কোডের একটা স্ক্রিনশট</figcaption>
+</figure>
 
 ```
 PUT https://devnetsandboxiosxe.cisco.com:443/restconf/data/Cisco-IOS-XE-native:native/ip/route
@@ -139,4 +184,6 @@ GET https://devnetsandboxiosxe.cisco.com:443/restconf/data/Cisco-IOS-XE-native:n
 3. নেক্সট-হপ ping করে দেখুন
 4. ইন্টারফেস স্ট্যাটাস চেক করুন
 
-কি পারা গেছে?
+এভাবে ধাপে ধাপে টেস্ট করলে নেটওয়ার্ক অটোমেশন অনেক সহজ হয়ে যায়। প্রথমে ছোট ছোট চেঞ্জ দিয়ে শুরু করুন, তারপর বড় বড় কনফিগারেশন করুন।
+
+কি পারা যাবে?
