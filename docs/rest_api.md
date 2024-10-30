@@ -45,94 +45,28 @@ Request নামঃ Change-Hostname
 
 আজকে আমরা সিসকো স্যান্ডবক্স দিয়ে VLAN এবং রাউটিং কনফিগারেশন শিখব। একই ক্রেডেনশিয়াল ব্যবহার করব:
 
-### ১. VLAN কনফিগারেশন
+### Interface অ্যাড করছি 
 
-VLAN দেখা:
-```
-মেথড: GET
-URL: https://devnetsandboxiosxe.cisco.com:443/restconf/data/Cisco-IOS-XE-native:native/vlan
-
-হেডার:
-Accept: application/yang-data+json
-Content-Type: application/yang-data+json
-```
-
-নতুন VLAN যোগ করা:
-```
-মেথড: PUT
-URL: https://devnetsandboxiosxe.cisco.com:443/restconf/data/Cisco-IOS-XE-native:native/vlan
+PUT মেথড: https://devnetsandboxiosxe.cisco.com:443/restconf/data/ietf-interfaces:interfaces
 
 বডি:
 {
-    "Cisco-IOS-XE-native:vlan": {
-        "vlan-list": [
-            {
-                "id": 100,
-                "name": "IT_DEPT"
-            },
-            {
-                "id": 200,
-                "name": "SALES_DEPT"
-            }
-        ]
-    }
-}
-```
-
-## ২. রাউটিং কনফিগারেশন
-
-OSPF স্ট্যাটাস চেক:
-```
-মেথড: GET
-URL: https://devnetsandboxiosxe.cisco.com:443/restconf/data/Cisco-IOS-XE-native:native/router/ospf
-
-হেডার:
-Accept: application/yang-data+json
-Content-Type: application/yang-data+json
-```
-
-OSPF কনফিগার করা:
-```
-মেথড: PUT
-URL: https://devnetsandboxiosxe.cisco.com:443/restconf/data/Cisco-IOS-XE-native:native/router/ospf
-
-বডি:
-{
-    "Cisco-IOS-XE-native:ospf": {
-        "id": 1,
-        "router-id": "1.1.1.1",
-        "network": [
-            {
-                "ip": "192.168.1.0",
-                "wildcard": "0.0.0.255",
-                "area": 0
-            }
-        ]
-    }
-}
-```
-
-৩. ইন্টারফেস VLAN কনফিগারেশন
-
-```
-মেথড: PUT
-URL: https://devnetsandboxiosxe.cisco.com:443/restconf/data/Cisco-IOS-XE-native:native/interface/Vlan
-
-বডি:
-{
-    "Cisco-IOS-XE-native:Vlan": {
-        "name": 100,
-        "ip": {
-            "address": {
-                "primary": {
-                    "address": "192.168.100.1",
-                    "mask": "255.255.255.0"
-                }
-            }
+  "ietf-interfaces:interface": {
+    "name": "Loopback152",
+    "description": "Link3 loopback interface",
+    "type": "iana-if-type:softwareLoopback",
+    "enabled": true,
+    "ietf-ip:ipv4": {
+      "address": [
+        {
+          "ip": "10.1.11.8",
+          "netmask": "255.255.255.0"
         }
+      ]
     }
+  }
 }
-```
+
 
 !!! tip "মনে রাখবেন"
     - প্রতিটা রিকোয়েস্টে Basic Auth ব্যবহার করতে হবে
@@ -162,11 +96,16 @@ URL: https://devnetsandboxiosxe.cisco.com:443/restconf/data/Cisco-IOS-XE-native:
     "Cisco-IOS-XE-native:route": {
         "ip-route-interface-forwarding-list": [
             {
-                "prefix": "192.168.50.0",
-                "mask": "255.255.255.0",
+                "prefix": "0.0.0.0",
+                "mask": "0.0.0.0",
                 "fwd-list": [
                     {
-                        "fwd": "192.168.1.1"
+                        "fwd": "GigabitEthernet1",
+                        "interface-next-hop": [
+                            {
+                                "ip-address": "10.10.40.254"
+                            }
+                        ]
                     }
                 ]
             }
