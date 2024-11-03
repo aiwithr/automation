@@ -48,54 +48,54 @@ net_connect.disconnect()
 
 ### ৩. ব্যাপারটা বুঝতে চাই:
 
-1. **লাইব্রেরি ইমপোর্ট করা**:
-   আমরা Netmiko লাইব্রেরি থেকে `ConnectHandler` ইমপোর্ট করেছি।
+    1. **লাইব্রেরি ইমপোর্ট করা**:
+    আমরা Netmiko লাইব্রেরি থেকে `ConnectHandler` ইমপোর্ট করেছি।
 
-   ```python
-   from netmiko import ConnectHandler
-   ```
+    ```python
+    from netmiko import ConnectHandler
+    ```
 
-2. **ডিভাইসের বিবরণ নির্ধারণ করা**:
-   একটা ডিকশনারি (dictionary) এর মাধ্যমে ডিভাইসের প্রয়োজনীয় ডাটা (যেমন: ডিভাইস টাইপ, IP অ্যাড্রেস, ইউজারনেম, পাসওয়ার্ড) নির্ধারণ করা হয়েছে।
+    2. **ডিভাইসের বিবরণ নির্ধারণ করা**:
+    একটা ডিকশনারি (dictionary) এর মাধ্যমে ডিভাইসের প্রয়োজনীয় ডাটা (যেমন: ডিভাইস টাইপ, IP অ্যাড্রেস, ইউজারনেম, পাসওয়ার্ড) নির্ধারণ করা হয়েছে।
 
-   ```python
-   device = {
-       'device_type': 'cisco_ios',
-       'host': '192.168.1.1',
-       'username': 'admin',
-       'password': 'password',
-       'secret': 'secret',
-   }
-   ```
+    ```python
+    device = {
+        'device_type': 'cisco_ios',
+        'host': '192.168.1.1',
+        'username': 'admin',
+        'password': 'password',
+        'secret': 'secret',
+    }
+    ```
 
-3. **ডিভাইসে সংযোগ স্থাপন করা**:
-   `ConnectHandler` ব্যবহার করে ডিভাইসে সংযোগ স্থাপন করা হয়েছে। আমরা net_connect = ConnectHandler(**device) মানে ডিভাইসে সংযোগ এবং কমান্ড চালানোর আগে এসএসএইচ কনফিগার করে নিতে হবে।
+    3. **ডিভাইসে সংযোগ স্থাপন করা**:
+    `ConnectHandler` ব্যবহার করে ডিভাইসে সংযোগ স্থাপন করা হয়েছে। আমরা net_connect = ConnectHandler(**device) মানে ডিভাইসে সংযোগ এবং কমান্ড চালানোর আগে এসএসএইচ কনফিগার করে নিতে হবে।
 
-   ```python
-   net_connect = ConnectHandler(**device)
-   ```
+    ```python
+    net_connect = ConnectHandler(**device)
+    ```
 
-4. **Enable মোডে স্যুইচ করা**:
-   যদি ডিভাইসটি enable পাসওয়ার্ড চায়, তবে enable মোডে স্যুইচ করা হয়েছে।
+    4. **Enable মোডে স্যুইচ করা**:
+    যদি ডিভাইসটি enable পাসওয়ার্ড চায়, তবে enable মোডে স্যুইচ করা হয়েছে।
 
-   ```python
-   net_connect.enable()
-   ```
+    ```python
+    net_connect.enable()
+    ```
 
-5. **কমান্ড চালানো**:
-   `send_command` মেথড ব্যবহার করে `show ip interface brief` কমান্ডটি চালানো হয়েছে এবং এর আউটপুট প্রিন্ট করা হয়েছে।
+    5. **কমান্ড চালানো**:
+    `send_command` মেথড ব্যবহার করে `show ip interface brief` কমান্ডটি চালানো হয়েছে এবং এর আউটপুট প্রিন্ট করা হয়েছে।
 
-   ```python
-   output = net_connect.send_command('show ip interface brief')
-   print(output)
-   ```
+    ```python
+    output = net_connect.send_command('show ip interface brief')
+    print(output)
+    ```
 
-6. **সংযোগ বন্ধ করা**:
-   কাজ শেষ হলে সংযোগ বন্ধ করা হয়েছে।
+    6. **সংযোগ বন্ধ করা**:
+    কাজ শেষ হলে সংযোগ বন্ধ করা হয়েছে।
 
-   ```python
-   net_connect.disconnect()
-   ```
+    ```python
+    net_connect.disconnect()
+    ```
 
 ### SSH কী ফাইল ব্যবহার করা:
 আপনি যদি SSH কী ফাইল ব্যবহার করতে চান, তাহলে `ssh_config_file` অপশন ব্যবহার করতে পারেন।
@@ -122,7 +122,7 @@ Netmiko ছাড়াও পাইথনে নেটওয়ার্ক অ
 
 পাইথনের এই লাইব্রেরিগুলো ব্যবহার করে আপনি সহজেই নেটওয়ার্ক ডিভাইসের সাথে ইন্টারঅ্যাক্ট করতে পারবেন এবং বিভিন্ন কাজ স্বয়ংক্রিয়ভাবে সম্পন্ন করতে পারবেন।
 
-#### ২. API ব্যবহার করে ডাটা সংগ্রহ
+#### API ব্যবহার করে ডাটা সংগ্রহ
 
 আমরা সহজ ভাষায় বুঝতে চেষ্টা করব কিভাবে Python ব্যবহার করে নেটওয়ার্ক ডিভাইসের সাথে যোগাযোগ করা যায়। এখানে, আমরা API ব্যবহার করে একটা ডিভাইসের কিছু ডাটা সংগ্রহ করব।
 
