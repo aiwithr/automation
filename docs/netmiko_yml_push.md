@@ -124,7 +124,7 @@ for host in hosts["hosts"]:
     net_connect.disconnect()
 ```
 
-এই অংশে প্রতিটি রাউটারে লগ ইন করে কনফিগারেশন পাঠানো হচ্ছে:
+#### এই অংশে প্রতিটি রাউটারে লগ ইন করে কনফিগারেশন পাঠানো হচ্ছে:
     - `for host in hosts["hosts"]`: প্রতিটি রাউটারের ডাটার জন্য লুপ চালানো হচ্ছে।
     - `net_connect = Netmiko(...)`: `Netmiko` ব্যবহার করে রাউটারে লগ ইন করা হচ্ছে।
     - `print(f"Logged into {host['name']} successfully")`: সফল লগ ইন হলে মেসেজ প্রিন্ট করা হচ্ছে।
