@@ -187,6 +187,7 @@ PASS = 'C1sco12345'
 uri = 'https://devnetsandboxiosxe.cisco.com:443/restconf/data/Cisco-IOS-XE-native:native/hostname'
 ```
 এই লাইনে বলে দিচ্ছি:
+
 - কোন ডিভাইসে যাব (`devnetsandboxiosxe.cisco.com`)
 - কোন পোর্টে যাব (`443`)
 - কী ডাটা চাই (`hostname`)
@@ -208,6 +209,7 @@ response = requests.get(
     verify=False)
 ```
 এখানে:
+
 - `get` মেথড ব্যবহার করছি (ডাটা দেখার জন্য)
 - URL, হেডার দিয়েছি
 - ইউজারনেম-পাসওয়ার্ড দিয়েছি
@@ -235,6 +237,7 @@ API থেকে যে JSON ডাটা আসবে সেটা প্রি
 ## সাধারণ সমস্যা ও সমাধান:
 
 1. **SSL সার্টিফিকেট এরর**:
+   
 ```python
 # এজন্যই আমরা শুরুতে লিখেছি:
 requests.packages.urllib3.disable_warnings()
@@ -242,14 +245,17 @@ requests.packages.urllib3.disable_warnings()
 ```
 
 2. **অথেনটিকেশন এরর**:
+   
 - ইউজারনেম-পাসওয়ার্ড ঠিক আছে কি না
 - ডিভাইসে REST API এনাবল আছে কি না
 
 3. **URI এরর**:
+
 - পোর্ট নম্বর ঠিক আছে কি না (443 বা 8443)
 - পাথ ঠিক আছে কি না
 
-!!! tip "টিপস"
+!!! list "টিপস"
     আপনি যখন CLI কমান্ড বুঝতে পারেন, তখন API বোঝাও সহজ। শুধু মনে রাখবেন:
+
     - CLI = মানুষের সাথে কথা বলা
     - API = প্রোগ্রামের সাথে কথা বলা
