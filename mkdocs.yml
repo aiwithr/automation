@@ -173,7 +173,7 @@ markdown_extensions:
    
 # বইয়ের গাছপালা
 nav:
-  - কেন নেটওয়ার্ক অটোমেশন?: index.md
+  - নেটওয়ার্ক এবং আইএসপি অটোমেশন: index.md
   - পেছনের দর্শন:
     - অটোমেশন নিয়ে গল্প: whyautomation.md
 #    - প্রজেক্ট অটোমেশন: p_automation.md
