@@ -71,7 +71,7 @@ interface {{ port_name }}
 ```python
 from jinja2 import Template
 
-# প্রিন্টারের তথ্য
+# প্রিন্টারের ডাটা
 printer_info = {
     "port_name": "GigabitEthernet1/0/1",
     "location": "Reception Desk",
