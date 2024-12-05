@@ -1,4 +1,4 @@
-site_name: 'রোড টু হাইটেক ইন্ডাস্ট্রি: নেটওয়ার্ক/আইএসপি অটোমেশন'
+site_name: 'রোড টু হাইটেক ইন্ডাস্ট্রি'
 theme:
   name: material
   language: bn
@@ -7,9 +7,7 @@ theme:
 site_url: https://aiwithr.github.io/automation/
 site_author: রকিবুল হাসান
 site_description: >-
-  রোড টু হাইটেক ইন্ডাস্ট্রি:
-  নেটওয়ার্ক/আইএসপি অটোমেশন
-
+  নেটওয়ার্ক এবং আইএসপি অটোমেশন
 # Repository
 repo_name: raqueeb/mltraining
 repo_url: https://github.com/raqueeb/mltraining/
