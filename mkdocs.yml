@@ -211,7 +211,7 @@ nav:
     - ইয়াং ডাটা মডেলিং ল্যাঙ্গুয়েজ: yang.md
     - রেস্ট এপিআই কনফিগারেশন (restconf): restconf.md
     - নেটওয়ার্ক কনফিগারেশন (netconf): netconf.md
-    - ইয়াং স্যুটের ব্যবহার: yangsuite.md
+    - ইয়াংস্যুটের ব্যবহার: yangsuite.md
     - ইয়াং মডেলে রেস্টকন্ফ: restconf_yang.md
   - আমাদের কিছু 'ইউজড' কেস:
 #    - কৃত্রিম বুদ্ধিমত্তা এবং নেটওয়ার্ক ম্যানেজমেন্ট: software-is-eating-world.md
