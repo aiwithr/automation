@@ -203,7 +203,7 @@ response = requests.post(https://203.11.91.21/rest/ip/address',
    ```python
    print(json.dumps(response.json(), indent=4))
    ```
-   এটি API থেকে প্রাপ্ত JSON ডেটা সুন্দরভাবে (ইনডেন্ট করে) ফরম্যাট করে প্রিন্ট করে।
+   এটি API থেকে পাওয়া JSON ডেটা সুন্দরভাবে (ইনডেন্ট করে) ফরম্যাট করে প্রিন্ট করে।
 
    ```python
         ".id": "*2",

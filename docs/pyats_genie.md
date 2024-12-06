@@ -362,7 +362,7 @@ def monitor_bgp_peers(device):
             print(f"Received Prefixes: {details['bgp_negotiated_capabilities']['bgp_received_prefixes']}")
     ```
     - `bgp_neighbors` এর প্রতিটি নেবার লুপ করে পার্স করা হয়।
-    - যদি `session_state` 'Established' না হয়, তাহলে একটি বার্তা প্রিন্ট করা হয় যা নেবার, তার স্থিতি এবং প্রাপ্ত প্রিফিক্স দেখায়।
+    - যদি `session_state` 'Established' না হয়, তাহলে একটি বার্তা প্রিন্ট করা হয় যা নেবার, তার স্থিতি এবং পাওয়া প্রিফিক্স দেখায়।
 
 #### 4. অ্যালার্ম এবং রিপোর্টিং (bgp_alert_check)
 
