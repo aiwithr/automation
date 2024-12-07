@@ -9,11 +9,11 @@
 
 এই বইটার পাশাপাশি নিচের রিসোর্সগুলো দেখতে পারেন। গুগল করুন নিচের কীওয়ার্ডগুলো।
 
-১. Cisco DevNet Certifications (আমার পছন্দের সাইট, হাজারো জিনিস এখানে।)
+১. Cisco DevNet Certifications (আমার পছন্দের সাইট, হাজারো জিনিস আছে এখানে। হারিয়ে যেতে পারেন। সেকারণে এই বইটা।)
 ২. Coursera DevOps for Network Automation (NetDevOps) (সিসকো লার্নিং এন্ড সার্টিফিকেশন থেকে এসেছে, বেসিক এর জন্য অসাধারণ লার্নিং প্ল্যাটফর্ম!)
-৩. Automating and Orchestrating Networks with NetDevOps বইটা চমত্কার।
+৩. Automating and Orchestrating Networks with NetDevOps বইটা চমত্কার। তবে, শুরুটা সমস্যা মনে হতে পারে।
 ৪. Network Programmability and Automation: Skills for the Next-Generation Network Engineer, একটা অসাধারণ বই - একটু ভেতরে ঢোকার জন্য একটা ভালো রিসোর্স। তবে, অনেক অনেক মোটা। ৮২৫ পৃষ্ঠা। ৫০ ডলারের বই। সমস্যা হচ্ছে, বাংলাদেশে মোটা বই লেখা যায় না।
 5. Network Automation Cookbook | Cloud & Networking বইটা ক্লাউড কাভার করেছে।
-6. Mastering Python Networking - সব আছে এর মধ্যে। দেখতে পারেন।
-7. Python for Security and Networking, একদম সময়োপযোগী বই। 
+6. Mastering Python Networking - সব আছে এর মধ্যে। দেখতে পারেন। প্রোগ্রামেটিক্যালি।
+7. Python for Security and Networking, একদম সময়োপযোগী বই। সিকিউরিটি ভবিষ্যত।
 ৮. Python Learning for Network Engineers Automation Masterclass, একটা অসাধারণ ইউডেমি কোর্স। আমাদের সাথে যায়। ভারতীয় ইঞ্জিনিয়ারের।
