@@ -17,3 +17,8 @@
 6. Mastering Python Networking - সব আছে এর মধ্যে। দেখতে পারেন। প্রোগ্রামেটিক্যালি।
 7. Python for Security and Networking, একদম সময়োপযোগী বই। সিকিউরিটি ভবিষ্যত।
 ৮. Python Learning for Network Engineers Automation Masterclass, একটা অসাধারণ ইউডেমি কোর্স। আমাদের সাথে যায়। ভারতীয় ইঞ্জিনিয়ারের।
+
+<figure>
+  <img src="https://aiwithr.github.io/automation/covers/testone.jpg" width="720" />
+  <figcaption>নেটওয়ার্ক অটোমেশন নিয়ে কিছু বই</figcaption>
+</figure>
