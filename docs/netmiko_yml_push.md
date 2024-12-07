@@ -102,16 +102,17 @@ env = Environment(loader=FileSystemLoader('.'), trim_blocks=True, autoescape=Tru
 template = env.get_template('interfaces_config_template.j2')
 interface_config = template.render(data=interfaces)
 ```
-পরের ব্লক;
+এর মানে হচ্ছে;
 
 এই অংশে Jinja2 টেমপ্লেট থেকে কনফিগারেশন তৈরি করা হচ্ছে:
+```
     - `env = Environment(loader=FileSystemLoader('.'), trim_blocks=True, autoescape=True)`: 
     Jinja2 এনভায়রনমেন্ট সেট-আপ করা হচ্ছে, যেখানে বর্তমান ডিরেক্টরি থেকে টেমপ্লেট লোড করা হচ্ছে।
 
     - `template = env.get_template('interfaces_config_template.j2')`: `interfaces_config_template.j2` নামে একটি টেমপ্লেট লোড করা হচ্ছে।
 
     - `interface_config = template.render(data=interfaces)`: `interfaces.yml` থেকে পড়া ডাটা ব্যবহার করে টেমপ্লেট রেন্ডার করা হচ্ছে, যা থেকে কনফিগারেশন তৈরি হচ্ছে।
-
+```
 পরের ব্লক,
 
 ```python
@@ -125,13 +126,14 @@ for host in hosts["hosts"]:
 ```
 
 #### এই অংশে প্রতিটি রাউটারে লগ ইন করে কনফিগারেশন পাঠানো হচ্ছে:
+```
     - `for host in hosts["hosts"]`: প্রতিটি রাউটারের ডাটার জন্য লুপ চালানো হচ্ছে।
     - `net_connect = Netmiko(...)`: `Netmiko` ব্যবহার করে রাউটারে লগ ইন করা হচ্ছে।
     - `print(f"Logged into {host['name']} successfully")`: সফল লগ ইন হলে মেসেজ প্রিন্ট করা হচ্ছে।
     - `output = net_connect.send_config_set(interface_config.split("\n"))`: রেন্ডার করা কনফিগারেশনটি রাউটারে পাঠানো হচ্ছে।
     - `print(f"Pushed config into {host['name']} successfully")`: কনফিগারেশন সফলভাবে পাঠানো হলে মেসেজ প্রিন্ট করা হচ্ছে।
     - `net_connect.disconnect()`: রাউটারের সাথে সংযোগ বিচ্ছিন্ন করা হচ্ছে।
-
+```
 ```python
 print("Done!")
 ```
