@@ -8,93 +8,146 @@
 
 আপনার এক বন্ধু আছে উজ্জল। সে একটা বড় টেলিকম কোম্পানিতে নেটওয়ার্ক স্পেশালিস্ট। একদিন অফিসে যাবার পর তার বস বলল, "উজ্জল, আমাদের কাস্টমারের ৫০০টা রাউটারে নতুন কনফিগারেশন দিতে হবে। কাল সকালের মধ্যে চাই।"
 
-উজ্জল প্রথমে একটু ঘাবড়ে গেল। মনে মনে হিসাব করল:
-
 - প্রতি রাউটারে ১০ মিনিট
 - ৫০০টা রাউটার
 - মোট লাগবে ৮৩ ঘণ্টা!
 
 কিন্তু উজ্জল হাল ছাড়ল না। সে একটা চমৎকার সমাধান বের করল।
 
-আমাদের লাগবে তিনটে জিনিস:
+### প্রজেক্ট স্ট্রাকচার 
 
-১. **একটা লিস্ট** (ইয়ামল ফাইল):
+এবার আমাদের ফাইলগুলো সুন্দর করে সাজিয়ে রাখি;
+```
+network_automation/
+│
+├── configs/               # কনফিগারেশন ফাইল
+│   ├── routers.yml
+│   └── interfaces.yml
+│
+├── templates/            # টেমপ্লেট ফাইল
+│   └── loopback.j2
+│
+├── scripts/             # পাইথন স্ক্রিপ্ট
+│   └── deploy.py
+│
+└── logs/               # লগ ফাইল (পৃষ্টার লিমিটেশনের জন্য দেখাইনি)
+    └── automation.log
+```    
+
+উজ্জল তার কাজটাকে তিনটা সহজ ধাপে ভাগ করল:
+
+### ১. ডাটা সাজানো (routers.yml)
+
+প্রথমে সব রাউটারের তথ্য একটা ফাইলে সাজিয়ে রাখল:
 
 ```yaml
-# routers.yml - আমাদের রাউটার তালিকা
-devices:
+routers:
   - name: dhaka_router_1
     ip: 192.168.1.1
-    location: Dhaka
-    
+    username: admin
+    password: secure123
+    type: cisco_ios
+
   - name: ctg_router_1
     ip: 192.168.1.2
-    location: Chittagong
+    username: admin
+    password: secure123
+    type: cisco_ios
 ```
 
-২. **একটা কাজের ছক** (জিনজা টেমপ্লেট):
+আরেকটা ফাইলে (interfaces.yml) রাখল কী কী সেটিং দিতে হবে:
+
+```yaml
+interfaces:
+  loopback:
+    number: 0
+    description: Management Interface
+    ip: 10.0.0.1
+    mask: 255.255.255.0
+```
+
+### ২. কমান্ডের ছক (loopback.j2)
+
+এরপর একটা টেম্পলেট বানাল যেখানে লিখে রাখল কীভাবে কমান্ড দিতে হবে:
 
 ```jinja2
-# কনফিগারেশন টেমপ্লেট
-interface {{ device.name }}
-  description Connected to {{ device.location }} Office
-  ip address {{ device.ip }} 255.255.255.0
-  no shutdown
+interface Loopback{{ interface.number }}
+ description {{ interface.description }}
+ ip address {{ interface.ip }} {{ interface.mask }}
+ no shutdown
 ```
 
-৩. **একজন স্মার্ট কর্মী** (পাইথন স্ক্রিপ্ট):
+### ৩. অটোমেশন স্ক্রিপ্ট
+
+সবশেষে, একটা পাইথন স্ক্রিপ্ট লিখল যা সব কাজ নিজে নিজে করে ফেলবে:
+
 ```python
-# নেটওয়ার্ক অটোমেশন স্ক্রিপ্ট
 import yaml
-from jinja2 import Template
+from jinja2 import Environment, FileSystemLoader
 from netmiko import ConnectHandler
 
-def configure_routers():
-    # লিস্ট পড়া, প্রতিটা রাউটার ধরা
+def main():
+    # রাউটার এবং ইন্টারফেসের ডাটা পড়া
     with open('routers.yml') as f:
         routers = yaml.safe_load(f)
+    with open('interfaces.yml') as f:
+        interfaces = yaml.safe_load(f)
     
-    # প্রতি রাউটারে কাজ করা
-    for router in routers['devices']:
-        print(f"কাজ শুরু করছি {router['name']} এ...")
+    # কনফিগারেশন তৈরি করা
+    env = Environment(loader=FileSystemLoader('.'))
+    template = env.get_template('loopback.j2')
+    config = template.render(interface=interfaces['loopback'])
+    
+    # প্রতিটি রাউটারে কাজ করা
+    for router in routers['routers']:
+        print(f"\n{router['name']} এ কাজ শুরু করছি...")
         
-        # রাউটারে লগইন করা
-        connection = ConnectHandler(
-            device_type='cisco_ios',
-            ip=router['ip'],
-            username='admin',
-            password='secret'
-        )
-        
-        # কনফিগারেশন পাঠানো, কনফিগারেশন পুশ করে দেয়া
-        connection.send_config_set([
-            f"interface {router['name']}",
-            f"description {router['location']} Office",
-            f"ip address {router['ip']} 255.255.255.0",
-            "no shutdown"
-        ])
-        
-        print(f"{router['name']} এ কাজ শেষ!")
+        try:
+            # রাউটারে লগইন
+            connection = ConnectHandler(**router)
+            
+            # কনফিগারেশন পাঠানো
+            output = connection.send_config_set(config.split('\n'))
+            print(f"{router['name']} এ কাজ সফল হয়েছে!")
+            
+            # কানেকশন বন্ধ
+            connection.disconnect()
+            
+        except Exception as e:
+            print(f"{router['name']} এ সমস্যা: {str(e)}")
+
+if __name__ == "__main__":
+    main()
+    print("\nসব রাউটারে কাজ শেষ!")
 ```
 
-### কী কী সুবিধা পাওয়া যায়?
+!!! tips "ইচ্ছেকৃত ভুল"
+    কাজটা করতে গিয়ে ছোট একটা ভুল করে রেখেছি, কাজ করলেই বুঝতে পারবেন। তবে, সেটা গিটহাবে দেয়া আছে।
 
-১. **সময় বাঁচে**: 
-- হাতে করলে: ৮৩ ঘণ্টা
-- অটোমেশনে: ১৫ মিনিট!
+## কীভাবে কাজ করে?
 
-২. **ভুল হয় না**:
-- মানুষ ক্লান্ত হয়ে ভুল করে
-- কম্পিউটার কখনো ক্লান্ত হয় না
+এই স্ক্রিপ্ট কাজ করে একদম রান্নার রেসিপির মত:
 
-৩. **পরে কাজে লাগে**:
-- একবার স্ক্রিপ্ট লিখলে বারবার ব্যবহার করা যায়
-- যেকোনো সময় যেকোনো রাউটারে চালানো যায়
+1. প্রথমে উপকরণ জোগাড় করে (YAML ফাইল থেকে তথ্য পড়ে)
+2. তারপর রেসিপি দেখে (Jinja2 টেমপ্লেট ব্যবহার করে)
+3. শেষে রান্না করে (প্রতি রাউটারে কনফিগারেশন পাঠায়)
 
-মনে রাখবেন, এটা কোন জাদু নয়। এটা অনেকটা রান্নার রেসিপির মত:
+## সুবিধাগুলো
 
-- উপকরণ লাগে (ইয়ামল ফাইল)
-- রান্নার পদ্ধতি লাগে (জিনজা টেমপ্লেট)
-- রাঁধুনি লাগে (পাইথন স্ক্রিপ্ট)
+এই পদ্ধতি ব্যবহার করে উজ্জল অনেক সুবিধা পেল:
 
-শুরুতে একটু টাইম দিতে হবে শেখার জন্য। কিন্তু একবার শিখে ফেললে আপনার কাজ অনেক সহজ হয়ে যাবে। আর মনে রাখবেন, প্রোগ্রামিং না জানলেও অটোমেশন করা যায় - শুধু ইয়ামল ফাইল এডিট করে!
+1. **সময় বাঁচল**: ৮৩ ঘণ্টার কাজ ১৫ মিনিটে শেষ
+2. **ভুল কমল**: কম্পিউটার কখনো ক্লান্ত হয় না, তাই একই ভুল বার বার করে না
+3. **সহজে পরিবর্তন করা যায়**: শুধু YAML ফাইল বদলে দিলেই হয়
+4. **সব কিছু ট্র্যাক করা যায়**: কোথায় কী হচ্ছে সব জানা যায়
+
+## শিক্ষণীয়
+
+উজ্জলের এই গল্প থেকে আমরা কয়েকটা জিনিস শিখতে পারি:
+
+1. বড় কাজকে ছোট ছোট ভাগে ভাগ করুন
+2. ডাটা এবং কমান্ড আলাদা রাখুন
+3. অটোমেশন ব্যবহার করুন
+4. সময় বাঁচান, ভুল কমান
+
+এখন আপনিও চাইলে এই পদ্ধতি ব্যবহার করে আপনার নেটওয়ার্কের কাজগুলো অটোমেট করতে পারেন। শুরুতে একটু সময় লাগবে শিখতে, কিন্তু একবার শিখে ফেললে জীবন অনেক সহজ হয়ে যাবে!
