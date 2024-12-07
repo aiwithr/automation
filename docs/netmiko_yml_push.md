@@ -77,34 +77,60 @@ interface Loopback{{ interface.number }}
 
 এবার মূল স্ক্রিপ্ট (deploy.py):
 
+আমি প্রতিটি লাইন ধরে ধরে ব্যাখ্যা করছি; 
+
 ```python
-import yaml
-from jinja2 import Environment, FileSystemLoader
-from netmiko import ConnectHandler
+# প্রথমে আমাদের প্রয়োজনীয় লাইব্রেরি ইমপোর্ট করছি
+import yaml                                    # YAML ফাইল পড়ার জন্য
+from jinja2 import Environment, FileSystemLoader    # টেমপ্লেট ব্যবহারের জন্য
+from netmiko import ConnectHandler            # রাউটারে কানেক্ট করার জন্য
 
 def main():
-    # রাউটার এবং কনফিগ ডাটা লোড করি
+    # প্রথম ধাপ: YAML ফাইল থেকে তথ্য পড়া
+    # 'configs/routers.yml' থেকে রাউটারের তথ্য পড়ছি
     with open('configs/routers.yml') as f:
-        routers = yaml.safe_load(f)
-    with open('configS/interfaces.yml') as f:
-        configs = yaml.safe_load(f)
+        routers = yaml.safe_load(f)           # YAML ফাইল পাইথন ডিকশনারিতে কনভার্ট করছি
     
-    # টেমপ্লেট থেকে কমান্ড তৈরি করি
+    # 'configs/interfaces.yml' থেকে ইন্টারফেস কনফিগারেশন পড়ছি
+    with open('configs/interfaces.yml') as f:
+        configs = yaml.safe_load(f)           # এটাও পাইথন ডিকশনারিতে কনভার্ট হচ্ছে
+    
+    # দ্বিতীয় ধাপ: জিনজা টেমপ্লেট সেটআপ
+    # 'templates' ফোল্ডার থেকে টেমপ্লেট লোড করার জন্য এনভায়রনমেন্ট তৈরি
     env = Environment(loader=FileSystemLoader('templates'))
+    
+    # 'template.j2' ফাইল লোড করছি
     template = env.get_template('template.j2')
+    
+    # টেমপ্লেটে ভ্যারিয়েবল বসিয়ে কনফিগারেশন তৈরি করছি
     config = template.render(interface=configs['interfaces']['loopback'])
     
-    # প্রতি রাউটারে কনফিগ পাঠাই
-    for router in routers['routers']:
-        print(f"\n{router['name']} এ কাজ শুরু...")
-        connection = ConnectHandler(**router)
+    # তৃতীয় ধাপ: প্রতিটি রাউটারে কাজ করা
+    for router in routers['routers']:         # প্রতিটি রাউটার একে একে নিচ্ছি
+        print(f"\n{router['name']} এ কাজ শুরু...")  # স্টাটাস মেসেজ
+        
+        # নেটমিকো দিয়ে রাউটারে কানেক্ট করছি
+        connection = ConnectHandler(**router)  # router ডিকশনারি থেকে সব প্যারামিটার পাঠাচ্ছি
+        
+        # কনফিগারেশন পাঠাচ্ছি - আগে newline দিয়ে ভাগ করে নিলাম
         output = connection.send_config_set(config.split('\n'))
-        print(f"{router['name']} এ কাজ শেষ!")
-        connection.disconnect()
+        
+        print(f"{router['name']} এ কাজ শেষ!")  # সফল হওয়ার মেসেজ
+        
+        connection.disconnect()                # কানেকশন বন্ধ করে দিচ্ছি
 
+# স্ক্রিপ্ট সরাসরি রান করা হলে main() ফাংশন কল করা
 if __name__ == "__main__":
     main()
 ```
+
+এই স্ক্রিপ্ট তিনটি মূল ধাপে কাজ করছে:
+
+১. **ডাটা লোডিং**: YAML ফাইল থেকে রাউটার এবং কনফিগারেশনের তথ্য পড়ছে। এটা করার জন্য PyYAML লাইব্রেরি ব্যবহার করছে।
+
+২. **টেমপ্লেট প্রসেসিং**: Jinja2 টেমপ্লেট এনজিন ব্যবহার করে টেমপ্লেট ফাইল থেকে বাস্তব কনফিগারেশন কমান্ড তৈরি করছে।
+
+৩. **কনফিগারেশন ডেপ্লয়মেন্ট**: Netmiko ব্যবহার করে প্রতিটি রাউটারে SSH কানেকশন করে কনফিগারেশন পাঠাচ্ছে।
 
 ## শেষ ধাপ: স্ক্রিপ্ট চালানো
 
