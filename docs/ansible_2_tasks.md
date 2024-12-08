@@ -18,7 +18,8 @@ mikrokik ansible_host=192.168.3.1
 mikrokik2 ansible_host=192.168.4.1
 ```
 
-এখানে `routers` গ্রুপে দুটি রাউটার রয়েছে এবং `switches` গ্রুপে দুটি সুইচ রয়েছে। প্রতিটি ডিভাইসের আইপি এড্রেস (যেটা তাদের নেটওয়ার্কের মাধ্যমে অ্যাক্সেস করা যায়) উল্লেখ করা হয়েছে।
+[mikrokiks]
+এখানে `routers` গ্রুপে দুটি রাউটার, `switches` গ্রুপে দুটি সুইচ এবং `mikrokiks` গ্রুপে দুটো মাইক্রোটিক রয়েছে। প্রতিটি ডিভাইসের আইপি এড্রেস (যেটা তাদের নেটওয়ার্কের মাধ্যমে অ্যাক্সেস করা যায়) উল্লেখ করা হয়েছে।
 
 ### স্টেপ ২: প্লেবুক তৈরি
 
@@ -49,6 +50,20 @@ mikrokik2 ansible_host=192.168.4.1
 
     - name: সুইচ কনফিগারেশন প্রয়োগ করা
       command: /usr/bin/switch_apply_config /etc/switch_config.cfg
+
+- name: মাইক্রোটিক কনফিগার করা
+  hosts: mikrokiks
+  gather_facts: no
+  tasks:
+    - name: নিশ্চিত করা যে মাইক্রোটিক কনফিগারেশন ফাইল আছে
+      copy:
+        src: configs/mikrokik_config.cfg
+        dest: /etc/mikrokik_config.cfg
+
+    - name: সুইচ কনফিগারেশন প্রয়োগ করা
+      command: /usr/bin/mikrokik_apply_config /etc/mikrokik_config.cfg
+
+
 ```
 
 উদাহরণ অনুযায়ী নিচে কিছু কনফিগারেশন ফাইল যোগ করা হলো। এখানে আমরা রাউটার এবং সুইচের বিভিন্ন সেটিংস কনফিগার করব।
@@ -144,6 +159,12 @@ spanning-tree vlan 20 priority 8192
 spanning-tree vlan 30 priority 12288
 ```
 
+`mikrokik_config.cfg` এর উদাহরণ হতে পারে:
+
+```
+/ip address add address=192.168.100.1/24 interface=VLAN_10
+/ip dns set servers=8.8.8.8,1.1.1.1
+```
 ### কপি মডিউলের কাজ
 
 Ansible এর `copy` মডিউলটি ব্যবহার করে আপনি একটি ফাইল বা ডিরেক্টরি কপি করতে পারেন। আপনার উল্লেখিত `copy` টাস্কের হিসেব দেখি:
