@@ -18,7 +18,6 @@ mikrokik ansible_host=192.168.3.1
 mikrokik2 ansible_host=192.168.4.1
 ```
 
-[mikrokiks]
 এখানে `routers` গ্রুপে দুটি রাউটার, `switches` গ্রুপে দুটি সুইচ এবং `mikrokiks` গ্রুপে দুটো মাইক্রোটিক রয়েছে। প্রতিটি ডিভাইসের আইপি এড্রেস (যেটা তাদের নেটওয়ার্কের মাধ্যমে অ্যাক্সেস করা যায়) উল্লেখ করা হয়েছে।
 
 ### স্টেপ ২: প্লেবুক তৈরি
@@ -81,8 +80,6 @@ mikrokik2 ansible_host=192.168.4.1
 `router_config.cfg` এর উদাহরণ হতে পারে:
 
 ```
-# Router Configuration
-
 # Set interface IP address
 interface GigabitEthernet0/1
  ip address 192.168.1.1 255.255.255.0
@@ -118,8 +115,6 @@ interface GigabitEthernet0/2
 `switch_config.cfg` এর উদাহরণ হতে পারে:
 
 ```
-# Switch Configuration
-
 # Create VLANs
 vlan 10
  name Sales
