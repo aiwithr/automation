@@ -27,14 +27,14 @@ network_automation/
 ```    
 ## প্রথম ধাপ: প্রস্তুতি
 
-প্রথমে আমরা পাইথনে প্রয়োজনীয় টুল ইনস্টল করব:
+প্রথমে আমরা পাইথনে দরকারি টুল ইনস্টল করব:
 
 ```bash
 # প্রথমে পাইথন ভার্চুয়াল এনভায়রনমেন্ট তৈরি করি 
 python -m venv network_env
 source network_env/bin/activate
 
-# এরপর প্রয়োজনীয় লাইব্রেরি ইনস্টল করি
+# এরপর দরকারি লাইব্রেরি ইনস্টল করি
 pip install netmiko pyyaml jinja2
 ```
 
@@ -57,7 +57,7 @@ interface Loopback{{ interface.number }}
 
 ### ১. প্রথমে লাইব্রেরি ইম্পোর্ট:
 ```python
-# নেটওয়ার্ক অটোমেশনের জন্য প্রয়োজনীয় লাইব্রেরি
+# নেটওয়ার্ক অটোমেশনের জন্য দরকারি লাইব্রেরি
 import yaml                                    # কনফিগারেশন ফাইল হ্যান্ডলিং
 from jinja2 import Environment, FileSystemLoader    # টেমপ্লেট ইঞ্জিন
 from netmiko import ConnectHandler            # রাউটার কানেকশন

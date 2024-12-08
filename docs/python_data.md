@@ -32,7 +32,7 @@ device = {
 # ডিভাইসে সংযোগ স্থাপন
 net_connect = ConnectHandler(**device)
 
-# প্রয়োজনীয় হলে enable মোডে স্যুইচ করা
+# দরকারি হলে enable মোডে স্যুইচ করা
 net_connect.enable()
 
 # একটা কমান্ড চালানো
@@ -52,7 +52,7 @@ from netmiko import ConnectHandler
 ```
 
 2. **ডিভাইসের বিবরণ নির্ধারণ করা**:
-একটা ডিকশনারি (dictionary) এর মাধ্যমে ডিভাইসের প্রয়োজনীয় ডাটা (যেমন: ডিভাইস টাইপ, IP অ্যাড্রেস, ইউজারনেম, পাসওয়ার্ড) নির্ধারণ করা হয়েছে।
+একটা ডিকশনারি (dictionary) এর মাধ্যমে ডিভাইসের দরকারি ডাটা (যেমন: ডিভাইস টাইপ, IP অ্যাড্রেস, ইউজারনেম, পাসওয়ার্ড) নির্ধারণ করা হয়েছে।
 
 ```python
 device = {
@@ -165,7 +165,7 @@ response = requests.get(
 
 print(response.json())
 ```
-### স্টেপ ১: প্রয়োজনীয় লাইব্রেরি নেওয়া
+### স্টেপ ১: দরকারি লাইব্রেরি নেওয়া
 ```python
 import requests
 requests.packages.urllib3.disable_warnings()
