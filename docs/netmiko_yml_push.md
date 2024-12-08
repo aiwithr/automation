@@ -76,7 +76,7 @@ def generate_routers_config(start_ip, total_routers):
     """
     
     # নেটওয়ার্ক থেকে আইপি লিস্ট বের করি
-    network = ipaddress.IPv4Network(f"{start_ip}/24", strict=False)
+    network = ipaddress.IPv4Network(f"{start_ip}/23", strict=False)
     ip_list = list(network.hosts())[:total_routers]
     
     # রাউটার কনফিগ ডিকশনারি
