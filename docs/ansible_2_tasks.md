@@ -1,8 +1,29 @@
-অ্যান্সিবল ব্যবহার করে কীভাবে সুইচ এবং রাউটারগুলিতে ভিন্ন ভিন্ন কাজ করা যায় তা একটি সাধারণ উদাহরণ দিয়ে ব্যাখ্যা করছি। ধরে নিই, আপনি একটি অফিসে কাজ করেন যেখানে আপনার অনেক কম্পিউটার এবং নেটওয়ার্ক ডিভাইস (যেমন সুইচ এবং রাউটার) আছে এবং আপনাকে এগুলোর জন্য নিয়মিত কনফিগারেশন চেঞ্জ করতে হয়। অ্যান্সিবল ব্যবহার করে এই কাজটা খুব সহজে এবং অটোমেটিক্যালি করা যায়।
+### নেটওয়ার্ক অটোমেশন: অ্যানসিবল দিয়ে শুরু করা
 
-### স্টেপ ১: ইনভেন্টরি ফাইল তৈরি
+অ্যান্সিবল ব্যবহার করে কীভাবে সুইচ, মাইক্রোটিক এবং রাউটারগুলোতে ভিন্ন ভিন্ন কাজ করা যায় তা একটি সাধারণ উদাহরণ দিয়ে ব্যাখ্যা করছি। ধরে নিই, আপনি একটি অফিসে কাজ করেন যেখানে আপনার অনেক কম্পিউটার এবং নেটওয়ার্ক ডিভাইস (যেমন সুইচ, মাইক্রোটিক এবং রাউটার) আছে এবং আপনাকে এগুলোর জন্য নিয়মিত কনফিগারেশন চেঞ্জ করতে হয়। অ্যান্সিবল ব্যবহার করে এই কাজটা খুব সহজে এবং অটোমেটিক্যালি করা যায়।
 
-প্রথমে আমাদের একটি ইনভেন্টরি ফাইল তৈরি করতে হবে যেখানে আমরা আমাদের ডিভাইসগুলির তালিকা রাখব। ধরুন, আপনার দুটি রাউটার এবং দুটি সুইচ আছে। ইনভেন্টরি ফাইলটি এমন দেখতে হবে:
+### স্টেপ ১: প্রয়োজনীয় জিনিসপত্র
+
+প্রথমে আমাদের যা যা লাগবে:
+- একটা লিনাক্স/উইন্ডোজ কম্পিউটার
+- অ্যানসিবল ইনস্টল করা
+- নেটওয়ার্ক ডিভাইসগুলোর আইপি এড্রেস
+
+অ্যানসিবল ইনস্টল করার কমান্ড:
+```bash
+# উবুন্টুতে
+sudo apt-get update
+sudo apt-get install ansible
+
+# লিনাক্স/উইন্ডোজে pip দিয়ে
+pip install ansible
+```
+
+### স্টেপ ২: ইনভেন্টরি ফাইল বানানো
+
+এবার আমাদের ডিভাইসগুলোর একটা তালিকা বানাব। এটা করব `hosts` নামের একটা ফাইলে:
+
+আপনি ঠিক বলেছেন। আমি মূল লেখা অনুসারে ইনভেন্টরি ফাইলটি আবার লিখছি:
 
 ```ini
 [routers]
@@ -13,16 +34,23 @@ router2 ansible_host=192.168.1.2
 switch1 ansible_host=192.168.2.1
 switch2 ansible_host=192.168.2.2
 
-[mikrokiks]
-mikrokik ansible_host=192.168.3.1
-mikrokik2 ansible_host=192.168.4.1
+[mikrotiks]
+mikrotik1 ansible_host=192.168.3.1
+mikrotik2 ansible_host=192.168.4.1
+
+[all:vars]
+ansible_connection=network_cli
+ansible_user=admin
+ansible_password=cisco123
 ```
 
-এখানে `routers` গ্রুপে দুটি রাউটার, `switches` গ্রুপে দুটি সুইচ এবং `mikrokiks` গ্রুপে দুটো মাইক্রোটিক রয়েছে। প্রতিটি ডিভাইসের আইপি এড্রেস (যেটা তাদের নেটওয়ার্কের মাধ্যমে অ্যাক্সেস করা যায়) উল্লেখ করা হয়েছে।
+এখানে তিন ধরনের ডিভাইস আছে:
 
-### স্টেপ ২: প্লেবুক তৈরি
+- দুটো রাউটার (192.168.1.x নেটওয়ার্কে)
+- দুটো সুইচ (192.168.2.x নেটওয়ার্কে)
+- দুটো মাইক্রোটিক (192.168.3.x এবং 192.168.4.x নেটওয়ার্কে)
 
-এরপর আমরা একটি প্লেবুক তৈরি করব। প্লেবুক হলো অ্যান্সিবলের জন্য একটি নির্দেশিকা যেখানে আমরা বলি কোন ডিভাইসে কী কাজ করতে হবে। এটা একটা yaml ফাইল। প্লেবুকটি দেখুন:
+চলুন প্লেবুক লিখি। এটি `site.yml` ফাইলে লিখব:
 
 ```yaml
 ---
@@ -30,57 +58,62 @@ mikrokik2 ansible_host=192.168.4.1
   hosts: routers
   gather_facts: no
   tasks:
-    - name: নিশ্চিত করা যে রাউটারের কনফিগারেশন ফাইল আছে
-      copy:
-        src: configs/router_config.cfg
-        dest: /etc/router_config.cfg
-
-    - name: রাউটার কনফিগারেশন প্রয়োগ করা
-      command: /usr/bin/router_apply_config /etc/router_config.cfg
+    - name: রাউটারে কমান্ড পাঠানো
+      ios_config:
+        lines:
+          - interface GigabitEthernet0/1
+          - ip address 192.168.1.1 255.255.255.0
+          - no shutdown
+          - ip route 10.10.10.0 255.255.255.0 192.168.1.254
 
 - name: সুইচ কনফিগার করা
   hosts: switches
   gather_facts: no
   tasks:
-    - name: নিশ্চিত করা যে সুইচের কনফিগারেশন ফাইল আছে
-      copy:
-        src: configs/switch_config.cfg
-        dest: /etc/switch_config.cfg
-
-    - name: সুইচ কনফিগারেশন প্রয়োগ করা
-      command: /usr/bin/switch_apply_config /etc/switch_config.cfg
+    - name: VLAN তৈরি করা
+      ios_config:
+        lines:
+          - vlan 10
+          - name Sales
+          - vlan 20
+          - name Engineering
+          - interface FastEthernet0/1
+          - switchport mode access
+          - switchport access vlan 10
 
 - name: মাইক্রোটিক কনফিগার করা
-  hosts: mikrokiks
+  hosts: mikrotiks
   gather_facts: no
   tasks:
-    - name: নিশ্চিত করা যে মাইক্রোটিক কনফিগারেশন ফাইল আছে
-      copy:
-        src: configs/mikrokik_config.cfg
-        dest: /etc/mikrokik_config.cfg
-
-    - name: সুইচ কনফিগারেশন প্রয়োগ করা
-      command: /usr/bin/mikrokik_apply_config /etc/mikrokik_config.cfg
-
-
+    - name: আইপি এড্রেস এবং ডিএনএস সেট করা
+      routeros_command:
+        commands:
+          - /ip address add address=192.168.100.1/24 interface=VLAN_10
+          - /ip dns set servers=8.8.8.8,1.1.1.1
 ```
 
-উদাহরণ অনুযায়ী নিচে কিছু কনফিগারেশন ফাইল যোগ করা হলো। এখানে আমরা রাউটার এবং সুইচের বিভিন্ন সেটিংস কনফিগার করব।
+এই প্লেবুকে তিনটি প্রধান অংশ আছে:
 
-### স্টেপ ৩: কনফিগারেশন ফাইল তৈরি
+১. **রাউটার কনফিগারেশন**:
+   - ইন্টারফেস চালু করা
+   - আইপি এড্রেস দেওয়া
+   - রাউট সেট করা
 
-### উদাহরণ ১: Router Configuration (`router_config.cfg`)
+২. **সুইচ কনফিগারেশন**:
+   - VLAN তৈরি করা
+   - পোর্টে VLAN এসাইন করা
 
-    ধরি, আপনি একটি রাউটারে নিচের কনফিগারেশন করতে চান:
-    - ইন্টারফেস IP এড্রেস সেট করা
-    - স্ট্যাটিক রুট যোগ করা
-    - ACL (Access Control List) তৈরি করা
-    - NAT (Network Address Translation) কনফিগার করা
+৩. **মাইক্রোটিক কনফিগারেশন**:
+   - আইপি এড্রেস সেট করা
+   - ডিএনএস সার্ভার সেট করা
 
-`router_config.cfg` এর উদাহরণ হতে পারে:
+চলুন প্রতিটা ডিভাইসের জন্য আলাদা কনফিগ ফাইল বানাই।
+
+### ১. রাউটার কনফিগারেশন
+`configs/router_config.cfg` ফাইলে লিখব:
 
 ```
-# Set interface IP address
+# ইন্টারফেস সেটআপ
 interface GigabitEthernet0/1
  ip address 192.168.1.1 255.255.255.0
  no shutdown
@@ -89,14 +122,14 @@ interface GigabitEthernet0/2
  ip address 10.0.0.1 255.255.255.0
  no shutdown
 
-# Add static route
-ip route 10.10.10.0 255.255.255.0 192.168.1.254
+# ডিফল্ট রাউট সেটআপ
+ip route 0.0.0.0 0.0.0.0 192.168.1.254
 
-# Configure Access Control List (ACL)
-access-list 100 permit ip any any
-access-list 100 deny ip 192.168.1.0 0.0.0.255 any
+# বেসিক সিকিউরিটি
+access-list 100 permit ip 192.168.1.0 0.0.0.255 any
+access-list 100 deny ip any any log
 
-# Configure NAT
+# NAT সেটআপ
 ip nat inside source list 100 interface GigabitEthernet0/2 overload
 interface GigabitEthernet0/1
  ip nat inside
@@ -104,28 +137,19 @@ interface GigabitEthernet0/2
  ip nat outside
 ```
 
-### উদাহরণ ২: Switch Configuration (`switch_config.cfg`)
-
-    একইভাবে, ধরি আপনি একটি সুইচে নিচের কনফিগারেশন করতে চান:
-    - VLAN তৈরি করা এবং নাম দেয়া
-    - ইন্টারফেসগুলোতে VLAN এসাইন করা
-    - ট্রাঙ্ক পোর্ট কনফিগার করা
-    - স্প্যানিং ট্রি প্রোটোকল (STP) সক্রিয় করা
-
-`switch_config.cfg` এর উদাহরণ হতে পারে:
+### ২. সুইচ কনফিগারেশন
+`configs/switch_config.cfg` ফাইলে লিখব:
 
 ```
-# Create VLANs
+# VLAN তৈরি
 vlan 10
  name Sales
-
 vlan 20
- name Engineering
-
+ name IT
 vlan 30
  name Management
 
-# Configure Access Interfaces
+# এক্সেস পোর্ট সেটআপ
 interface FastEthernet0/1
  switchport mode access
  switchport access vlan 10
@@ -136,58 +160,105 @@ interface FastEthernet0/2
  switchport access vlan 20
  no shutdown
 
-interface FastEthernet0/3
- switchport mode access
- switchport access vlan 30
- no shutdown
-
-# Configure Trunk Interface
+# ট্রাঙ্ক পোর্ট সেটআপ
 interface GigabitEthernet0/1
  switchport mode trunk
  switchport trunk allowed vlan 10,20,30
  no shutdown
 
-# Enable Spanning Tree Protocol (STP)
+# স্প্যানিং ট্রি
 spanning-tree mode rapid-pvst
-spanning-tree vlan 10 priority 4096
-spanning-tree vlan 20 priority 8192
-spanning-tree vlan 30 priority 12288
+spanning-tree vlan 10,20,30 priority 4096
 ```
 
-`mikrokik_config.cfg` এর উদাহরণ হতে পারে:
+### ৩. মাইক্রোটিক কনফিগারেশন
+`configs/mikrotik_config.cfg` ফাইলে লিখব:
 
 ```
-/ip address add address=192.168.100.1/24 interface=VLAN_10
+# ইন্টারফেস এবং VLAN সেটআপ
+/interface vlan add name=VLAN_10 vlan-id=10 interface=ether1
+/interface vlan add name=VLAN_20 vlan-id=20 interface=ether1
+
+# আইপি কনফিগারেশন
+/ip address add address=192.168.10.1/24 interface=VLAN_10
+/ip address add address=192.168.20.1/24 interface=VLAN_20
+
+# ডিএনএস সেটআপ
 /ip dns set servers=8.8.8.8,1.1.1.1
-```
-### কপি মডিউলের কাজ
 
-Ansible এর `copy` মডিউলটি ব্যবহার করে আপনি একটি ফাইল বা ডিরেক্টরি কপি করতে পারেন। আপনার উল্লেখিত `copy` টাস্কের হিসেব দেখি:
-
-```yaml
-copy:
-  src: configs/router_config.cfg
-  dest: /etc/router_config.cfg
+# ডিএইচসিপি সার্ভার
+/ip pool add name=dhcp_pool1 ranges=192.168.10.2-192.168.10.254
+/ip dhcp-server add address-pool=dhcp_pool1 interface=VLAN_10 name=dhcp1
+/ip dhcp-server network add address=192.168.10.0/24 gateway=192.168.10.1
 ```
 
-এর মানে হলো:
+এই কনফিগারেশন ফাইলগুলো খুবই বেসিক। আপনার প্রয়োজন অনুযায়ী এগুলো পরিবর্তন করতে পারেন।
 
-- **`src`**: `configs/router_config.cfg` ফাইলটি যা আপনার লোকাল মেশিন বা কন্ট্রোল মেশিনে অবস্থান করছে।
-- **`dest`**: `/etc/router_config.cfg` ফাইলটি যা টার্গেট মেশিনে (রিমোট হোস্টে) কপি করা হবে।
+চলুন দেখি কীভাবে প্লেবুক চালাতে হয়। প্রথমে আমাদের ফাইল স্ট্রাকচারটা দেখে নেই:
 
-এই টাস্কটা কন্ট্রোল হোস্টে লোকাল ফাইল `configs/router_config.cfg` কে `/etc/router_config.cfg` হিসেবে কপি করবে।
+```
+network_automation/
+├── hosts                           # ইনভেন্টরি ফাইল
+├── site.yml                        # মূল প্লেবুক
+└── configs/                        # কনফিগ ফাইলগুলো
+    ├── router_config.cfg
+    ├── switch_config.cfg
+    └── mikrotik_config.cfg
+```
 
-এই প্লেবুকটা কী করবে:
+### প্লেবুক চালানোর আগে চেক করার বিষয়গুলো:
 
-1. `configs/router_config.cfg` ফাইলটি লোকাল মেশিন থেকে রিমোট হোস্টের `/etc` ডিরেক্টরিতে কপি করবে।
-2. তারপর `/usr/bin/router_apply_config /etc/router_config.cfg` কমান্ডটি চালিয়ে রাউটারের কনফিগারেশন প্রয়োগ করবে।
+1. সব ডিভাইসে SSH এনাবল আছে কিনা
+2. ইউজারনেম-পাসওয়ার্ড সঠিক আছে কিনা
+3. নেটওয়ার্ক কানেকশন আছে কিনা
 
-### স্টেপ ৪: প্লেবুক চালানো
+### প্লেবুক চালানো:
 
-এই প্লেবুক চালানোর জন্য আপনাকে শুধু একটা কমান্ড চালাতে হবে:
+প্রথমে শুধু চেক করে দেখি সব ঠিক আছে কিনা:
+```bash
+# ড্রাই-রান মোডে চালানো (কোনো পরিবর্তন হবে না)
+ansible-playbook -i hosts site.yml --check
+```
 
-```sh
+এরপর আসল প্লেবুক চালানো:
+```bash
+# সব ডিভাইসে একসাথে কাজ করবে
 ansible-playbook -i hosts site.yml
+
+# শুধু রাউটারে কাজ করবে
+ansible-playbook -i hosts site.yml --limit routers
+
+# শুধু মাইক্রোটিকে কাজ করবে
+ansible-playbook -i hosts site.yml --limit mikrotiks
+```
+
+আউটপুট দেখতে এমন হবে:
+```
+PLAY [রাউটার কনফিগার করা] *********************
+
+TASK [রাউটারে কমান্ড পাঠানো] *******************
+ok: [router1]
+ok: [router2]
+
+PLAY [সুইচ কনফিগার করা] ***********************
+
+TASK [VLAN তৈরি করা] ***************************
+ok: [switch1]
+ok: [switch2]
+
+PLAY [মাইক্রোটিক কনফিগার করা] *****************
+
+TASK [আইপি এড্রেস সেট করা] *********************
+ok: [mikrotik1]
+ok: [mikrotik2]
+
+PLAY RECAP *************************************
+router1    : ok=1    changed=0    unreachable=0    failed=0
+router2    : ok=1    changed=0    unreachable=0    failed=0
+switch1    : ok=1    changed=0    unreachable=0    failed=0
+switch2    : ok=1    changed=0    unreachable=0    failed=0
+mikrotik1  : ok=1    changed=0    unreachable=0    failed=0
+mikrotik2  : ok=1    changed=0    unreachable=0    failed=0
 ```
 
 ### কি করা হয়েছে?
@@ -197,10 +268,12 @@ ansible-playbook -i hosts site.yml
 1. **ইনভেন্টরি ফাইল**: এটি হলো একটি তালিকা যেখানে আপনার সব ডিভাইসের নাম এবং তাদের আইপি এড্রেস আছে। আপনি একে একটি কন্টাক্ট লিস্টের মতো ভাবতে পারেন।
 2. **প্লেবুক**: এটা হলো একটি নির্দেশিকা যেখানে আপনি বলছেন কোন ডিভাইসে কী কাজ করতে হবে। 
    - প্রথম অংশে বলা হচ্ছে "রাউটার গ্রুপের জন্য এই কাজগুলো করো"।
-   - দ্বিতীয় অংশে বলা হচ্ছে "সুইচ গ্রুপের জন্য এই কাজগুলো করো"।
+   - দ্বিতীয় অংশে বলা হচ্ছে "সুইচ গ্রুপের জন্য এই কাজগুলো করো"। মাইক্রোটিকে একই জিনিস।
+ - 
 3. **টাস্ক**: প্রতিটি ডিভাইসে কী কাজ হবে তা টাস্ক হিসেবে লেখা আছে। উদাহরণস্বরূপ:
+4. 
    - রাউটারের জন্য একটি নির্দিষ্ট ফাইল কপি করা এবং সেটি প্রয়োগ করা।
-   - সুইচের জন্যও একই কাজ।
+   - সুইচ এবং মাইক্রোটিকের জন্যও একই কাজ।
 
 ### সুবিধা
 
