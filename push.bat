@@ -3,7 +3,7 @@ git add -A
 git commit -m "Github Actions commit from VScode"
 :: git remote add origin git@aiwithr:aiwithr/aiwithr.github.io.git
 :: git remote add origin https://aiwithr@github.com/aiwithr.github.io.git
-git remote remove origin
+:: git remote remove origin
 git remote add origin https://github.com/aiwithr/automation.git 
 git push origin main --force
 :: git push -u origin master
