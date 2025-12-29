@@ -170,7 +170,15 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
-   
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  # Load the MathJax library (v3) from a CDN
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML
+
+
+
 # বইয়ের গাছপালা
 nav:
   - নেটওয়ার্ক এবং আইএসপি অটোমেশন: index.md
@@ -223,7 +231,9 @@ nav:
     - পাইএটিএস+জেনি এসএলএ/বিজিপি মনিটরিং: pyats_genie.md
     - সল্টস্ট্যাক দিয়ে ফায়ারওয়াল ম্যানেজমেন্ট: SaltStack.md
   - আধুনিক আইএসপি ম্যানেজমেন্ট:
-    - ইন্টেলিজেন্ট ওয়াই-ফাই ম্যানেজমেন্ট: wifi.md 
+    - ইন্টেলিজেন্ট ওয়াই-ফাই ম্যানেজমেন্ট: wifi.md
+    - ওয়াইফাই প্ল্যানিং ও ইনস্টলেশন: wifi-basics.md
+    - ওয়াইফাই অপটিমাইজেশন গাইড: tech-ch.md
   - দ্বিতীয় পর্ব কি আসবে?:
     - সামনে কোথায় যাবো?: final.md
   - পরিশিষ্ট:
