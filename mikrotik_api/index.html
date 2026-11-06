@@ -1,42 +1,36 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="bn" class="no-js">
   <head>
     
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-        <meta name="description" content="নেটওয়ার্ক এবং আইএসপি অটোমেশন">
-      
-      
-        <meta name="author" content="রকিবুল হাসান">
-      
-      
-        <link rel="canonical" href="https://aiwithr.github.io/automation/mikrotik_api/">
-      
-      
-        <link rel="prev" href="../netmiko_yml_push_up/">
-      
-      
-        <link rel="next" href="../ansible/">
-      
-      
-        
-      
-      
-      <link rel="icon" href="../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
-    
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="author" content="Rakibul Hassan (রকিবুল হাসান)">
+  <meta name="creator" content="Rakibul Hassan">
+  <meta name="publisher" content="Rakibul Hassan">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="keywords" content="নেটওয়ার্ক এবং আইএসপি অটোমেশন, রোড টু হাইটেক ইন্ডাস্ট্রি, Network and ISP Automation, Python network automation, Netmiko, Ansible, YANG, RESTCONF, NETCONF, MikroTik API, pyATS, SaltStack, WiFi optimization, রকিবুল হাসান, Rakibul Hassan, aiwithr">
+  <meta name="description" content="মাইক্রোটিকের এপিআই দিয়ে খেলা — রোড টু হাইটেক ইন্ডাস্ট্রি: নেটওয়ার্ক এবং আইএসপি অটোমেশন — রকিবুল হাসান (Rakibul Hassan)।">
+  
+    <link rel="canonical" href="https://aiwithr.github.io/automation/mikrotik_api/">
+  
+  
+    <link rel="prev" href="../netmiko_yml_push_up/">
+  
+  
+    <link rel="next" href="../ansible/">
+  
+
     
       
         <title>মাইক্রোটিকের এপিআই দিয়ে খেলা - রোড টু হাইটেক ইন্ডাস্ট্রি</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -73,6 +67,150 @@
 
     
     
+  <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+  <meta property="og:site_name" content="নেটওয়ার্ক এবং আইএসপি অটোমেশন | রকিবুল হাসান">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="মাইক্রোটিকের এপিআই দিয়ে খেলা | নেটওয়ার্ক এবং আইএসপি অটোমেশন">
+  <meta property="og:description" content="মাইক্রোটিকের এপিআই দিয়ে খেলা — রোড টু হাইটেক ইন্ডাস্ট্রি: নেটওয়ার্ক এবং আইএসপি অটোমেশন — রকিবুল হাসান (Rakibul Hassan)।">
+  <meta property="og:url" content="https://aiwithr.github.io/automation/mikrotik_api/">
+  <meta property="og:locale" content="bn_BD">
+  <meta property="og:image" content="https://aiwithr.github.io/automation/covers/networkbook.jpg">
+  <meta property="og:image:alt" content="নেটওয়ার্ক এবং আইএসপি অটোমেশন — Rakibul Hassan">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@raqueeb">
+  <meta name="twitter:creator" content="@raqueeb">
+  <meta name="twitter:title" content="মাইক্রোটিকের এপিআই দিয়ে খেলা | নেটওয়ার্ক এবং আইএসপি অটোমেশন">
+  <meta name="twitter:description" content="মাইক্রোটিকের এপিআই দিয়ে খেলা — রোড টু হাইটেক ইন্ডাস্ট্রি: নেটওয়ার্ক এবং আইএসপি অটোমেশন — রকিবুল হাসান (Rakibul Hassan)।">
+  <meta name="twitter:image" content="https://aiwithr.github.io/automation/covers/networkbook.jpg">
+
+  <!-- Schema.org JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://aiwithr.github.io/#website",
+        "url": "https://aiwithr.github.io/",
+        "name": "কৃত্রিম বুদ্ধিমত্তা | বাংলায়",
+        "description": "রকিবুল হাসানের AI/ML সাইট — ইন্টেলিজেন্ট সিস্টেমের সন্ধানে: বাংলায় কৃত্রিম বুদ্ধিমত্তা, বই, ভিডিও, রোডম্যাপ ও ওয়ার্কশপ।",
+        "publisher": {
+          "@id": "https://aiwithr.github.io/#author"
+        },
+        "inLanguage": ["bn", "en"]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://aiwithr.github.io/#author",
+        "name": "Rakibul Hassan",
+        "alternateName": ["রকিবুল হাসান", "Rakibul Hasan", "raqueeb"],
+        "jobTitle": "Director AI Business and Transformation",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Link3 Technologies Limited",
+          "url": "https://www.link3.net/"
+        },
+        "description": "First author of Bengali machine learning books (11+ titles including the হাতেকলমে মেশিন লার্নিং series, publishers Adarsha and Tamralipi), regular columnist for Prothom Alo, The Daily Star, and bdnews24.com, TEDxRUET speaker, former Director of BTRC, and Director of AI Business and Transformation at Link3 Technologies.",
+        "image": "https://aiwithr.github.io/images/rakibul-hassan.jpg",
+        "url": "https://aiwithr.github.io/",
+        "mainEntityOfPage": "https://aiwithr.github.io/about/",
+        "sameAs": [
+          "https://aiwithr.github.io/about/",
+          "https://www.linkedin.com/in/raqueeb/",
+          "https://github.com/raqueeb",
+          "https://github.com/aiwithr",
+          "https://twitter.com/raqueeb",
+          "https://www.facebook.com/raqueeb",
+          "https://raqueeb.wordpress.com/",
+          "https://medium.com/@raqueeb/",
+          "https://www.youtube.com/@aiwithr",
+          "https://www.youtube.com/@raqueebhassan",
+          "https://www.tedxruet.org/speakers/rakibul-hasan",
+          "https://bangla.thedailystar.net/author/%E0%A6%B0%E0%A6%95%E0%A6%BF%E0%A6%AC%E0%A7%81%E0%A6%B2-%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A6%A8",
+          "https://bangla.bdnews24.com/author/rakibul-hassan",
+          "https://www.rokomari.com/book/author/61248/rakibul-hassan",
+          "https://www.facebook.com/profile.php?id=61576673663332"
+        ]
+      },
+      {
+      "@type": "Book",
+      "@id": "https://aiwithr.github.io/automation/#book",
+      "name": "রোড টু হাইটেক ইন্ডাস্ট্রি: নেটওয়ার্ক/আইএসপি অটোমেশন ১ম খণ্ড",
+      "alternateName": [
+            "নেটওয়ার্ক এবং আইএসপি অটোমেশন",
+            "Road to High-Tech Industry: Network/ISP Automation Vol. 1"
+      ],
+      "url": "https://aiwithr.github.io/automation/",
+      "image": "https://aiwithr.github.io/automation/covers/networkbook.jpg",
+      "inLanguage": "bn",
+      "bookFormat": [
+            "https://schema.org/EBook",
+            "https://schema.org/Paperback"
+      ],
+      "genre": [
+            "Network Automation",
+            "ISP Engineering",
+            "Python Programming",
+            "Telecommunications"
+      ],
+      "description": "রোড টু হাইটেক ইন্ডাস্ট্রি: নেটওয়ার্ক এবং আইএসপি অটোমেশন — Python, Netmiko, Ansible, YANG, RESTCONF, NETCONF, MikroTik API, pyATS ও এন্টারপ্রাইজ ওয়াইফাই ম্যানেজমেন্ট। লেখক: রকিবুল হাসান (Rakibul Hassan)।",
+      "sameAs": [
+            "https://github.com/aiwithr/automation",
+            "https://www.rokomari.com/book/451978/network-ebong-isp-automation"
+      ],
+      "author": {
+            "@id": "https://aiwithr.github.io/#author"
+      },
+      "isPartOf": {
+            "@id": "https://aiwithr.github.io/#website"
+      }
+},
+      {
+        "@type": "Chapter",
+        "@id": "https://aiwithr.github.io/automation/mikrotik_api/#chapter",
+        "url": "https://aiwithr.github.io/automation/mikrotik_api/",
+        "name": "\u09ae\u09be\u0987\u0995\u09cd\u09b0\u09cb\u099f\u09bf\u0995\u09c7\u09b0 \u098f\u09aa\u09bf\u0986\u0987 \u09a6\u09bf\u09df\u09c7 \u0996\u09c7\u09b2\u09be",
+        "inLanguage": "bn",
+        "isPartOf": {
+          "@type": "Book",
+          "@id": "https://aiwithr.github.io/automation/#book",
+          "name": "রোড টু হাইটেক ইন্ডাস্ট্রি: নেটওয়ার্ক/আইএসপি অটোমেশন ১ম খণ্ড",
+          "url": "https://aiwithr.github.io/automation/"
+        },
+        "author": {
+          "@id": "https://aiwithr.github.io/#author"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://aiwithr.github.io/automation/mikrotik_api/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "কৃত্রিম বুদ্ধিমত্তা | বাংলায়",
+            "item": "https://aiwithr.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "নেটওয়ার্ক এবং আইএসপি অটোমেশন",
+            "item": "https://aiwithr.github.io/automation/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "\u09ae\u09be\u0987\u0995\u09cd\u09b0\u09cb\u099f\u09bf\u0995\u09c7\u09b0 \u098f\u09aa\u09bf\u0986\u0987 \u09a6\u09bf\u09df\u09c7 \u0996\u09c7\u09b2\u09be",
+            "item": "https://aiwithr.github.io/automation/mikrotik_api/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
   </head>
   
   
@@ -91,7 +229,7 @@
       
         
         <a href="#_1" class="md-skip">
-          Skip to content
+          কনটেন্টে যান
         </a>
       
     </div>
@@ -105,7 +243,7 @@
   
 
 <header class="md-header md-header--shadow" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
+  <nav class="md-header__inner md-grid" aria-label="হেডার">
     <a href=".." title="রোড টু হাইটেক ইন্ডাস্ট্রি" class="md-header__button md-logo" aria-label="রোড টু হাইটেক ইন্ডাস্ট্রি" data-md-component="logo">
       
   
@@ -153,21 +291,21 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="অনুসন্ধান করুন" placeholder="অনুসন্ধান করুন" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="অনুসন্ধান করুন">
         
-          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="শেয়ার" aria-label="শেয়ার" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
           </a>
         
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="রিসেট" aria-label="রিসেট" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
@@ -180,7 +318,7 @@
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Initializing search
+            অনুসন্ধান শুরু করা হচ্ছে
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -192,7 +330,7 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/raqueeb/mltraining/" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/raqueeb/mltraining/" title="রিপোজিটরিতে যান" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
@@ -226,7 +364,7 @@
 
 
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="ন্যাভিগেশন" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="রোড টু হাইটেক ইন্ডাস্ট্রি" class="md-nav__button md-logo" aria-label="রোড টু হাইটেক ইন্ডাস্ট্রি" data-md-component="logo">
       
@@ -243,7 +381,7 @@
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/raqueeb/mltraining/" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/raqueeb/mltraining/" title="রিপোজিটরিতে যান" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
@@ -1697,14 +1835,14 @@
       
         
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="সূচি তালিকা">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      সূচি তালিকা
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -2365,14 +2503,14 @@
                   <div class="md-sidebar__inner">
                     
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="সূচি তালিকা">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      সূচি তালিকা
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -2465,16 +2603,16 @@
 <li>নতুন IP অ্যাড্রেস যোগ করা:(curl ব্যবহার করে, দেখার জন্য, বোঝার দরকার নেই এই মুহুর্তে)</li>
 </ul>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="err">$</span> <span class="n">curl</span> <span class="o">-</span><span class="n">k</span> <span class="o">-</span><span class="n">u</span> <span class="n">rakib</span><span class="p">:</span><span class="mi">1234</span> <span class="o">-</span><span class="n">X</span> <span class="n">PUT</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="mf">203.11.91.21</span><span class="o">/</span><span class="n">rest</span><span class="o">/</span><span class="n">ip</span><span class="o">/</span><span class="n">address</span> \
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;address&quot;: &quot;192.168.0.11&quot;, &quot;interface&quot;: &quot;dummy&quot;}&#39;</span> <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;content-type: application/json&quot;</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">{</span><span class="s2">&quot;.id&quot;</span><span class="p">:</span><span class="s2">&quot;*A&quot;</span><span class="p">,</span><span class="s2">&quot;actual-interface&quot;</span><span class="p">:</span><span class="s2">&quot;dummy&quot;</span><span class="p">,</span><span class="s2">&quot;address&quot;</span><span class="p">:</span><span class="s2">&quot;192.168.0.11/32&quot;</span><span class="p">,</span><span class="s2">&quot;disabled&quot;</span><span class="p">:</span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="s2">&quot;dynamic&quot;</span><span class="p">:</span><span class="s2">&quot;false&quot;</span><span class="p">,</span><span class="s2">&quot;interface&quot;</span><span class="p">:</span><span class="s2">&quot;dummy&quot;</span><span class="p">,</span><span class="s2">&quot;invalid&quot;</span><span class="p">:</span><span class="s2">&quot;false&quot;</span><span class="p">,</span><span class="s2">&quot;network&quot;</span><span class="p">:</span><span class="s2">&quot;192.168.0.11&quot;</span><span class="p">}</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="o">--</span><span class="n">data</span> <span class="s1">'{"address": "192.168.0.11", "interface": "dummy"}'</span> <span class="o">-</span><span class="n">H</span> <span class="s2">"content-type: application/json"</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">{</span><span class="s2">".id"</span><span class="p">:</span><span class="s2">"*A"</span><span class="p">,</span><span class="s2">"actual-interface"</span><span class="p">:</span><span class="s2">"dummy"</span><span class="p">,</span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"192.168.0.11/32"</span><span class="p">,</span><span class="s2">"disabled"</span><span class="p">:</span><span class="s2">"false"</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="s2">"dynamic"</span><span class="p">:</span><span class="s2">"false"</span><span class="p">,</span><span class="s2">"interface"</span><span class="p">:</span><span class="s2">"dummy"</span><span class="p">,</span><span class="s2">"invalid"</span><span class="p">:</span><span class="s2">"false"</span><span class="p">,</span><span class="s2">"network"</span><span class="p">:</span><span class="s2">"192.168.0.11"</span><span class="p">}</span>
 </span></code></pre></div>
 <ul>
 <li>পিং টেস্ট করার জন্য:</li>
 </ul>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>curl<span class="w"> </span>-k<span class="w"> </span>-u<span class="w"> </span>admin:1234<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://10.155.101.214/rest/ping<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span>--data<span class="w"> </span><span class="s1">&#39;{&quot;address&quot;:&quot;10.155.101.1&quot;,&quot;count&quot;:&quot;4&quot;}&#39;</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;content-type: application/json&quot;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span>--data<span class="w"> </span><span class="s1">'{"address":"10.155.101.1","count":"4"}'</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">"content-type: application/json"</span>
 </span></code></pre></div>
 <p>এই কমান্ডগুলো ব্যবহার করার সময় কিছু জিনিস মনে রাখতে হবে:</p>
 <ol>
@@ -2485,8 +2623,8 @@
 </ol>
 <p>এই কমান্ডগুলো দিয়ে আপনি রাউটারের প্রায় সব কিছু কন্ট্রোল করতে পারবেন। শুরুতে টেস্টিং এনভায়রনমেন্টে প্র্যাকটিস করা ভালো, যাতে কোন ভুল হলে প্রোডাকশন এনভায়রনমেন্টে সমস্যা না হয়।</p>
 <h3 id="_1">পাইথন দিয়ে 'রিকোয়েস্টস' মড্যুউল<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="mf">203.11.91.21</span><span class="o">/</span><span class="n">rest</span><span class="o">/</span><span class="n">ip</span><span class="o">/</span><span class="n">address</span><span class="s1">&#39;, </span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>                        <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;address&quot;</span><span class="p">:</span><span class="s2">&quot;192.168.1.1/24&quot;</span><span class="p">,</span> <span class="s2">&quot;interface&quot;</span><span class="p">:</span><span class="s2">&quot;ether1&quot;</span><span class="p">},</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="mf">203.11.91.21</span><span class="o">/</span><span class="n">rest</span><span class="o">/</span><span class="n">ip</span><span class="o">/</span><span class="n">address</span><span class="s1">', </span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>                        <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"192.168.1.1/24"</span><span class="p">,</span> <span class="s2">"interface"</span><span class="p">:</span><span class="s2">"ether1"</span><span class="p">},</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>                        <span class="n">auth</span><span class="o">=</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">),</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </span></code></pre></div>
 <ol>
@@ -2505,13 +2643,13 @@
 <p>উদাহরণ:
    <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># নতুন ফায়ারওয়াল নিয়ম যোগ করা</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">web_rule</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="s2">&quot;chain&quot;</span><span class="p">:</span> <span class="s2">&quot;input&quot;</span><span class="p">,</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="s2">&quot;protocol&quot;</span><span class="p">:</span> <span class="s2">&quot;tcp&quot;</span><span class="p">,</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="s2">&quot;dst-port&quot;</span><span class="p">:</span> <span class="s2">&quot;80&quot;</span><span class="p">,</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;accept&quot;</span><span class="p">,</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="s2">&quot;comment&quot;</span><span class="p">:</span> <span class="s2">&quot;Allow HTTP&quot;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="s2">"chain"</span><span class="p">:</span> <span class="s2">"input"</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="s2">"protocol"</span><span class="p">:</span> <span class="s2">"tcp"</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="s2">"dst-port"</span><span class="p">:</span> <span class="s2">"80"</span><span class="p">,</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="s2">"action"</span><span class="p">:</span> <span class="s2">"accept"</span><span class="p">,</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="s2">"comment"</span><span class="p">:</span> <span class="s2">"Allow HTTP"</span>
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">}</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">+</span><span class="s1">&#39;/ip/firewall/filter/add&#39;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">web_rule</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">),</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">+</span><span class="s1">'/ip/firewall/filter/add'</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">web_rule</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">),</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </span></code></pre></div>
    এই API কল ব্যবহার করে আপনি ফায়ারওয়াল নিয়ম যোগ, পরিবর্তন বা মুছে ফেলতে পারেন।</p>
 <p>খ. ব্যান্ডউইথ ম্যানেজমেন্ট:</p>
@@ -2519,18 +2657,18 @@
 <p>উদাহরণ:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>   <span class="c1"># নতুন ব্যান্ডউইথ সীমা সেট করা</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>   <span class="n">new_queue</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>   <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Home_Client_Banani&quot;</span><span class="p">,</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>   <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.1.100/32&quot;</span><span class="p">,</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>   <span class="s2">&quot;max-limit&quot;</span><span class="p">:</span> <span class="s2">&quot;5M/5M&quot;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>   <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Home_Client_Banani"</span><span class="p">,</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>   <span class="s2">"target"</span><span class="p">:</span> <span class="s2">"192.168.1.100/32"</span><span class="p">,</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>   <span class="s2">"max-limit"</span><span class="p">:</span> <span class="s2">"5M/5M"</span>
 </span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="p">}</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span> <span class="o">+</span> <span class="s1">&#39;/queue/simple/add&#39;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">new_queue</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">),</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span> <span class="o">+</span> <span class="s1">'/queue/simple/add'</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">new_queue</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">),</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </span></code></pre></div>
 <p>এই API ব্যবহার করে আপনি ক্লায়েন্টদের জন্য ব্যান্ডউইথ সীমা নির্ধারণ করতে পারেন। এই কলগুলো নিচ্ছে আপনাদের বিলিং/প্যাকেজিং সফটওয়্যার। এখন আমরাও করতে পারবো।</p>
 <p>গ. ডাইনামিক DNS আপডেট:</p>
 <p>API কল: <code>/ip/cloud</code>
    উদাহরণ:</p>
 <p><div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># MikroTik Cloud DDNS স্ট্যাটাস টেস্ট</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">+</span><span class="s1">&#39;/ip/cloud&#39;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">),</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">+</span><span class="s1">'/ip/cloud'</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">),</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">(),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 </span></code></pre></div>
    এই API ব্যবহার করে আপনি MikroTik Cloud DDNS সেবা ম্যানেজমেন্ট করতে পারেন।</p>
@@ -2539,48 +2677,48 @@
    উদাহরণ:</p>
 <p><div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># নতুন ব্যবহারকারী তৈরি</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">new_user</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>   <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;rhassan&quot;</span><span class="p">,</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>   <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;securepass123&quot;</span><span class="p">,</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>   <span class="s2">&quot;group&quot;</span><span class="p">:</span> <span class="s2">&quot;full&quot;</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>   <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"rhassan"</span><span class="p">,</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>   <span class="s2">"password"</span><span class="p">:</span> <span class="s2">"securepass123"</span><span class="p">,</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>   <span class="s2">"group"</span><span class="p">:</span> <span class="s2">"full"</span>
 </span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="p">}</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">base_url</span><span class="o">+</span><span class="s1">&#39;/user/add&#39;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">new_user</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">),</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">base_url</span><span class="o">+</span><span class="s1">'/user/add'</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">new_user</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">),</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 </span></code></pre></div>
    এই API ব্যবহার করে আপনি নতুন ব্যবহারকারী তৈরি, এক্জিস্টিং ব্যবহারকারী পরিবর্তন বা মুছে ফেলতে পারেন।</p>
 <p>চ. সিস্টেম রিসোর্স মনিটরিং:
    API কল: <code>/system/resource</code>
    উদাহরণ:</p>
-<p><div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">+</span><span class="s1">&#39;/system/resource&#39;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">),</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">+</span><span class="s1">'/system/resource'</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">),</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">resources</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CPU Load: </span><span class="si">{</span><span class="n">resources</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;cpu-load&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Free Memory: </span><span class="si">{</span><span class="n">resources</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;free-memory&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> bytes&quot;</span><span class="p">)</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"CPU Load: </span><span class="si">{</span><span class="n">resources</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'cpu-load'</span><span class="p">]</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Free Memory: </span><span class="si">{</span><span class="n">resources</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'free-memory'</span><span class="p">]</span><span class="si">}</span><span class="s2"> bytes"</span><span class="p">)</span>
 </span></code></pre></div>
    এই API ব্যবহার করে আপনি রাউটারের CPU ব্যবহার, মেমরি ব্যবহার, আপটাইম ইত্যাদি মনিটর করতে পারেন।</p>
 <p>ছ. ওয়্যারলেস নেটওয়ার্ক ম্যানেজমেন্ট:</p>
 <p>API কল: <code>/interface/wireless</code>
    উদাহরণ:</p>
 <p><div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># ওয়্যারলেস নেটওয়ার্কের ডাটা পাওয়া</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">+</span><span class="s1">&#39;/interface/wireless&#39;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">),</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">+</span><span class="s1">'/interface/wireless'</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">),</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">wireless_info</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="k">for</span> <span class="n">interface</span> <span class="ow">in</span> <span class="n">wireless_info</span><span class="p">:</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SSID: </span><span class="si">{</span><span class="n">interface</span><span class="p">[</span><span class="s1">&#39;ssid&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">, Frequency: </span><span class="si">{</span><span class="n">interface</span><span class="p">[</span><span class="s1">&#39;frequency&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"SSID: </span><span class="si">{</span><span class="n">interface</span><span class="p">[</span><span class="s1">'ssid'</span><span class="p">]</span><span class="si">}</span><span class="s2">, Frequency: </span><span class="si">{</span><span class="n">interface</span><span class="p">[</span><span class="s1">'frequency'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </span></code></pre></div>
    এই API ব্যবহার করে আপনি ওয়্যারলেস নেটওয়ার্ক কনফিগার এবং মনিটর করতে পারেন।</p>
 <p>ঝ. ব্যাকআপ এবং রিস্টোর:</p>
 <p>API কল: <code>/system/backup</code>
    উদাহরণ:</p>
 <p><div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># সিস্টেম ব্যাকআপ তৈরি</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">+</span><span class="s1">&#39;/system/backup/save&#39;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;daily_backup&quot;</span><span class="p">},</span> <span class="n">auth</span><span class="o">=</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">),</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">+</span><span class="s1">'/system/backup/save'</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"daily_backup"</span><span class="p">},</span> <span class="n">auth</span><span class="o">=</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">),</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </span></code></pre></div>
    এই API ব্যবহার করে আপনি রাউটারের কনফিগারেশন ব্যাকআপ নিতে এবং পুনরুদ্ধার করতে পারেন।</p>
 <p>ন. DHCP সার্ভার ম্যানেজমেন্ট:
    API কল: <code>/ip/dhcp-server</code>
    উদাহরণ:</p>
 <p><div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># DHCP লিজ ডাটা পাওয়া</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">+</span><span class="s1">&#39;/ip/dhcp-server/lease&#39;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">),</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">+</span><span class="s1">'/ip/dhcp-server/lease'</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">),</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">leases</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="k">for</span> <span class="n">lease</span> <span class="ow">in</span> <span class="n">leases</span><span class="p">:</span>
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;IP: </span><span class="si">{</span><span class="n">lease</span><span class="p">[</span><span class="s1">&#39;address&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">, MAC: </span><span class="si">{</span><span class="n">lease</span><span class="p">[</span><span class="s1">&#39;mac-address&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"IP: </span><span class="si">{</span><span class="n">lease</span><span class="p">[</span><span class="s1">'address'</span><span class="p">]</span><span class="si">}</span><span class="s2">, MAC: </span><span class="si">{</span><span class="n">lease</span><span class="p">[</span><span class="s1">'mac-address'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </span></code></pre></div>
    এই API ব্যবহার করে আপনি DHCP সার্ভার কনফিগার করতে এবং লিজ ডাটা ম্যানেজমেন্ট করতে পারেন।</p>
 <p>এই API কলগুলি ব্যবহার করে আপনি MikroTik রাউটারের প্রায় সব ফাংশন প্রোগ্রাম্যাটিকভাবে নিয়ন্ত্রণ করতে পারেন। এটি বড় নেটওয়ার্ক ম্যানেজমেন্ট, অটোমেশন, এবং কাস্টম মনিটরিং সিস্টেম তৈরির জন্য অত্যন্ত উপযোগী।</p>
@@ -2598,20 +2736,20 @@
 </li>
 <li>
 <p>সিকিউরিটি ডাটা:
-   <div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;rakib&#39;</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">password</span> <span class="o">=</span> <span class="s1">&#39;1234&#39;</span>
+   <div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">username</span> <span class="o">=</span> <span class="s1">'rakib'</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">password</span> <span class="o">=</span> <span class="s1">'1234'</span>
 </span></code></pre></div>
    এগুলি MikroTik রাউটারে ঢোকার জন্য ব্যবহৃত হয়।</p>
 </li>
 <li>
 <p>রাউটারের URL:
-   <div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://10.248.27.226/rest&#39;</span>
+   <div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">url</span> <span class="o">=</span> <span class="s1">'https://10.248.27.226/rest'</span>
 </span></code></pre></div>
    এটি MikroTik রাউটারের REST API এন্ডপয়েন্ট।</p>
 </li>
 <li>
 <p>API অনুরোধ:
-   <div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">+</span><span class="s1">&#39;/interface&#39;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">),</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+   <div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">+</span><span class="s1">'/interface'</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">),</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </span></code></pre></div>
    এই লাইনটি রাউটারের '/interface' এন্ডপয়েন্টে একটি GET অনুরোধ পাঠায়, যা সমস্ত নেটওয়ার্ক ইন্টারফেসের ডাটা ফেরত দেয়।</p>
 </li>
@@ -2622,24 +2760,24 @@
    এটি API থেকে পাওয়া JSON ডেটা সুন্দরভাবে (ইনডেন্ট করে) ফরম্যাট করে প্রিন্ট করে।</p>
 </li>
 </ol>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>     <span class="s2">&quot;.id&quot;</span><span class="p">:</span> <span class="s2">&quot;*2&quot;</span><span class="p">,</span>
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>     <span class="s2">&quot;actual-mtu&quot;</span><span class="p">:</span> <span class="s2">&quot;1500&quot;</span><span class="p">,</span>
-</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>     <span class="s2">&quot;default-name&quot;</span><span class="p">:</span> <span class="s2">&quot;ether1&quot;</span><span class="p">,</span>
-</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>     <span class="s2">&quot;disabled&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
-</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>     <span class="s2">&quot;mac-address&quot;</span><span class="p">:</span> <span class="s2">&quot;50:01:00:05:00:00&quot;</span><span class="p">,</span>
-</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>     <span class="s2">&quot;mtu&quot;</span><span class="p">:</span> <span class="s2">&quot;1500&quot;</span><span class="p">,</span>
-</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ether1&quot;</span><span class="p">,</span>
-</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>     <span class="s2">&quot;running&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
-</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>     <span class="s2">&quot;tx-byte&quot;</span><span class="p">:</span> <span class="s2">&quot;9303961&quot;</span><span class="p">,</span>
-</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>     <span class="s2">&quot;tx-packet&quot;</span><span class="p">:</span> <span class="s2">&quot;30177&quot;</span><span class="p">,</span>
-</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>     <span class="s2">&quot;tx-queue-drop&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
-</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>     <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ether&quot;</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>     <span class="s2">".id"</span><span class="p">:</span> <span class="s2">"*2"</span><span class="p">,</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>     <span class="s2">"actual-mtu"</span><span class="p">:</span> <span class="s2">"1500"</span><span class="p">,</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>     <span class="s2">"default-name"</span><span class="p">:</span> <span class="s2">"ether1"</span><span class="p">,</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>     <span class="s2">"disabled"</span><span class="p">:</span> <span class="s2">"false"</span><span class="p">,</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>     <span class="s2">"mac-address"</span><span class="p">:</span> <span class="s2">"50:01:00:05:00:00"</span><span class="p">,</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>     <span class="s2">"mtu"</span><span class="p">:</span> <span class="s2">"1500"</span><span class="p">,</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>     <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"ether1"</span><span class="p">,</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>     <span class="s2">"running"</span><span class="p">:</span> <span class="s2">"true"</span><span class="p">,</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>     <span class="s2">"tx-byte"</span><span class="p">:</span> <span class="s2">"9303961"</span><span class="p">,</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>     <span class="s2">"tx-packet"</span><span class="p">:</span> <span class="s2">"30177"</span><span class="p">,</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>     <span class="s2">"tx-queue-drop"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>     <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"ether"</span>
 </span></code></pre></div>
 <p>আউটপুট মানে কী:</p>
 <p>আউটপুটে দেখা যাচ্ছে যে রাউটারে পাঁচটি ইন্টারফেস রয়েছে: ether1, ether2, ether3, ether4, এবং lo। প্রতিটি ইন্টারফেসের জন্য বিস্তারিত ডাটা দেওয়া আছে। আসুন একটা ইন্টারফেস সম্পর্কে গুরুত্বপূর্ণ ডাটা বিশ্লেষণ করি:</p>
 <p>ether1:</p>
 <p><div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="w">   </span>-<span class="w"> </span>টাইপ:<span class="w"> </span>ইথারনেট
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">   </span>-<span class="w"> </span>অবস্থা:<span class="w"> </span>চালু<span class="w"> </span><span class="o">(</span><span class="s2">&quot;running&quot;</span>:<span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="o">)</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">   </span>-<span class="w"> </span>অবস্থা:<span class="w"> </span>চালু<span class="w"> </span><span class="o">(</span><span class="s2">"running"</span>:<span class="w"> </span><span class="s2">"true"</span><span class="o">)</span>
 </span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">   </span>-<span class="w"> </span>MAC<span class="w"> </span>অ্যাড্রেস:<span class="w"> </span><span class="m">50</span>:01:00:05:00:00
 </span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">   </span>-<span class="w"> </span>সর্বশেষ<span class="w"> </span>লিঙ্ক-আপ<span class="w"> </span>সময়:<span class="w"> </span><span class="m">2024</span>-07-26<span class="w"> </span><span class="m">18</span>:19:19
 </span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">   </span>-<span class="w"> </span>প্রেরিত<span class="w"> </span>ডেটা:<span class="w"> </span><span class="m">9</span>,303,961<span class="w"> </span>বাইট
@@ -2650,11 +2788,11 @@
 <p>উপরের মতো ১ম-৩য় ব্লক একই রকম। সেকারণে, ৪র্থ এবং ৫ম ব্লকগুলো আরও বিস্তারিতভাবে ব্যাখ্যা করছি:</p>
 <p>৪র্থ ব্লক:
 <div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>web_rule = {
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    &quot;chain&quot;: &quot;input&quot;,
-</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>    &quot;protocol&quot;: &quot;tcp&quot;,
-</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>    &quot;dst-port&quot;: &quot;80&quot;,
-</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>    &quot;action&quot;: &quot;accept&quot;,
-</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>    &quot;comment&quot;: &quot;Allow HTTP&quot;
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    "chain": "input",
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>    "protocol": "tcp",
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>    "dst-port": "80",
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>    "action": "accept",
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>    "comment": "Allow HTTP"
 </span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>}
 </span></code></pre></div>
 এটি একটি নতুন ফায়ারওয়াল নিয়ম তৈরি করছে। এখানে প্রতিটি লাইন একটি নির্দিষ্ট কাজ করে:</p>
@@ -2666,7 +2804,7 @@
 <li>"comment": "Allow HTTP" - এটি শুধু একটি মন্তব্য, যা নিয়মটির উদ্দেশ্য বোঝায়।</li>
 </ul>
 <p>৫ম ব্লক:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>response = requests.post(base_url+&#39;/ip/firewall/filter/add&#39;, json=web_rule, auth=HTTPBasicAuth(username, password), verify=False)
+<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>response = requests.post(base_url+'/ip/firewall/filter/add', json=web_rule, auth=HTTPBasicAuth(username, password), verify=False)
 </span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>print(response.text)
 </span></code></pre></div>
 <p>এই অংশটি কয়েকটি গুরুত্বপূর্ণ কাজ করে:</p>
@@ -2705,7 +2843,7 @@
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
-  Back to top
+  উপরে ফিরে যাও
 </button>
         
       </main>
@@ -2714,17 +2852,17 @@
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="ফুটার" >
         
           
-          <a href="../netmiko_yml_push_up/" class="md-footer__link md-footer__link--prev" aria-label="Previous: নেটমিকো/ওয়াইএমএল দিয়ে কনফিগারেশন পুশ">
+          <a href="../netmiko_yml_push_up/" class="md-footer__link md-footer__link--prev" aria-label="পূর্ববর্তী: নেটমিকো/ওয়াইএমএল দিয়ে কনফিগারেশন পুশ">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
-                Previous
+                পূর্ববর্তী
               </span>
               <div class="md-ellipsis">
                 নেটমিকো/ওয়াইএমএল দিয়ে কনফিগারেশন পুশ
@@ -2734,10 +2872,10 @@
         
         
           
-          <a href="../ansible/" class="md-footer__link md-footer__link--next" aria-label="Next: নেটওয়ার্ক অটোমেশনে অ্যান্সিবল">
+          <a href="../ansible/" class="md-footer__link md-footer__link--next" aria-label="পরে: নেটওয়ার্ক অটোমেশনে অ্যান্সিবল">
             <div class="md-footer__title">
               <span class="md-footer__direction">
-                Next
+                পরে
               </span>
               <div class="md-ellipsis">
                 নেটওয়ার্ক অটোমেশনে অ্যান্সিবল
@@ -2757,7 +2895,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      সৃজনশীল লাইসেন্সিং ২০১৯ - ২০২৩ &copy; রকিবুল হাসান
+      সৃজনশীল লাইসেন্সিং &copy; Rakibul Hassan (রকিবুল হাসান) &middot; <a href='https://aiwithr.github.io/'>aiwithr.github.io</a> &middot; <a href='https://aiwithr.github.io/resources/'>সব বই (All Books)</a> &middot; <a href='https://aiwithr.github.io/about/'>লেখক পরিচিতি</a>
     </div>
   
   
@@ -2778,8 +2916,30 @@
       
       
     
+    <a href="https://github.com/aiwithr/automation" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
     <a href="https://github.com/raqueeb" target="_blank" rel="noopener" title="github.com" class="md-social__link">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/@aiwithr" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M549.7 124.1c-6.2-23.7-24.8-42.3-48.3-48.6C458.9 64 288.1 64 288.1 64S117.3 64 74.7 75.5c-23.5 6.3-42 24.9-48.3 48.6C15 167 15 256.4 15 256.4s0 89.4 11.4 132.3c6.3 23.6 24.8 41.5 48.3 47.8C117.3 448 288.1 448 288.1 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM232.2 337.6V175.2l142.7 81.2z"/></svg>
     </a>
   
     
@@ -2860,10 +3020,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.indexes", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow", "navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.indexes", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow", "navigation.footer"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u0995\u09cd\u09b2\u09bf\u09aa\u09ac\u09cb\u09b0\u09cd\u09a1\u09c7 \u0995\u09aa\u09bf \u09b9\u09df\u09c7\u099b\u09c7", "clipboard.copy": "\u0995\u09cd\u09b2\u09bf\u09aa\u09ac\u09cb\u09b0\u09cd\u09a1\u09c7 \u0995\u09aa\u09bf \u0995\u09b0\u09c1\u09a8", "search.result.more.one": "\u098f\u0987 \u09aa\u09c3\u09b7\u09cd\u09a0\u09be\u09af\u09bc \u0986\u09b0\u0993 \u09e7\u099f\u09bf \u0986\u099b\u09c7", "search.result.more.other": "\u098f\u0987 \u09aa\u09c3\u09b7\u09cd\u09a0\u09be\u09af\u09bc \u0986\u09b0\u0993 #\u099f\u09bf \u0986\u099b\u09c7", "search.result.none": "\u0995\u09bf\u099b\u09c1 \u09aa\u09be\u0993\u09df\u09be \u09af\u09be\u09df\u09a8\u09bf", "search.result.one": "\u09e7 \u099f\u09be \u09a1\u0995\u09c1\u09ae\u09c7\u09a8\u09cd\u099f", "search.result.other": "# \u099f\u09be \u09a1\u0995\u09c1\u09ae\u09c7\u09a8\u09cd\u099f", "search.result.placeholder": "\u09b8\u09be\u09b0\u09cd\u099a \u099f\u09be\u0987\u09aa \u0995\u09b0\u09c1\u09a8", "search.result.term.missing": "\u0985\u09a8\u09c1\u09aa\u09b8\u09cd\u09a5\u09bf\u09a4", "select.version": "\u09b8\u0982\u09b8\u09cd\u0995\u09b0\u09a3 \u09a8\u09bf\u09b0\u09cd\u09ac\u09be\u099a\u09a8 \u0995\u09b0\u09c1\u09a3"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
